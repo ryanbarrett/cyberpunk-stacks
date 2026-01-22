@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyberpunk Stacks</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scanline-overlay"></div>
+  <div class="scanline"></div>
+  
+  <div class="app-container">
+    <header>
+      <h1 class="header-title">Cyberpunk Stacks</h1>
+      <div class="header-controls"></div>
+    </header>
+    
+    <main>
+      <div class="building-container">
+        <div class="floor">
+          <span class="floor-number">24</span>
+          <div class="block block--club" data-type="club" data-name="Neon Nexus" data-threat="medium">Club</div>
+          <div class="block block--business" data-type="business" data-name="Corp Office" data-threat="high">Business</div>
+          <div class="block block--clinic" data-type="clinic" data-name="Med-Tech" data-threat="low">Clinic</div>
+        </div>
+        
+        <div class="floor">
+          <span class="floor-number">23</span>
+          <div class="block block--residence" data-type="residence" data-name="Apartment" data-threat="low">Residence</div>
+          <div class="block block--warehouse" data-type="warehouse" data-name="Storage" data-threat="medium">Warehouse</div>
+          <div class="block block--residence" data-type="residence" data-name="Apartment" data-threat="low">Residence</div>
+          <div class="block block--business" data-type="business" data-name="Shop" data-threat="medium">Business</div>
+        </div>
+        
+        <div class="floor">
+          <span class="floor-number">22</span>
+          <div class="block block--warehouse" data-type="warehouse" data-name="Cargo Bay" data-threat="high">Warehouse</div>
+          <div class="block block--business" data-type="business" data-name="Data Center" data-threat="high">Business</div>
+        </div>
+      </div>
+    </main>
+    
+    <aside>
+      <div class="settings-panel">
+        <div class="settings-group">
+          <label class="settings-label">Floor Count</label>
+          <input type="number" id="floorCount" class="settings-input" value="24" min="1" max="100">
+        </div>
+
+        <div class="settings-group">
+          <label class="settings-label">RNG Seed</label>
+          <input type="text" id="rngSeed" class="settings-input" value="cyberpunk-2077">
+        </div>
+
+        <div class="settings-group">
+          <label class="settings-label">Density</label>
+          <input type="range" id="density" class="settings-range" min="1" max="10" value="7">
+        </div>
+
+        <div class="settings-group">
+          <label class="settings-checkbox">
+            <input type="checkbox" id="neonTheme" checked>
+            <span>Neon Theme</span>
+          </label>
+        </div>
+
+        <div class="settings-group">
+          <label class="settings-checkbox">
+            <input type="checkbox" id="layoutLock">
+            <span>Lock Layout</span>
+          </label>
+        </div>
+
+        <div class="settings-group">
+          <button id="regenerateBtn" class="btn btn--primary">Regenerate Building</button>
+          <button id="nextBeatBtn" class="btn btn--pink">Next Beat</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+  
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Location Details</h2>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="detail-section">
+          <div class="detail-section-title">Description</div>
+          <div class="detail-section-content">
+            A high-end cybernetic enhancement clinic with state-of-the-art surgical equipment and a questionable reputation.
+          </div>
+        </div>
+        
+        <div class="detail-section">
+          <div class="detail-section-title">Security Level</div>
+          <div class="detail-section-content">
+            <span class="tag tag--threat-high">High</span>
+            <span class="tag">Guards: 3</span>
+            <span class="tag">Cameras: Yes</span>
+          </div>
+        </div>
+        
+        <div class="detail-section">
+          <div class="detail-section-title">Notable Items</div>
+          <div class="detail-section-content">
+            Military-grade cyberdeck, Prototype neural interface, Stealth augments
+          </div>
+        </div>
+        
+        <div class="detail-section">
+          <div class="detail-section-title">Active Events</div>
+          <div class="detail-section-content">
+            Corporate raid in progress, Security system offline, Hostage situation
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // ===== RNG System (Mulberry32) =====
+    function mulberry32(seed) {
+      let state = 0;
+      for (let i = 0; i < seed.length; i++) {
+        state = Math.imul(state ^ seed.charCodeAt(i), 0x5bd1e995);
+      }
+      return function() {
+        state = Math.imul(state, 0x6c078965);
+        let t = state ^ (state >>> 15);
+        t = Math.imul(t, t | 1);
+        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+
+    // ===== Location Name Generator =====
+    const locationNames = {
+      residence: ['Apartment', 'Tenement', 'Capsule Pod', 'Luxury Suite', 'Slum Block', 'Hab-Unit'],
+      business: ['Corp Office', 'Shop', 'Data Center', 'Trading Post', 'Black Market', 'Tech Store'],
+      warehouse: ['Storage', 'Cargo Bay', 'Depot', 'Supply Hub', 'Container Stack', 'Logistics Center'],
+      clinic: ['Med-Tech', 'Street Doc', 'Cyber Clinic', 'Trauma Center', 'Bio-Lab', 'Augmentation Hub'],
+      temple: ['Shrine', 'Monastery', 'Temple', 'Sacred Space', 'Meditation Den', 'Digital Church'],
+      club: ['Neon Nexus', 'The Grid', 'Chrome Palace', 'Bass Station', 'Synth Den', 'Pulse Club'],
+      restaurant: ['Noodle Bar', 'Synth-Food', 'Street Kitchen', 'Robo-Chef', 'Protein Palace', 'Cyber Cafe'],
+      'tech-shop': ['Cyber Parts', 'Hardware Hub', 'Tech Bazaar', 'Circuit Shop', 'Mod Station', 'Data Market']
+    };
+
+    function generateLocationName(type, rng) {
+      const names = locationNames[type] || ['Unknown'];
+      const index = Math.floor(rng() * names.length);
+      return names[index];
+    }
+
+    // ===== Threat Level Generator =====
+    function generateThreatLevel(rng) {
+      const roll = rng();
+      if (roll < 0.4) return 'low';
+      if (roll < 0.75) return 'medium';
+      return 'high';
+    }
+
+    // ===== Floor Generation =====
+    function generateFloor(floorNumber, rng, density) {
+      const blockTypes = ['residence', 'business', 'warehouse', 'clinic',
+                          'temple', 'club', 'restaurant', 'tech-shop'];
+
+      // Density affects block count (2-8 blocks per floor)
+      const blockCount = Math.floor(2 + (density / 10) * 6);
+
+      const blocks = [];
+      for (let i = 0; i < blockCount; i++) {
+        const typeIndex = Math.floor(rng() * blockTypes.length);
+        const type = blockTypes[typeIndex];
+        blocks.push({
+          type: type,
+          name: generateLocationName(type, rng),
+          threat: generateThreatLevel(rng)
+        });
+      }
+
+      return {
+        floorNumber,
+        blocks
+      };
+    }
+
+    // ===== Building Generation =====
+    function generateBuilding(floorCount, seed, density) {
+      const rng = mulberry32(seed);
+      const floors = [];
+
+      for (let i = floorCount; i >= 1; i--) {
+        floors.push(generateFloor(i, rng, density));
+      }
+
+      return {
+        seed,
+        floorCount,
+        density,
+        floors
+      };
+    }
+
+    // ===== DOM Rendering =====
+    function createBlockElement(blockData) {
+      const block = document.createElement('div');
+      block.className = `block block--${blockData.type}`;
+      block.dataset.type = blockData.type;
+      block.dataset.name = blockData.name;
+      block.dataset.threat = blockData.threat;
+      block.textContent = blockData.type.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+
+      return block;
+    }
+
+    function renderBuilding(buildingData) {
+      const container = document.querySelector('.building-container');
+      container.innerHTML = '';
+
+      buildingData.floors.forEach(floorData => {
+        const floorDiv = document.createElement('div');
+        floorDiv.className = 'floor';
+
+        const floorNumber = document.createElement('span');
+        floorNumber.className = 'floor-number';
+        floorNumber.textContent = floorData.floorNumber;
+        floorDiv.appendChild(floorNumber);
+
+        floorData.blocks.forEach(blockData => {
+          const blockElement = createBlockElement(blockData);
+          floorDiv.appendChild(blockElement);
+        });
+
+        container.appendChild(floorDiv);
+      });
+
+      // Re-attach event listeners to new blocks
+      attachBlockEventListeners();
+    }
+
+    // ===== Tooltip & Modal System =====
+    const modal = document.getElementById('detailModal');
+    const modalClose = document.querySelector('.modal-close');
+
+    function positionTooltip(tooltip, x, y) {
+      const tooltipRect = tooltip.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const offset = 15;
+
+      let left = x + offset;
+      let top = y + offset;
+
+      if (left + tooltipRect.width > viewportWidth) {
+        left = x - tooltipRect.width - offset;
+      }
+
+      if (left < 0) {
+        left = offset;
+      }
+
+      if (top + tooltipRect.height > viewportHeight) {
+        top = y - tooltipRect.height - offset;
+      }
+
+      if (top < 0) {
+        top = offset;
+      }
+
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${top}px`;
+    }
+
+    function createTooltip(block) {
+      const threat = block.dataset.threat || 'low';
+      const tooltip = document.createElement('div');
+      tooltip.className = 'tooltip';
+      tooltip.innerHTML = `
+        <div class="tooltip-header">
+          <span class="tooltip-name">${block.dataset.name}</span>
+          <span class="tooltip-type">${block.dataset.type}</span>
+        </div>
+        <div class="tooltip-row">
+          <span class="tooltip-label">Threat Level</span>
+          <span class="tooltip-threat tooltip-threat--${threat}">${threat}</span>
+        </div>
+      `;
+      tooltip.id = 'active-tooltip';
+      document.body.appendChild(tooltip);
+      return tooltip;
+    }
+
+    function attachBlockEventListeners() {
+      const blocks = document.querySelectorAll('.block');
+
+      blocks.forEach(block => {
+        block.addEventListener('click', () => {
+          modal.classList.add('active');
+        });
+
+        block.addEventListener('mouseenter', (e) => {
+          const tooltip = createTooltip(block);
+          tooltip.offsetHeight;
+          tooltip.classList.add('active');
+          positionTooltip(tooltip, e.clientX, e.clientY);
+        });
+
+        block.addEventListener('mouseleave', () => {
+          const tooltip = document.getElementById('active-tooltip');
+          if (tooltip) tooltip.remove();
+        });
+
+        block.addEventListener('mousemove', (e) => {
+          const tooltip = document.getElementById('active-tooltip');
+          if (tooltip) {
+            positionTooltip(tooltip, e.clientX, e.clientY);
+          }
+        });
+      });
+    }
+
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+
+    // ===== Settings & Regeneration =====
+    let currentBuilding = null;
+
+    function getSettings() {
+      const floorCountInput = document.getElementById('floorCount');
+      const seedInput = document.getElementById('rngSeed');
+      const densityInput = document.getElementById('density');
+      const layoutLockInput = document.getElementById('layoutLock');
+
+      let floorCount = parseInt(floorCountInput.value);
+      if (isNaN(floorCount) || floorCount < 1) floorCount = 1;
+      if (floorCount > 100) floorCount = 100;
+      floorCountInput.value = floorCount;
+
+      let seed = seedInput.value.trim();
+      if (!seed) {
+        seed = 'cyberpunk-2077';
+        seedInput.value = seed;
+      }
+
+      let density = parseInt(densityInput.value);
+      if (isNaN(density) || density < 1) density = 1;
+      if (density > 10) density = 10;
+      densityInput.value = density;
+
+      return {
+        floorCount,
+        seed,
+        density,
+        layoutLock: layoutLockInput.checked
+      };
+    }
+
+    function regenerateBuilding() {
+      const settings = getSettings();
+
+      if (settings.layoutLock && currentBuilding) {
+        // Layout lock: preserve structure, re-roll events only
+        // For now, we'll just keep the current building
+        // In future, this would re-roll event data while preserving structure
+        console.log('Layout locked - preserving current building structure');
+        return;
+      }
+
+      // Full regeneration
+      currentBuilding = generateBuilding(settings.floorCount, settings.seed, settings.density);
+      renderBuilding(currentBuilding);
+
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+
+    // ===== Event Handlers =====
+    document.getElementById('regenerateBtn').addEventListener('click', regenerateBuilding);
+
+    document.getElementById('nextBeatBtn').addEventListener('click', () => {
+      // Future: Re-roll events for entire building
+      console.log('Next Beat clicked - event re-roll not yet implemented');
+    });
+
+    // ===== Initialize =====
+    // Attach listeners to existing blocks
+    attachBlockEventListeners();
+
+    // Generate initial building
+    regenerateBuilding();
+  </script>
+</body>
+</html>
