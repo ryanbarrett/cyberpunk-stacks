@@ -1,0 +1,18 @@
+{
+  "id": "comprehensive-data-tables",
+  "category": "Core",
+  "title": "Full Content Data Population",
+  "description": "Populate data.json with complete content: 80+ locations, 120+ events, 150+ items, 60+ NPC archetypes, 40+ factions, 30+ security systems, 50+ twists. Ensures rich procedural generation variety.",
+  "status": "backlog",
+  "priority": 3,
+  "complexity": "complex",
+  "dependencies": [
+    "data-schema-definition"
+  ],
+  "createdAt": "2026-01-22T03:35:24.625Z",
+  "updatedAt": "2026-01-22T03:35:24.625Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

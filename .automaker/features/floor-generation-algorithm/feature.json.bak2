@@ -1,0 +1,15 @@
+{
+  "id": "floor-generation-algorithm",
+  "category": "Core",
+  "title": "Floor Generation System",
+  "description": "Implement the core algorithm to generate configurable number of floors (default 24) with varying characteristics. Assigns floor types, density levels, and determines which blocks should populate each floor based on RNG.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "moderate",
+  "createdAt": "2026-01-22T03:35:24.619Z",
+  "updatedAt": "2026-01-22T03:35:24.619Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

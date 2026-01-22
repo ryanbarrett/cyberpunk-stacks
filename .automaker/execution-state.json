@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "autoLoopWasRunning": false,
+  "maxConcurrency": 1,
+  "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks",
+  "branchName": null,
+  "runningFeatureIds": [
+    "dynamic-building-regeneration",
+    "special-floor-templates",
+    "comprehensive-data-tables"
+  ],
+  "savedAt": "2026-01-22T04:11:29.760Z"
+}

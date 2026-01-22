@@ -1,0 +1,15 @@
+{
+  "id": "settings-panel-ui",
+  "category": "UI",
+  "title": "Settings Panel Interface",
+  "description": "Build settings panel UI with controls for floor count input, RNG seed field, density slider, theme toggle button, and layout lock checkbox. Implements cyberpunk-styled form elements.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "simple",
+  "createdAt": "2026-01-22T03:35:24.623Z",
+  "updatedAt": "2026-01-22T03:35:24.623Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

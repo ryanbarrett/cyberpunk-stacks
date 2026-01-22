@@ -1,0 +1,351 @@
+{
+  "version": 1,
+  "events": [
+    {
+      "id": "evt-1769055427256-81aa6e7a",
+      "trigger": "auto_mode_complete",
+      "timestamp": "2026-01-22T04:17:07.256Z"
+    },
+    {
+      "id": "evt-1769055425053-7c29e651",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:17:05.053Z",
+      "featureName": "Building Regeneration from Settings",
+      "featureId": "dynamic-building-regeneration"
+    },
+    {
+      "id": "evt-1769055171122-a00faf6d",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:12:51.122Z",
+      "featureName": "Full Content Data Population",
+      "featureId": "comprehensive-data-tables"
+    },
+    {
+      "id": "evt-1769055121825-25f4aa65",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:12:01.825Z",
+      "featureName": "Curated Special Floor Types",
+      "featureId": "special-floor-templates"
+    },
+    {
+      "id": "evt-1769055087400-5e281179",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:11:27.400Z",
+      "featureName": "LocalStorage Settings Persistence",
+      "featureId": "settings-persistence"
+    },
+    {
+      "id": "evt-1769055066983-f65ed689",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:11:06.983Z",
+      "featureName": "Build Local Development Server with Live Preview",
+      "featureId": "feature-1769054601399-t973odx1n"
+    },
+    {
+      "id": "evt-1769055022437-d37ee499",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:10:22.437Z",
+      "featureName": "Mobile-Responsive Design",
+      "featureId": "responsive-mobile-layout"
+    },
+    {
+      "id": "evt-1769055020518-c2462c2c",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:10:20.518Z",
+      "featureName": "Settings Panel Interface",
+      "featureId": "settings-panel-ui"
+    },
+    {
+      "id": "evt-1769054980811-e58c53fb",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:09:40.811Z",
+      "featureName": "Interactive Hover Tooltips",
+      "featureId": "hover-tooltips"
+    },
+    {
+      "id": "evt-1769054948616-824e4b50",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T04:09:08.616Z",
+      "featureName": "Fix missing server module error",
+      "featureId": "feature-1769054900426-rpria8wm2"
+    },
+    {
+      "id": "evt-1769054911857-0162bbde",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:08:31.857Z",
+      "featureName": "Next Beat Event Re-roll",
+      "featureId": "next-beat-reroll"
+    },
+    {
+      "id": "evt-1769054900539-0cbd2bc3",
+      "trigger": "feature_created",
+      "timestamp": "2026-01-22T04:08:20.539Z",
+      "featureId": "feature-1769054900426-rpria8wm2"
+    },
+    {
+      "id": "evt-1769054840753-495f3c65",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:07:20.753Z",
+      "featureName": "Location Detail Data Population",
+      "featureId": "location-detail-population"
+    },
+    {
+      "id": "evt-1769054816033-0e3bf223",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:06:56.033Z",
+      "featureName": "Block Type Visual Differentiation",
+      "featureId": "block-type-styling"
+    },
+    {
+      "id": "evt-1769054796330-34e219c4",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:06:36.330Z",
+      "featureName": "Active Event Generation",
+      "featureId": "event-generation-system"
+    },
+    {
+      "id": "evt-1769054773797-d7a83966",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:06:13.797Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054699131-c156ecfd",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:04:59.131Z",
+      "featureName": "Build Local Development Server with Live Preview",
+      "featureId": "feature-1769054601399-t973odx1n"
+    },
+    {
+      "id": "evt-1769054695164-49e60243",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:04:55.164Z",
+      "featureName": "Detail Panel/Modal Interface",
+      "featureId": "detail-panel-ui"
+    },
+    {
+      "id": "evt-1769054665032-a76fda34",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:04:25.032Z",
+      "featureName": "Block Click & Selection Handler",
+      "featureId": "block-selection-system"
+    },
+    {
+      "id": "evt-1769054641118-8e668feb",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:04:01.118Z",
+      "featureName": "Building Visual Renderer",
+      "featureId": "building-renderer"
+    },
+    {
+      "id": "evt-1769054601455-8759ca0e",
+      "trigger": "feature_created",
+      "timestamp": "2026-01-22T04:03:21.455Z",
+      "featureId": "feature-1769054601399-t973odx1n"
+    },
+    {
+      "id": "evt-1769054570305-db1696a7",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:02:50.305Z",
+      "featureName": "Block Bin-Packing Algorithm",
+      "featureId": "block-packing-layout"
+    },
+    {
+      "id": "evt-1769054508047-3995cb79",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T04:01:48.047Z",
+      "featureName": "Floor Generation System",
+      "featureId": "floor-generation-algorithm"
+    },
+    {
+      "id": "evt-1769054393420-9666ff03",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T03:59:53.420Z",
+      "featureName": "Mulberry32 PRNG Implementation",
+      "featureId": "rng-system"
+    },
+    {
+      "id": "evt-1769054323921-0f975df9",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T03:58:43.921Z",
+      "featureName": "Data Schema & JSON Structure",
+      "featureId": "data-schema-definition"
+    },
+    {
+      "id": "evt-1769054220586-97ed17e8",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:57:00.586Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054218571-b73baf86",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:58.571Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054216559-fee67505",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:56.559Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054214544-37144fc5",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:54.544Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054212532-5bb570b3",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:52.532Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054210515-1e9dc364",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:50.515Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054208501-338d7f11",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:48.501Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054206487-51e3e4e5",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:46.487Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054204470-a7b10750",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:44.470Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054202455-bbcaa4f3",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:42.455Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054200441-19ac9b39",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:40.441Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054198427-05f5196a",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:38.427Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054196412-bfbdf436",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:36.412Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054194396-38c47bc4",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:34.396Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054192382-12a0041b",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:32.382Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054190367-87981e9d",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:30.367Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054188354-f26e627f",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:28.354Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054186344-7294c313",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:26.344Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054184326-69b63296",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:24.326Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054182313-5caca62a",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:22.313Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054180297-293d3de3",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:20.297Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054178282-57efa5e6",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:18.282Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054176268-2964b103",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:16.268Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054174255-4940ee7a",
+      "trigger": "feature_error",
+      "timestamp": "2026-01-22T03:56:14.255Z",
+      "featureName": "Cyberpunk Theme & CSS Variables",
+      "featureId": "cyberpunk-css-foundation"
+    },
+    {
+      "id": "evt-1769054171550-60e77730",
+      "trigger": "feature_success",
+      "timestamp": "2026-01-22T03:56:11.550Z",
+      "featureName": "HTML5 Semantic Layout",
+      "featureId": "base-html-structure"
+    }
+  ]
+}

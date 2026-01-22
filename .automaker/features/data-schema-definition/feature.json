@@ -1,0 +1,16 @@
+{
+  "id": "data-schema-definition",
+  "category": "Core",
+  "title": "Data Schema & JSON Structure",
+  "description": "Define the complete data.json schema with structured entities for locations, events, items, NPCs, factions, security systems, and twists. Establish relationships, weights, and tagging systems for procedural content generation.",
+  "status": "verified",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [],
+  "createdAt": "2026-01-22T03:35:24.617Z",
+  "updatedAt": "2026-01-22T03:58:43.917Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

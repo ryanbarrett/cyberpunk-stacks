@@ -1,0 +1,23 @@
+{
+  "id": "cyberpunk-css-foundation",
+  "category": "UI",
+  "title": "Cyberpunk Theme & CSS Variables",
+  "description": "Establish styles.css with CSS custom properties for neon/dark themes, cyberpunk color palette, typography (monospace/tech fonts), and foundational responsive grid/flexbox layouts. Includes scanline effects and glow animations.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "moderate",
+  "createdAt": "2026-01-22T03:35:24.618Z",
+  "updatedAt": "2026-01-22T03:57:00.584Z",
+  "model": "cursor-gpt-5.2-codex",
+  "thinkingLevel": "none",
+  "branchName": "master",
+  "descriptionHistory": [],
+  "skipTests": false,
+  "reasoningEffort": "none",
+  "imagePaths": [],
+  "textFilePaths": [],
+  "planningMode": "skip",
+  "requirePlanApproval": false,
+  "workMode": "custom",
+  "dependencies": []
+}

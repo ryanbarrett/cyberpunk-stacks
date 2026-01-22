@@ -1,0 +1,22 @@
+{
+  "id": "building-renderer",
+  "category": "UI",
+  "title": "Building Visual Renderer",
+  "description": "Render the complete building visualization as stacked floors with colored/styled blocks. Translates data structure into DOM elements with appropriate positioning, sizing, and visual styling.",
+  "status": "verified",
+  "priority": 1,
+  "complexity": "moderate",
+  "createdAt": "2026-01-22T03:35:24.620Z",
+  "updatedAt": "2026-01-22T04:04:01.113Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": [],
+  "skipTests": false,
+  "reasoningEffort": "none",
+  "imagePaths": [],
+  "textFilePaths": [],
+  "planningMode": "skip",
+  "requirePlanApproval": false,
+  "workMode": "custom"
+}

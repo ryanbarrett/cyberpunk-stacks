@@ -1,0 +1,16 @@
+{
+  "id": "rng-system",
+  "category": "Core",
+  "title": "Mulberry32 PRNG Implementation",
+  "description": "Implement the Mulberry32 pseudorandom number generator with seed support for deterministic randomness. Provides utility functions for random selection from arrays, weighted choices, and range generation.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "simple",
+  "dependencies": [],
+  "createdAt": "2026-01-22T03:35:24.618Z",
+  "updatedAt": "2026-01-22T03:35:24.618Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

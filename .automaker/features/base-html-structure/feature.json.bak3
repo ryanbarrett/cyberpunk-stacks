@@ -1,0 +1,12 @@
+{
+  "id": "base-html-structure",
+  "category": "UI",
+  "title": "HTML5 Semantic Layout",
+  "description": "Create index.html with semantic structure including main building container, settings panel skeleton, detail modal/drawer containers, and accessibility attributes. Implements responsive viewport meta tags.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "simple",
+  "dependencies": [],
+  "createdAt": "2026-01-22T03:35:24.618Z",
+  "updatedAt": "2026-01-22T03:35:24.618Z"
+}

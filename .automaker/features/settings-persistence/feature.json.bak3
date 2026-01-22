@@ -1,0 +1,18 @@
+{
+  "id": "settings-persistence",
+  "category": "Core",
+  "title": "LocalStorage Settings Persistence",
+  "description": "Save and load user settings (floor count, seed, density, theme, layout lock) to/from localStorage. Restores previous session configuration on page load.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "simple",
+  "dependencies": [
+    "settings-panel-ui"
+  ],
+  "createdAt": "2026-01-22T03:35:24.623Z",
+  "updatedAt": "2026-01-22T03:35:24.623Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

@@ -1,0 +1,15 @@
+{
+  "id": "block-type-styling",
+  "category": "UI",
+  "title": "Block Type Visual Differentiation",
+  "description": "Apply distinct visual styles to each block type (residence, business, warehouse, clinic, temple, club, netcafe, chopshop, community, utility) using color coding, icons, and border treatments.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "simple",
+  "createdAt": "2026-01-22T03:35:24.620Z",
+  "updatedAt": "2026-01-22T03:35:24.620Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

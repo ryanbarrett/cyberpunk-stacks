@@ -1,0 +1,15 @@
+{
+  "id": "location-detail-population",
+  "category": "Core",
+  "title": "Location Detail Data Population",
+  "description": "Populate detail panel with location-specific data from JSON including description, tags, occupant list, security rating, and notable items. Handles data formatting and presentation logic.",
+  "status": "verified",
+  "priority": 1,
+  "complexity": "moderate",
+  "createdAt": "2026-01-22T03:35:24.621Z",
+  "updatedAt": "2026-01-22T04:07:20.747Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

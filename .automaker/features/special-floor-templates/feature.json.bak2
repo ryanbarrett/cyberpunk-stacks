@@ -1,0 +1,15 @@
+{
+  "id": "special-floor-templates",
+  "category": "Core",
+  "title": "Curated Special Floor Types",
+  "description": "Implement special floor templates (slum bazaar, data-center spine, shrine level, hydroponics, gang checkpoint) with unique layouts, block distributions, and themed content selections.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "complex",
+  "createdAt": "2026-01-22T03:35:24.624Z",
+  "updatedAt": "2026-01-22T03:35:24.624Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

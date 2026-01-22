@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "notifications": [
+    {
+      "id": "03f06f89-235f-4c7d-8cd1-4b73a049d670",
+      "type": "spec_regeneration_complete",
+      "title": "Spec Generation Complete",
+      "message": "Created 20 features from the project specification.",
+      "createdAt": "2026-01-22T03:35:24.626Z",
+      "read": true,
+      "dismissed": false,
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "494bf2c1-5d68-48c2-8360-daedaf8928d4",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"base-html-structure\" has been verified and is complete.",
+      "createdAt": "2026-01-22T03:56:11.545Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "base-html-structure",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "e4660013-2602-4fdf-a8d8-e4e70d0998df",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"data-schema-definition\" has been verified and is complete.",
+      "createdAt": "2026-01-22T03:58:43.918Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "data-schema-definition",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "a78a165d-6acd-4fc4-a5a7-d3599d6d9d3e",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"rng-system\" has been verified and is complete.",
+      "createdAt": "2026-01-22T03:59:53.416Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "rng-system",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "9a97d9cc-c4e5-4c60-8684-3f63fb201871",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"floor-generation-algorithm\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:01:48.044Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "floor-generation-algorithm",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "bc6c9781-f169-49b0-afff-89b8e23488cb",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"block-packing-layout\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:02:50.302Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "block-packing-layout",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "930137c6-0852-44dd-88d7-f3a1b55d7ed9",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"building-renderer\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:04:01.115Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "building-renderer",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "56bcca46-6a95-4fe0-b33a-8d3d70b8ac58",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"block-selection-system\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:04:25.028Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "block-selection-system",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "3a58d2d2-481d-4bb5-8e78-1b2888fe5c5c",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"detail-panel-ui\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:04:55.161Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "detail-panel-ui",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "8a6bfb3b-fcde-4aba-b608-01b251c3bda9",
+      "type": "feature_waiting_approval",
+      "title": "Feature Ready for Review",
+      "message": "\"feature-1769054601399-t973odx1n\" is ready for your review and approval.",
+      "createdAt": "2026-01-22T04:04:59.129Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "feature-1769054601399-t973odx1n",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "9d05f791-0894-4a07-bff9-5e682ea074d5",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"cyberpunk-css-foundation\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:05:29.398Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "cyberpunk-css-foundation",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "a77fba65-6dd5-47b6-9358-5240d8e0b003",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"event-generation-system\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:06:36.326Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "event-generation-system",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "307d9528-d203-49fb-8b97-1604cc5d750e",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"block-type-styling\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:06:56.030Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "block-type-styling",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "9379a86a-4423-45e7-937d-54de4bb9a265",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"location-detail-population\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:07:20.749Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "location-detail-population",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "6bf10b78-c991-49e1-8172-051f7467863c",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"next-beat-reroll\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:08:31.854Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "next-beat-reroll",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "e236a88f-b087-4379-9cf2-90e94e939e4a",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"hover-tooltips\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:09:15.808Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "hover-tooltips",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "64654bf6-548f-4705-ad16-d0a45855b6de",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"settings-panel-ui\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:09:27.658Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "settings-panel-ui",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "dd23dc07-e5c3-497d-ae4f-19267af5d94b",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"responsive-mobile-layout\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:10:22.434Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "responsive-mobile-layout",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "04e0969f-cf76-4c2c-a28c-e6ba4248013a",
+      "type": "feature_waiting_approval",
+      "title": "Feature Ready for Review",
+      "message": "\"feature-1769054601399-t973odx1n\" is ready for your review and approval.",
+      "createdAt": "2026-01-22T04:11:06.982Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "feature-1769054601399-t973odx1n",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "b832557f-2dc8-41d3-abc9-806555778edd",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"settings-persistence\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:11:27.397Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "settings-persistence",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "243e8508-a215-45ff-85d1-c4e9edeae6f1",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"special-floor-templates\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:12:01.821Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "special-floor-templates",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "bea8bacb-ff5a-468f-a8a6-1c31e14213c3",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"comprehensive-data-tables\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:12:51.119Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "comprehensive-data-tables",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "8dbe1aa9-90b5-4a5c-b9a6-d7537898cc42",
+      "type": "feature_verified",
+      "title": "Feature Verified",
+      "message": "\"dynamic-building-regeneration\" has been verified and is complete.",
+      "createdAt": "2026-01-22T04:17:05.046Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "dynamic-building-regeneration",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    }
+  ]
+}

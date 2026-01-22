@@ -1,0 +1,15 @@
+{
+  "id": "block-packing-layout",
+  "category": "Core",
+  "title": "Block Bin-Packing Algorithm",
+  "description": "Implement 2D bin-packing algorithm to arrange variable-sized blocks within floor boundaries without overlapping. Handles different block dimensions for residences, warehouses, businesses, etc.",
+  "status": "verified",
+  "priority": 1,
+  "complexity": "complex",
+  "createdAt": "2026-01-22T03:35:24.619Z",
+  "updatedAt": "2026-01-22T04:02:50.301Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

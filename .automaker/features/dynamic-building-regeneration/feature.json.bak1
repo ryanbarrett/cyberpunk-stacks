@@ -1,0 +1,15 @@
+{
+  "id": "dynamic-building-regeneration",
+  "category": "Core",
+  "title": "Building Regeneration from Settings",
+  "description": "Rebuild entire building when settings change (floor count, seed, density). Implements regenerate/refresh logic that respects layout lock setting to preserve or regenerate structure.",
+  "status": "verified",
+  "priority": 2,
+  "complexity": "moderate",
+  "createdAt": "2026-01-22T03:35:24.624Z",
+  "updatedAt": "2026-01-22T04:17:05.045Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

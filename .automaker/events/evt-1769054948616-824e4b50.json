@@ -1,0 +1,11 @@
+{
+  "id": "evt-1769054948616-824e4b50",
+  "trigger": "feature_error",
+  "timestamp": "2026-01-22T04:09:08.616Z",
+  "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks",
+  "projectName": "cyberpunk-stacks",
+  "featureId": "feature-1769054900426-rpria8wm2",
+  "featureName": "Fix missing server module error",
+  "error": "Operation was cancelled",
+  "errorType": "cancellation"
+}

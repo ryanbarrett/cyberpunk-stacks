@@ -1,0 +1,18 @@
+{
+  "id": "next-beat-reroll",
+  "category": "Core",
+  "title": "Next Beat Event Re-roll",
+  "description": "Implement 'Next Beat' button functionality to re-roll active events for selected location using RNG. Updates detail panel with new event data while maintaining deterministic behavior with seeds.",
+  "status": "backlog",
+  "priority": 2,
+  "complexity": "simple",
+  "dependencies": [
+    "event-generation-system"
+  ],
+  "createdAt": "2026-01-22T03:35:24.622Z",
+  "updatedAt": "2026-01-22T03:35:24.622Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

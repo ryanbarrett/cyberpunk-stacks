@@ -1,0 +1,18 @@
+{
+  "id": "event-generation-system",
+  "category": "Core",
+  "title": "Active Event Generation",
+  "description": "Generate active events for locations using weighted random selection from event tables. Considers location type, tags, and current occupants to select appropriate events.",
+  "status": "backlog",
+  "priority": 1,
+  "complexity": "moderate",
+  "dependencies": [
+    "location-detail-population"
+  ],
+  "createdAt": "2026-01-22T03:35:24.622Z",
+  "updatedAt": "2026-01-22T03:35:24.622Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

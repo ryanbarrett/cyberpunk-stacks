@@ -1,0 +1,15 @@
+{
+  "id": "detail-panel-ui",
+  "category": "UI",
+  "title": "Detail Panel/Modal Interface",
+  "description": "Create responsive detail panel (drawer on mobile, modal on desktop) that displays comprehensive location information. Includes sections for description, tags, occupants, security, items, and events.",
+  "status": "verified",
+  "priority": 1,
+  "complexity": "moderate",
+  "createdAt": "2026-01-22T03:35:24.621Z",
+  "updatedAt": "2026-01-22T04:04:55.160Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

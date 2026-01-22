@@ -1,0 +1,15 @@
+{
+  "id": "responsive-mobile-layout",
+  "category": "UI",
+  "title": "Mobile-Responsive Design",
+  "description": "Implement CSS media queries and responsive behaviors for mobile viewports including vertical building orientation, touch-friendly controls, and drawer-style panels.",
+  "status": "verified",
+  "priority": 2,
+  "complexity": "moderate",
+  "createdAt": "2026-01-22T03:35:24.624Z",
+  "updatedAt": "2026-01-22T04:10:22.432Z",
+  "model": "claude-sonnet",
+  "thinkingLevel": "medium",
+  "branchName": "master",
+  "descriptionHistory": []
+}

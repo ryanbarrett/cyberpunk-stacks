@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project_specification>
+  <project_name>Cyberpunk Stacks</project_name>
+
+  <overview>
+    A shareable, static single-page web application that renders a cyberpunk &quot;mega-highrise&quot; building as a side-view visualization, inspired by Kowloon Walled City aesthetics. The app displays a data-driven, clickable building map with configurable floors, where each floor contains multiple &quot;blocks&quot; (rectangles) representing different spaces such as residences, businesses, warehouses, clinics, temples, clubs, and more. Users can interact with blocks to view detailed information including descriptions, occupants, security ratings, loot, and active events. A &quot;Next Beat&quot; feature allows re-rolling events using deterministic RNG. The entire application runs as a static site with no backend, powered by a comprehensive JSON data file containing extensive tables for locations, events, items, NPCs, factions, security systems, and plot twists.
+  </overview>
+
+  <technology_stack>
+    <technology>HTML5 (semantic markup for structure)</technology>
+    <technology>CSS3 (custom properties, flexbox, grid, animations for cyberpunk neon styling)</technology>
+    <technology>Vanilla JavaScript (ES6+ modules, no build step required)</technology>
+    <technology>JSON (data storage and configuration)</technology>
+    <technology>Mulberry32 PRNG (deterministic random number generation with seed support)</technology>
+    <technology>CSS Media Queries (responsive design for desktop/mobile)</technology>
+    <technology>Local Storage API (settings persistence)</technology>
+    <technology>Custom layout algorithm (bin-packing for floor block arrangement)</technology>
+  </technology_stack>
+
+  <core_capabilities>
+    <capability>Procedural mega-highrise building generation with configurable floor count (default 24 floors)</capability>
+    <capability>Block-based floor layout with multiple space types (residence, business, warehouse, community, utility, clinic, temple, club, netcafe, chopshop)</capability>
+    <capability>Interactive block selection with hover highlights and tooltips showing name/type/threat level</capability>
+    <capability>Detail panel (modal/drawer) displaying location description, tags, occupants, security rating, notable items, and active events</capability>
+    <capability>Event re-rolling system (&apos;Next Beat&apos; button) using RNG with optional deterministic seeding</capability>
+    <capability>Settings panel with controls for: floor count, RNG seed, density slider, theme toggle (neon/dark), layout lock toggle</capability>
+    <capability>Cyberpunk visual styling with neon accents, readable typography, and responsive layout</capability>
+    <capability>Special curated floor types (slum bazaar, data-center spine, shrine level, hydroponics, gang checkpoint)</capability>
+    <capability>Comprehensive data tables: 80+ locations, 120+ events, 150+ items, 60+ NPC archetypes, 40+ factions, 30+ security systems, 50+ twists</capability>
+    <capability>No-backend static site architecture for easy sharing and deployment</capability>
+  </core_capabilities>
+
+  <implemented_features>
+    <feature>
+      <name>Project Repository</name>
+      <description>Git repository initialized with master branch for version control</description>
+      <file_locations>
+        <location>.git/</location>
+      </file_locations>
+    </feature>
+    <feature>
+      <name>HTML5 Semantic Layout</name>
+      <description>Create index.html with semantic structure including main building container, settings panel skeleton, detail modal/drawer containers, and accessibility attributes. Implements responsive viewport meta tags.</description>
+    </feature>
+    <feature>
+      <name>Data Schema &amp; JSON Structure</name>
+      <description>Define the complete data.json schema with structured entities for locations, events, items, NPCs, factions, security systems, and twists. Establish relationships, weights, and tagging systems for procedural content generation.</description>
+    </feature>
+    <feature>
+      <name>Mulberry32 PRNG Implementation</name>
+      <description>Implement the Mulberry32 pseudorandom number generator with seed support for deterministic randomness. Provides utility functions for random selection from arrays, weighted choices, and range generation.</description>
+    </feature>
+    <feature>
+      <name>Floor Generation System</name>
+      <description>Implement the core algorithm to generate configurable number of floors (default 24) with varying characteristics. Assigns floor types, density levels, and determines which blocks should populate each floor based on RNG.</description>
+    </feature>
+    <feature>
+      <name>Block Bin-Packing Algorithm</name>
+      <description>Implement 2D bin-packing algorithm to arrange variable-sized blocks within floor boundaries without overlapping. Handles different block dimensions for residences, warehouses, businesses, etc.</description>
+    </feature>
+    <feature>
+      <name>Building Visual Renderer</name>
+      <description>Render the complete building visualization as stacked floors with colored/styled blocks. Translates data structure into DOM elements with appropriate positioning, sizing, and visual styling.</description>
+    </feature>
+    <feature>
+      <name>Block Click &amp; Selection Handler</name>
+      <description>Implement click event handlers for block selection with visual highlight states. Manages active selection state and triggers detail panel display.</description>
+    </feature>
+    <feature>
+      <name>Detail Panel/Modal Interface</name>
+      <description>Create responsive detail panel (drawer on mobile, modal on desktop) that displays comprehensive location information. Includes sections for description, tags, occupants, security, items, and events.</description>
+    </feature>
+    <feature>
+      <name>Cyberpunk Theme &amp; CSS Variables</name>
+      <description>Establish styles.css with CSS custom properties for neon/dark themes, cyberpunk color palette, typography (monospace/tech fonts), and foundational responsive grid/flexbox layouts. Includes scanline effects and glow animations.</description>
+    </feature>
+    <feature>
+      <name>Active Event Generation</name>
+      <description>Generate active events for locations using weighted random selection from event tables. Considers location type, tags, and current occupants to select appropriate events.</description>
+    </feature>
+    <feature>
+      <name>Block Type Visual Differentiation</name>
+      <description>Apply distinct visual styles to each block type (residence, business, warehouse, clinic, temple, club, netcafe, chopshop, community, utility) using color coding, icons, and border treatments.</description>
+    </feature>
+    <feature>
+      <name>Location Detail Data Population</name>
+      <description>Populate detail panel with location-specific data from JSON including description, tags, occupant list, security rating, and notable items. Handles data formatting and presentation logic.</description>
+    </feature>
+    <feature>
+      <name>Next Beat Event Re-roll</name>
+      <description>Implement &apos;Next Beat&apos; button functionality to re-roll active events for selected location using RNG. Updates detail panel with new event data while maintaining deterministic behavior with seeds.</description>
+    </feature>
+    <feature>
+      <name>Interactive Hover Tooltips</name>
+      <description>Display tooltips on block hover showing quick info (name, type, threat level). Implements smooth transitions and positioning logic to keep tooltips within viewport bounds.</description>
+    </feature>
+    <feature>
+      <name>Settings Panel Interface</name>
+      <description>Build settings panel UI with controls for floor count input, RNG seed field, density slider, theme toggle button, and layout lock checkbox. Implements cyberpunk-styled form elements.</description>
+    </feature>
+    <feature>
+      <name>Mobile-Responsive Design</name>
+      <description>Implement CSS media queries and responsive behaviors for mobile viewports including vertical building orientation, touch-friendly controls, and drawer-style panels.</description>
+    </feature>
+    <feature>
+      <name>LocalStorage Settings Persistence</name>
+      <description>Save and load user settings (floor count, seed, density, theme, layout lock) to/from localStorage. Restores previous session configuration on page load.</description>
+    </feature>
+    <feature>
+      <name>Curated Special Floor Types</name>
+      <description>Implement special floor templates (slum bazaar, data-center spine, shrine level, hydroponics, gang checkpoint) with unique layouts, block distributions, and themed content selections.</description>
+    </feature>
+    <feature>
+      <name>Full Content Data Population</name>
+      <description>Populate data.json with complete content: 80+ locations, 120+ events, 150+ items, 60+ NPC archetypes, 40+ factions, 30+ security systems, 50+ twists. Ensures rich procedural generation variety.</description>
+    </feature>
+    <feature>
+      <name>Building Regeneration from Settings</name>
+      <description>Rebuild entire building when settings change (floor count, seed, density). Implements regenerate/refresh logic that respects layout lock setting to preserve or regenerate structure.</description>
+    </feature>
+  </implemented_features>
+
+  <additional_requirements>
+    <requirement>Must run entirely client-side as a static site (no server/backend required)</requirement>
+    <requirement>No build step - plain HTML/CSS/JS files that can be opened directly in browser</requirement>
+    <requirement>Deterministic RNG when seed is provided for reproducible building layouts</requirement>
+    <requirement>Responsive design supporting both desktop and mobile viewports</requirement>
+    <requirement>All data must be externalized to data.json for easy customization</requirement>
+    <requirement>Block packing algorithm must prevent overlapping blocks within floors</requirement>
+    <requirement>Settings must persist across sessions using localStorage</requirement>
+  </additional_requirements>
+
+  <development_guidelines>
+    <guideline>Use semantic HTML5 elements for accessibility and structure</guideline>
+    <guideline>Implement CSS custom properties (variables) for theming support</guideline>
+    <guideline>Write modular ES6+ JavaScript without transpilation requirements</guideline>
+    <guideline>Follow mobile-first responsive design principles</guideline>
+    <guideline>Maintain separation of concerns: structure (HTML), presentation (CSS), behavior (JS), data (JSON)</guideline>
+    <guideline>Use consistent naming conventions (kebab-case for CSS, camelCase for JS)</guideline>
+    <guideline>Implement graceful degradation for older browsers where possible</guideline>
+    <guideline>Keep the codebase readable without minification for easy modification</guideline>
+    <guideline>Document complex algorithms (layout packing, RNG) with inline comments</guideline>
+  </development_guidelines>
+
+  <implementation_roadmap>
+    <phase>
+      <name>Core Data Structure</name>
+      <status>pending</status>
+      <description>Create comprehensive data.json with 80+ locations, 120+ events, 150+ items, 60+ NPCs, 40+ factions, 30+ security systems, and 50+ twists. Define schemas for each entity type with appropriate relationships and weights.</description>
+    </phase>
+    <phase>
+      <name>HTML Structure &amp; Layout</name>
+      <status>pending</status>
+      <description>Build index.html with semantic structure including building container, floor rows, settings panel, and detail modal/drawer. Implement responsive viewport meta and accessibility attributes.</description>
+    </phase>
+    <phase>
+      <name>Cyberpunk Styling</name>
+      <status>pending</status>
+      <description>Create styles.css with neon/dark theme support using CSS custom properties. Implement cyberpunk aesthetic with glowing accents, scan lines, appropriate typography, and responsive breakpoints.</description>
+    </phase>
+    <phase>
+      <name>Building Generation Engine</name>
+      <status>pending</status>
+      <description>Implement app.js core with Mulberry32 PRNG, floor generation algorithm, and block packing system that arranges variable-width/height blocks without overlap.</description>
+    </phase>
+    <phase>
+      <name>Interactive Features</name>
+      <status>pending</status>
+      <description>Add hover tooltips, click handlers for block selection, detail panel population with location/event/NPC/loot data, and &apos;Next Beat&apos; event re-roll functionality.</description>
+    </phase>
+    <phase>
+      <name>Settings System</name>
+      <status>pending</status>
+      <description>Implement settings panel with floor count, seed input, density slider, theme toggle, and layout lock. Add localStorage persistence for user preferences.</description>
+    </phase>
+    <phase>
+      <name>Special Floors</name>
+      <status>pending</status>
+      <description>Create curated special floor templates (slum bazaar, data-center spine, shrine level, hydroponics, gang checkpoint) with unique layouts and themed content.</description>
+    </phase>
+    <phase>
+      <name>Polish &amp; Testing</name>
+      <status>pending</status>
+      <description>Cross-browser testing, mobile responsiveness verification, performance optimization, and final visual polish for production-ready deployment.</description>
+    </phase>
+  </implementation_roadmap>
+</project_specification>

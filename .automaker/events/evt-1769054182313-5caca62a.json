@@ -1,0 +1,11 @@
+{
+  "id": "evt-1769054182313-5caca62a",
+  "trigger": "feature_error",
+  "timestamp": "2026-01-22T03:56:22.313Z",
+  "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks",
+  "projectName": "cyberpunk-stacks",
+  "featureId": "cyberpunk-css-foundation",
+  "featureName": "Cyberpunk Theme & CSS Variables",
+  "error": "Cursor CLI is not installed",
+  "errorType": "execution"
+}
