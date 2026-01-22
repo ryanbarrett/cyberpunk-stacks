@@ -1,0 +1,884 @@
+{
+  "locations": {
+    "clinic": {
+      "Med-Tech": {
+        "description": "A high-end cybernetic enhancement clinic with state-of-the-art surgical equipment and a questionable reputation.",
+        "security": {
+          "level": "high",
+          "guards": 3,
+          "cameras": true
+        },
+        "notableItems": [
+          "Military-grade cyberdeck",
+          "Prototype neural interface",
+          "Stealth augments"
+        ],
+        "activeEvents": [
+          "Corporate raid in progress",
+          "Security system offline",
+          "Hostage situation"
+        ]
+      },
+      "Street Doc": {
+        "description": "A back-alley medical facility run by a skilled but unlicensed surgeon. Ask no questions.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Black market organs",
+          "Stolen medical supplies",
+          "Unregistered implants"
+        ],
+        "activeEvents": [
+          "Patient in critical condition",
+          "Gang member seeking treatment",
+          "Police raid imminent"
+        ]
+      },
+      "Cyber Clinic": {
+        "description": "Mid-tier augmentation center specializing in sensory upgrades and combat modifications.",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Optical enhancements",
+          "Reflex boosters",
+          "Pain editors"
+        ],
+        "activeEvents": [
+          "New shipment arrived",
+          "Customer satisfaction survey",
+          "Warranty claim dispute"
+        ]
+      },
+      "Trauma Center": {
+        "description": "Emergency medical facility for critical injuries and rapid stabilization.",
+        "security": {
+          "level": "high",
+          "guards": 4,
+          "cameras": true
+        },
+        "notableItems": [
+          "Advanced life support",
+          "Emergency surgical suite",
+          "Blood bank"
+        ],
+        "activeEvents": [
+          "Mass casualty incident",
+          "Organ donor arriving",
+          "VIP patient in ICU"
+        ]
+      },
+      "Bio-Lab": {
+        "description": "Research laboratory conducting controversial biological experiments.",
+        "security": {
+          "level": "high",
+          "guards": 5,
+          "cameras": true
+        },
+        "notableItems": [
+          "Genetic samples",
+          "Experimental serums",
+          "Research data"
+        ],
+        "activeEvents": [
+          "Containment breach",
+          "Ethics committee investigation",
+          "Patent dispute ongoing"
+        ]
+      },
+      "Augmentation Hub": {
+        "description": "One-stop shop for all your body modification needs. Professional and discrete.",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Catalog of implants",
+          "Installation tools",
+          "Recovery pods"
+        ],
+        "activeEvents": [
+          "Grand opening sale",
+          "Celebrity client visiting",
+          "Competitor sabotage suspected"
+        ]
+      }
+    },
+    "club": {
+      "Neon Nexus": {
+        "description": "A pulsing nightclub with holographic dancers and questionable backroom dealings. The bass never stops.",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Encrypted data chip",
+          "Designer drugs",
+          "Black market contacts"
+        ],
+        "activeEvents": [
+          "Gang meeting scheduled",
+          "VIP section reserved",
+          "Underground fight tonight"
+        ]
+      },
+      "The Grid": {
+        "description": "Virtual reality club where anything goes in the digital realm.",
+        "security": {
+          "level": "low",
+          "guards": 1,
+          "cameras": false
+        },
+        "notableItems": [
+          "VR headsets",
+          "Neural link stations",
+          "Illegal software"
+        ],
+        "activeEvents": [
+          "Hacker convention",
+          "Server overload",
+          "Digital crime spree"
+        ]
+      },
+      "Chrome Palace": {
+        "description": "Upscale club for corporate elites and high-society criminals.",
+        "security": {
+          "level": "high",
+          "guards": 4,
+          "cameras": true
+        },
+        "notableItems": [
+          "Corporate secrets",
+          "Blackmail material",
+          "Luxury goods"
+        ],
+        "activeEvents": [
+          "Corporate merger celebration",
+          "Hostile takeover plot",
+          "Executive assassination attempt"
+        ]
+      },
+      "Bass Station": {
+        "description": "Underground music venue with cutting-edge sound systems.",
+        "security": {
+          "level": "low",
+          "guards": 1,
+          "cameras": false
+        },
+        "notableItems": [
+          "Bootleg recordings",
+          "Sound equipment",
+          "Band contracts"
+        ],
+        "activeEvents": [
+          "Local band performing",
+          "Noise complaint filed",
+          "Equipment malfunction"
+        ]
+      },
+      "Synth Den": {
+        "description": "Synthwave-themed club with retro aesthetics and modern debauchery.",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Vintage synthesizers",
+          "Neon signage",
+          "DJ equipment"
+        ],
+        "activeEvents": [
+          "80s theme night",
+          "DJ battle",
+          "Retro game tournament"
+        ]
+      },
+      "Pulse Club": {
+        "description": "High-energy dance club with biometric entry and augmented reality dance floors.",
+        "security": {
+          "level": "medium",
+          "guards": 3,
+          "cameras": true
+        },
+        "notableItems": [
+          "AR projectors",
+          "Biometric scanners",
+          "Premium liquor"
+        ],
+        "activeEvents": [
+          "Celebrity DJ set",
+          "Flash mob planned",
+          "Entry system hacked"
+        ]
+      }
+    },
+    "business": {
+      "Corp Office": {
+        "description": "Sterile corporate office with bulletproof windows and aggressive AI security. Everything is monitored.",
+        "security": {
+          "level": "high",
+          "guards": 4,
+          "cameras": true
+        },
+        "notableItems": [
+          "Corporate secrets database",
+          "Executive access cards",
+          "Prototype weapons"
+        ],
+        "activeEvents": [
+          "Board meeting in progress",
+          "Security audit ongoing",
+          "Insider trading detected"
+        ]
+      },
+      "Shop": {
+        "description": "A small street-level shop selling tech parts and information. Cash only.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Hacking tools",
+          "Counterfeit IDs",
+          "Street intel"
+        ],
+        "activeEvents": [
+          "New shipment arrived",
+          "Police shakedown",
+          "Regular customer spotted"
+        ]
+      },
+      "Data Center": {
+        "description": "Rows of servers humming in climate-controlled rooms. The digital heart of the district.",
+        "security": {
+          "level": "high",
+          "guards": 5,
+          "cameras": true
+        },
+        "notableItems": [
+          "Corporate databases",
+          "AI core systems",
+          "Quantum processors"
+        ],
+        "activeEvents": [
+          "Data breach detected",
+          "System maintenance window",
+          "Unauthorized access attempt"
+        ]
+      },
+      "Trading Post": {
+        "description": "Marketplace for buying and selling goods of questionable origin.",
+        "security": {
+          "level": "low",
+          "guards": 1,
+          "cameras": false
+        },
+        "notableItems": [
+          "Stolen merchandise",
+          "Rare components",
+          "Trade manifests"
+        ],
+        "activeEvents": [
+          "Auction in progress",
+          "Counterfeit goods seized",
+          "Turf war brewing"
+        ]
+      },
+      "Black Market": {
+        "description": "Underground market dealing in illegal tech and forbidden goods.",
+        "security": {
+          "level": "medium",
+          "guards": 3,
+          "cameras": false
+        },
+        "notableItems": [
+          "Contraband weapons",
+          "Stolen data",
+          "Illegal implants"
+        ],
+        "activeEvents": [
+          "Police informant suspected",
+          "Supplier shortage",
+          "Price war with competitors"
+        ]
+      },
+      "Tech Store": {
+        "description": "Legitimate electronics retailer with a side business in grey-market goods.",
+        "security": {
+          "level": "low",
+          "guards": 1,
+          "cameras": true
+        },
+        "notableItems": [
+          "Consumer electronics",
+          "Unlocked phones",
+          "Modded devices"
+        ],
+        "activeEvents": [
+          "Clearance sale",
+          "Product recall",
+          "Customer complaint escalation"
+        ]
+      }
+    },
+    "residence": {
+      "Apartment": {
+        "description": "A cramped apartment with flickering neon lights bleeding through dirty windows. Home to someone.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Personal terminal",
+          "Hidden stash",
+          "Family photos"
+        ],
+        "activeEvents": [
+          "Tenant away on business",
+          "Rent overdue",
+          "Strange noises reported"
+        ]
+      },
+      "Tenement": {
+        "description": "Decrepit multi-unit housing with broken elevators and graffiti-covered walls.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Squatter belongings",
+          "Broken appliances",
+          "Drug paraphernalia"
+        ],
+        "activeEvents": [
+          "Eviction notice posted",
+          "Gang activity increased",
+          "Building inspection failed"
+        ]
+      },
+      "Capsule Pod": {
+        "description": "Minimalist sleeping pod in a communal stack. Cheap and claustrophobic.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Personal effects",
+          "Sleep aids",
+          "Entertainment terminal"
+        ],
+        "activeEvents": [
+          "Pod malfunction",
+          "Theft from neighbor",
+          "Overcrowding complaint"
+        ]
+      },
+      "Luxury Suite": {
+        "description": "Penthouse apartment with panoramic views and top-tier security.",
+        "security": {
+          "level": "high",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Art collection",
+          "Personal safe",
+          "Smart home system"
+        ],
+        "activeEvents": [
+          "Party in progress",
+          "Security breach",
+          "Domestic dispute"
+        ]
+      },
+      "Slum Block": {
+        "description": "Poverty-stricken housing block with no running water and constant power outages.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Scavenged goods",
+          "Makeshift weapons",
+          "Community supplies"
+        ],
+        "activeEvents": [
+          "Food distribution",
+          "Gang recruitment",
+          "Disease outbreak"
+        ]
+      },
+      "Hab-Unit": {
+        "description": "Standard residential unit with basic amenities and acceptable living conditions.",
+        "security": {
+          "level": "medium",
+          "guards": 1,
+          "cameras": true
+        },
+        "notableItems": [
+          "Personal belongings",
+          "Standard furniture",
+          "Security system"
+        ],
+        "activeEvents": [
+          "Maintenance scheduled",
+          "Neighbor dispute",
+          "Package delivery"
+        ]
+      }
+    },
+    "warehouse": {
+      "Storage": {
+        "description": "Dusty warehouse filled with unmarked crates and forgotten cargo. Perfect for hiding things.",
+        "security": {
+          "level": "medium",
+          "guards": 1,
+          "cameras": true
+        },
+        "notableItems": [
+          "Stolen goods",
+          "Smuggled weapons",
+          "Mysterious containers"
+        ],
+        "activeEvents": [
+          "Shipment due tonight",
+          "Gang territory dispute",
+          "Police surveillance nearby"
+        ]
+      },
+      "Cargo Bay": {
+        "description": "Industrial cargo bay with heavy machinery and loading docks. Always busy, day or night.",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Import manifests",
+          "Shipping containers",
+          "Forklift access codes"
+        ],
+        "activeEvents": [
+          "Loading in progress",
+          "Customs inspection",
+          "Worker strike brewing"
+        ]
+      },
+      "Depot": {
+        "description": "Distribution center for legitimate and illegitimate goods alike.",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Inventory database",
+          "Loading equipment",
+          "Shipping schedules"
+        ],
+        "activeEvents": [
+          "Inventory discrepancy",
+          "Labor dispute",
+          "Delayed shipment"
+        ]
+      },
+      "Supply Hub": {
+        "description": "Central logistics facility coordinating supply chains across the district.",
+        "security": {
+          "level": "high",
+          "guards": 3,
+          "cameras": true
+        },
+        "notableItems": [
+          "Supply manifests",
+          "Transport vehicles",
+          "Communication equipment"
+        ],
+        "activeEvents": [
+          "Route optimization",
+          "Hijacking reported",
+          "Contract negotiation"
+        ]
+      },
+      "Container Stack": {
+        "description": "Towering stacks of shipping containers, some legitimate, most not.",
+        "security": {
+          "level": "low",
+          "guards": 1,
+          "cameras": false
+        },
+        "notableItems": [
+          "Contraband goods",
+          "Hidden weapons cache",
+          "Homeless encampment"
+        ],
+        "activeEvents": [
+          "Container opened",
+          "Squatters evicted",
+          "Fire hazard identified"
+        ]
+      },
+      "Logistics Center": {
+        "description": "High-tech facility managing automated supply chains and drone deliveries.",
+        "security": {
+          "level": "high",
+          "guards": 4,
+          "cameras": true
+        },
+        "notableItems": [
+          "Drone fleet",
+          "AI routing system",
+          "Customer data"
+        ],
+        "activeEvents": [
+          "System upgrade",
+          "Drone malfunction",
+          "Cyberattack detected"
+        ]
+      }
+    },
+    "temple": {
+      "Shrine": {
+        "description": "Small spiritual sanctuary offering peace in the urban chaos.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Religious artifacts",
+          "Offering bowl",
+          "Meditation cushions"
+        ],
+        "activeEvents": [
+          "Prayer service",
+          "Pilgrimage arrival",
+          "Vandalism reported"
+        ]
+      },
+      "Monastery": {
+        "description": "Secluded complex where monks pursue enlightenment through cybernetic discipline.",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": false
+        },
+        "notableItems": [
+          "Ancient texts",
+          "Neural meditation gear",
+          "Monk robes"
+        ],
+        "activeEvents": [
+          "Silent retreat",
+          "Initiation ceremony",
+          "Philosophical debate"
+        ]
+      },
+      "Temple": {
+        "description": "Grand religious structure blending ancient traditions with modern technology.",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Sacred relics",
+          "Digital prayer books",
+          "Donation records"
+        ],
+        "activeEvents": [
+          "Festival celebration",
+          "Blessing ceremony",
+          "Fundraising campaign"
+        ]
+      },
+      "Sacred Space": {
+        "description": "Multi-faith spiritual center welcoming all believers and seekers.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Interfaith library",
+          "Meditation rooms",
+          "Community bulletin board"
+        ],
+        "activeEvents": [
+          "Interfaith dialogue",
+          "Yoga class",
+          "Community potluck"
+        ]
+      },
+      "Meditation Den": {
+        "description": "Underground sanctuary for neural detox and consciousness exploration.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Sensory deprivation tanks",
+          "Brain-wave monitors",
+          "Herbal remedies"
+        ],
+        "activeEvents": [
+          "Group meditation",
+          "Consciousness workshop",
+          "Drug-free zone enforcement"
+        ]
+      },
+      "Digital Church": {
+        "description": "Virtual reality cathedral where believers worship in the metaverse.",
+        "security": {
+          "level": "medium",
+          "guards": 1,
+          "cameras": true
+        },
+        "notableItems": [
+          "VR servers",
+          "Digital tithes",
+          "Avatar customization"
+        ],
+        "activeEvents": [
+          "Virtual sermon",
+          "Server maintenance",
+          "Hacker disruption"
+        ]
+      }
+    },
+    "restaurant": {
+      "Noodle Bar": {
+        "description": "Cramped street food stall serving steaming bowls of synthetic noodles.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Recipe cards",
+          "Cooking equipment",
+          "Customer reviews"
+        ],
+        "activeEvents": [
+          "Food critic visiting",
+          "Health inspection",
+          "Ingredient shortage"
+        ]
+      },
+      "Synth-Food": {
+        "description": "Fast food joint serving lab-grown meat and synthetic produce.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Food synthesizer",
+          "Nutrient cartridges",
+          "Franchise manual"
+        ],
+        "activeEvents": [
+          "Equipment malfunction",
+          "Customer complaint",
+          "New menu rollout"
+        ]
+      },
+      "Street Kitchen": {
+        "description": "Pop-up food cart with rotating menu and dubious health standards.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Portable stove",
+          "Food supplies",
+          "Cash box"
+        ],
+        "activeEvents": [
+          "Daily special",
+          "Permit expired",
+          "Turf war with rival cart"
+        ]
+      },
+      "Robo-Chef": {
+        "description": "Automated restaurant with robotic chefs and minimal human staff.",
+        "security": {
+          "level": "medium",
+          "guards": 1,
+          "cameras": true
+        },
+        "notableItems": [
+          "Cooking robots",
+          "Ingredient database",
+          "Maintenance tools"
+        ],
+        "activeEvents": [
+          "Software update",
+          "Robot malfunction",
+          "Customer satisfaction survey"
+        ]
+      },
+      "Protein Palace": {
+        "description": "Bodybuilder-focused eatery serving high-protein synthetic meals.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Protein supplements",
+          "Meal prep containers",
+          "Training schedules"
+        ],
+        "activeEvents": [
+          "Bodybuilding competition",
+          "Steroid investigation",
+          "New product launch"
+        ]
+      },
+      "Cyber Cafe": {
+        "description": "Coffee shop with high-speed neural interfaces and artisanal synthetic brews.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Coffee synthesizer",
+          "Neural link stations",
+          "Digital magazines"
+        ],
+        "activeEvents": [
+          "Open mic night",
+          "Hacker meetup",
+          "Wi-Fi outage"
+        ]
+      }
+    },
+    "tech-shop": {
+      "Cyber Parts": {
+        "description": "Cluttered shop selling used cybernetics and refurbished tech.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Used implants",
+          "Repair tools",
+          "Parts catalog"
+        ],
+        "activeEvents": [
+          "Rare part located",
+          "Customer haggling",
+          "Stolen goods inquiry"
+        ]
+      },
+      "Hardware Hub": {
+        "description": "Professional tech supplier for corporate and criminal clients alike.",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Enterprise hardware",
+          "Security systems",
+          "Installation services"
+        ],
+        "activeEvents": [
+          "Corporate order",
+          "Product demonstration",
+          "Competitor espionage"
+        ]
+      },
+      "Tech Bazaar": {
+        "description": "Chaotic marketplace selling everything from phone chargers to military-grade hardware.",
+        "security": {
+          "level": "low",
+          "guards": 1,
+          "cameras": false
+        },
+        "notableItems": [
+          "Mixed merchandise",
+          "Vendor stalls",
+          "Bargaining opportunities"
+        ],
+        "activeEvents": [
+          "Weekend market",
+          "Pickpocket warning",
+          "Flash sale"
+        ]
+      },
+      "Circuit Shop": {
+        "description": "Electronics repair and modification shop run by skilled technicians.",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Circuit boards",
+          "Soldering equipment",
+          "Diagnostic tools"
+        ],
+        "activeEvents": [
+          "Repair backlog",
+          "Custom mod requested",
+          "Power surge damage"
+        ]
+      },
+      "Mod Station": {
+        "description": "Specialist shop for device modifications and jailbreaking.",
+        "security": {
+          "level": "medium",
+          "guards": 1,
+          "cameras": true
+        },
+        "notableItems": [
+          "Modding software",
+          "Unlocked firmware",
+          "Custom cases"
+        ],
+        "activeEvents": [
+          "Legal challenge",
+          "Popular mod released",
+          "Corporate cease-and-desist"
+        ]
+      },
+      "Data Market": {
+        "description": "Underground market for buying and selling information and data.",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": false
+        },
+        "notableItems": [
+          "Encrypted drives",
+          "Data brokers",
+          "Anonymous terminals"
+        ],
+        "activeEvents": [
+          "High-value data auction",
+          "Informant protection",
+          "Counter-intelligence operation"
+        ]
+      }
+    }
+  }
+}

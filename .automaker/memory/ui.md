@@ -46,3 +46,20 @@ usageStats:
 - **Problem solved:** UI feature with explicit visual design requirements
 - **Why this works:** Visual styling is part of the product's core value proposition, not just decoration - automated validation prevents style regressions
 - **Trade-offs:** More comprehensive test coverage but increases test maintenance when styling evolves; catches regressions earlier but tests can be fragile
+
+#### [Pattern] Async initialization pattern: load dynamic data before attaching event listeners (2026-01-22)
+- **Problem solved:** Modal component depends on external location data that must be fetched from server
+- **Why this works:** Ensures data is available when user clicks, preventing empty/error states in the modal
+- **Trade-offs:** Adds small upfront delay to page load, but ensures instant modal response and simpler error handling
+
+### Use composite data attributes (data-type + data-name) instead of unique IDs for modal lookups (2026-01-22)
+- **Context:** Locations have natural composite keys (type + name) and don't have unique IDs
+- **Why:** Leverages existing data structure, avoids artificial ID generation, more semantic and maintainable
+- **Rejected:** Generating unique IDs would require mapping layer and doesn't match the domain model
+- **Trade-offs:** Simpler data structure but requires extracting two attributes in click handler instead of one ID
+- **Breaking if changed:** If click handler only extracts one attribute, it cannot uniquely identify location data in populateModal
+
+#### [Gotcha] Hardcoded placeholder data in modal templates creates misleading 'works' state during development (2026-01-22)
+- **Situation:** Initial implementation showed Med-Tech data for all locations, making the bug hard to spot
+- **Root cause:** Developer assumed dynamic data loading was working because the modal displayed content, just the wrong content
+- **How to avoid:** Hardcoded content aids visual design but masks data integration bugs

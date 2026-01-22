@@ -118,6 +118,57 @@
       <name>Building Regeneration from Settings</name>
       <description>Rebuild entire building when settings change (floor count, seed, density). Implements regenerate/refresh logic that respects layout lock setting to preserve or regenerate structure.</description>
     </feature>
+    <feature>
+      <name>Build Local Development Server with Live Preview</name>
+      <description>Create Development Server for Local Web Page Preview
+
+Build a lightweight Node.js development server that serves HTML/CSS/JS files and provides live preview capabilities during local development.
+
+Requirements:
+- Create a simple HTTP server using Node.js (http module or Express)
+- Serve static files (HTML, CSS, JavaScript, images) from a specified directory
+- Default to serving index.html when accessing root path
+- Configure server port (default 3500 or configurable via environment variable)
+- Add basic error handling for missing files (404 responses)
+- Include console logging to show server status and incoming requests
+- Optionally add live reload/auto-refresh when files change
+- Keep dependencies minimal for quick startup
+- Provide clear terminal output showing the local URL to access
+
+Success criteria:
+- Running `node server.js` starts the server
+- Navigating to localhost:[port] displays the web page
+- Changes to HTML/CSS/JS files are reflected (either manually or automatically)
+- Server handles common file types with correct MIME types</description>
+    </feature>
+    <feature>
+      <name>Fix duplicate location data in detail panel</name>
+      <description>## Parent Task Context (Already Completed)
+
+&gt; **Note:** The following parent task has already been completed. This context is provided to help you understand the background and requirements for this sub-task. Do not re-implement the parent task - focus only on the new sub-task described below.
+
+### Location Detail Data Population
+
+**Description:** Populate detail panel with location-specific data from JSON including description, tags, occupant list, security rating, and notable items. Handles data formatting and presentation logic.
+
+---
+
+## Task Description
+
+Issue. Everything I click on has the same location data (either not fully populated, or only one is being displayed)
+
+e.g.
+Location Details
+×
+Description
+A high-end cybernetic enhancement clinic with state-of-the-art surgical equipment and a questionable reputation.
+Security Level
+High Guards: 3 Cameras: Yes
+Notable Items
+Military-grade cyberdeck, Prototype neural interface, Stealth augments
+Active Events
+Corporate raid in progress, Security system offline, Hostage situation</description>
+    </feature>
   </implemented_features>
 
   <additional_requirements>

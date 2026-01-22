@@ -22,3 +22,10 @@ usageStats:
 - **Problem solved:** Implemented separate CSS classes for residence, business, warehouse, clinic, club building types with distinct neon colors
 - **Why this works:** Maintains separation of concerns, keeps HTML clean, allows easy theming through CSS custom properties
 - **Trade-offs:** Clean separation but requires known set of block types hardcoded in CSS; new block types need CSS updates
+
+### Separate location data into data.json rather than embed in JavaScript (2026-01-22)
+- **Context:** 48 unique locations with structured metadata that could change independently
+- **Why:** Maintainability - data can be updated without touching logic, scalable to more locations, enables future API migration
+- **Rejected:** Hardcoding in JavaScript would mix concerns and make updates error-prone
+- **Trade-offs:** Adds network request at startup, but enables better tooling (JSON validation) and separation of concerns
+- **Breaking if changed:** If data is moved inline, loses ability to update content without code changes and deployment

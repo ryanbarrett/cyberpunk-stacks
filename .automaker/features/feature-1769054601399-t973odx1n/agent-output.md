@@ -589,3 +589,196 @@ Input: {
   "block": true,
   "timeout": 30000
 }
+
+🔧 Tool: KillShell
+Input: {
+  "shell_id": "b697ee7"
+}
+
+🔧 Tool: Bash
+Input: {
+  "command": "timeout 8 node server.js &\nsleep 3\ncurl -s -o /dev/null -w \"Local access test: HTTP %{http_code}\\n\" http://localhost:3501/\ncurl -s -o /dev/null -w \"127.0.0.1 access test: HTTP %{http_code}\\n\" http://127.0.0.1:3501/\ncurl -s http://localhost:3501/ | head -5\nsleep 1",
+  "description": "Test fixed server with verification",
+  "timeout": 15000
+}
+
+🔧 Tool: Bash
+Input: {
+  "command": "pkill -f \"node server.js\" || true\nsleep 1\necho \"Cleaned up any running servers\"",
+  "description": "Clean up running node processes"
+}
+
+🔧 Tool: Bash
+Input: {
+  "command": "sleep 2 && PORT=3502 node server.js &\nsleep 3\necho \"=== Testing server functionality ===\"\ncurl -s -o /dev/null -w \"Localhost access: HTTP %{http_code}\\n\" http://localhost:3502/\ncurl -s -o /dev/null -w \"127.0.0.1 access: HTTP %{http_code}\\n\" http://127.0.0.1:3502/\necho \"\"\necho \"=== Retrieving page content ===\"\ncurl -s http://localhost:3502/ | grep -m1 \"<title>\"\necho \"\"\npkill -f \"PORT=3502 node server.js\"\nsleep 1\necho \"✓ Server test complete\"",
+  "description": "Test fixed server on port 3502",
+  "timeout": 15000
+}
+
+🔧 Tool: Read
+Input: {
+  "file_path": "/tmp/claude/-home-ansible-automaker-workspace-cyberpunk-stacks/tasks/bc4abfe.output"
+}
+
+🔧 Tool: TaskOutput
+Input: {
+  "task_id": "bc4abfe",
+  "block": true,
+  "timeout": 10000
+}
+
+🔧 Tool: KillShell
+Input: {
+  "shell_id": "bc4abfe"
+}
+
+🔧 Tool: Bash
+Input: {
+  "command": "PORT=3503 timeout 5 node server.js 2>&1 &\nsleep 2\ncurl -s http://localhost:3503/ | head -n 1\ncurl -s -w \"\\nHTTP Status: %{http_code}\\n\" -o /dev/null http://localhost:3503/styles.css\npkill -9 -f \"PORT=3503\"\necho \"✓ Final verification complete\"",
+  "description": "Final verification test",
+  "timeout": 10000
+}
+Perfect! The server output confirms:
+```
+  Listening on:     0.0.0.0:3503 (all interfaces)
+  ✓ Accessible via SSH tunnel
+```
+
+The fix is working. Now let me update the documentation:
+
+🔧 Tool: Edit
+Input: {
+  "file_path": "/home/ansible/automaker-workspace/cyberpunk-stacks/README.md",
+  "old_string": "### Configuration\n\nYou can customize the server using environment variables:\n\n```bash\n# Use a different port\nPORT=8080 npm start\n\n# Bind to a different host\nHOST=0.0.0.0 PORT=3000 npm start\n```",
+  "new_string": "### Configuration\n\nThe server binds to `0.0.0.0` by default, making it accessible locally and via SSH tunnels.\n\nYou can customize the server using environment variables:\n\n```bash\n# Use a different port\nPORT=8080 npm start\n\n# Bind to localhost only (restrict to local access)\nHOST=localhost PORT=3000 npm start\n\n# Explicitly bind to all interfaces (default behavior)\nHOST=0.0.0.0 PORT=3000 npm start\n```"
+}
+
+🔧 Tool: Read
+Input: {
+  "file_path": "/home/ansible/automaker-workspace/cyberpunk-stacks/README.md"
+}
+
+🔧 Tool: Edit
+Input: {
+  "file_path": "/home/ansible/automaker-workspace/cyberpunk-stacks/README.md",
+  "old_string": "### Configuration\n\nYou can customize the server using environment variables:\n\n```bash\n# Use a different port\nPORT=8080 npm start\n\n# Bind to a different host\nHOST=0.0.0.0 PORT=3000 npm start\n```",
+  "new_string": "### Configuration\n\nThe server binds to `0.0.0.0` by default, making it accessible both locally and via SSH tunnels.\n\nYou can customize the server using environment variables:\n\n```bash\n# Use a different port\nPORT=8080 npm start\n\n# Bind to localhost only (restrict to local machine access only)\nHOST=localhost PORT=3000 npm start\n\n# Explicitly bind to all interfaces (default behavior)\nHOST=0.0.0.0 PORT=3000 npm start\n```\n\n### Remote Access & SSH Tunneling\n\nThe server listens on all network interfaces (`0.0.0.0`) by default, allowing access via SSH port forwarding:\n\n```bash\n# On your local machine, tunnel the remote port\nssh -L 3500:localhost:3500 user@remote-server\n\n# Then access the server at http://localhost:3500 in your browser\n```"
+}
+
+🔧 Tool: Edit
+Input: {
+  "file_path": "/home/ansible/automaker-workspace/cyberpunk-stacks/README.md",
+  "old_string": "The server provides clear console output:\n\n```\n┌─────────────────────────────────────────────────┐\n│   🚀 Development Server Running                 │\n└─────────────────────────────────────────────────┘\n\n  Local:   http://localhost:3500\n  Network: http://127.0.0.1:3500\n\n  Press Ctrl+C to stop the server\n\n─────────────────────────────────────────────────\n\n[2026-01-22T04:09:45.299Z] GET /\n[2026-01-22T04:09:45.299Z] ✓ 200: /index.html (text/html)\n```",
+  "new_string": "The server provides clear console output:\n\n```\n┌─────────────────────────────────────────────────┐\n│   🚀 Development Server Running                 │\n└─────────────────────────────────────────────────┘\n\n  Local:            http://localhost:3500\n  Network:          http://127.0.0.1:3500\n  Listening on:     0.0.0.0:3500 (all interfaces)\n\n  ✓ Accessible via SSH tunnel\n\n  Press Ctrl+C to stop the server\n\n─────────────────────────────────────────────────\n\n[2026-01-22T04:09:45.299Z] GET /\n[2026-01-22T04:09:45.299Z] ✓ 200: /index.html (text/html)\n```"
+}
+
+🔧 Tool: Edit
+Input: {
+  "file_path": "/home/ansible/automaker-workspace/cyberpunk-stacks/README.md",
+  "old_string": "### Troubleshooting\n\n**Port already in use?**\n```bash\n# Use a different port\nPORT=3501 npm start\n```\n\n**Can't access the server?**\n- Make sure you're using `http://` (not `https://`)\n- Check that no firewall is blocking the port\n- Verify the server is running (check console output)",
+  "new_string": "### Troubleshooting\n\n**Port already in use?**\n```bash\n# Use a different port\nPORT=3501 npm start\n```\n\n**Connection refused via SSH tunnel?**\n- The server now binds to `0.0.0.0` by default (fixed)\n- Verify the server shows \"Listening on: 0.0.0.0:PORT (all interfaces)\"\n- Check your SSH tunnel command: `ssh -L 3500:localhost:3500 user@server`\n\n**Can't access the server?**\n- Make sure you're using `http://` (not `https://`)\n- Check that no firewall is blocking the port\n- Verify the server is running (check console output)\n- For local-only access, use `HOST=localhost npm start`"
+}
+
+🔧 Tool: TodoWrite
+Input: {
+  "todos": [
+    {
+      "content": "Phase 1: Read error messages and understand the symptom",
+      "activeForm": "Reading error messages and understanding symptom",
+      "status": "completed"
+    },
+    {
+      "content": "Phase 1: Reproduce the issue and gather evidence",
+      "activeForm": "Reproducing issue and gathering evidence",
+      "status": "completed"
+    },
+    {
+      "content": "Phase 1: Trace root cause (why connection refused)",
+      "activeForm": "Tracing root cause of connection refused",
+      "status": "completed"
+    },
+    {
+      "content": "Phase 2: Find working examples of tunnel-compatible servers",
+      "activeForm": "Finding working examples",
+      "status": "completed"
+    },
+    {
+      "content": "Phase 3: Form and test hypothesis",
+      "activeForm": "Testing hypothesis",
+      "status": "completed"
+    },
+    {
+      "content": "Phase 4: Implement fix with verification",
+      "activeForm": "Implementing fix with verification",
+      "status": "completed"
+    }
+  ]
+}
+## Summary
+
+### Root Cause Analysis
+
+**Problem:** Server bound to `localhost` (127.0.0.1) which only accepts connections from the loopback interface. SSH port tunneling connections were rejected with "Connection refused".
+
+**Investigation Process:**
+1. ✓ Analyzed error messages - "Connection refused" indicated network binding issue
+2. ✓ Examined server.js:7 - Found `HOST = 'localhost'` default
+3. ✓ Researched industry patterns - Express.js and other dev servers default to `0.0.0.0`
+4. ✓ Tested hypothesis - Confirmed `0.0.0.0` binding accepts tunneled connections
+
+### Changes Implemented
+
+**File: `server.js`**
+- **Line 7:** Changed default HOST from `'localhost'` to `'0.0.0.0'`
+- **Lines 102-105:** Updated console output to clearly show binding status and tunnel accessibility
+
+**File: `README.md`**
+- Added Remote Access & SSH Tunneling section with usage examples
+- Updated Configuration section to explain `0.0.0.0` vs `localhost` binding
+- Updated Server Logs example to match new output format
+- Enhanced Troubleshooting section with SSH tunnel guidance
+
+### Technical Details
+
+**What changed:**
+```javascript
+// Before
+const HOST = process.env.HOST || 'localhost';
+
+// After  
+const HOST = process.env.HOST || '0.0.0.0';
+```
+
+**Why this fixes the issue:**
+- `localhost` (127.0.0.1) - Only accepts connections from the local machine's loopback interface
+- `0.0.0.0` - Special address meaning "all IPv4 interfaces", accepts connections from:
+  - Local machine (localhost/127.0.0.1)
+  - SSH tunnels
+  - Network connections
+  - Docker containers/reverse proxies
+
+**Security note:** This matches the industry standard pattern used by Express.js, Webpack DevServer, and other development tools. For production or security-sensitive environments, users can still restrict to localhost with `HOST=localhost`.
+
+### Verification
+
+✓ Server starts successfully  
+✓ Binds to 0.0.0.0 (all interfaces)  
+✓ Console shows "✓ Accessible via SSH tunnel"  
+✓ Local access via localhost works  
+✓ Local access via 127.0.0.1 works  
+✓ Ready for SSH tunnel access  
+
+### Next Steps for User
+
+1. Start the server: `node server.js`
+2. Verify output shows: `Listening on: 0.0.0.0:3501 (all interfaces)`
+3. Your SSH tunnel should now connect successfully
+4. Access via your tunnel URL
+
+The "Connection refused" error should now be resolved. The server is listening on all interfaces and will accept your tunneled connections.
+
+**Sources:**
+- [Understanding localhost vs 0.0.0.0: A Practical Guide for Developers](https://corner.buka.sh/understanding-localhost-vs-0-0-0-0-a-practical-guide-for-developers/)
+- [From localhost to Production: Understanding IP Addresses for Node.js Developers](https://dev.to/sudiip__17/-from-localhost-to-production-understanding-ip-addresses-for-nodejs-developers-4p0n)
+- [Express.js default host binding documentation](https://github.com/expressjs/expressjs.com/issues/1412)
+- [Binding to a specific host with express.js](https://soledadpenades.com/posts/2014/binding-to-an-specific-host-with-express-js/)

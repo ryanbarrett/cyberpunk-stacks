@@ -1,0 +1,11 @@
+{
+  "id": "evt-1769057335137-37612e87",
+  "trigger": "feature_error",
+  "timestamp": "2026-01-22T04:48:55.137Z",
+  "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks",
+  "projectName": "cyberpunk-stacks",
+  "featureId": "feature-1769056907894-gkhxugsu2",
+  "featureName": "Fix duplicate location data in detail panel",
+  "error": "Claude Code process exited with code 1",
+  "errorType": "execution"
+}

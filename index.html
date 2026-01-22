@@ -136,6 +136,20 @@
       };
     }
 
+    // ===== Location Data Loading =====
+    let locationData = null;
+
+    async function loadLocationData() {
+      try {
+        const response = await fetch('data.json');
+        locationData = await response.json();
+        console.log('Location data loaded successfully');
+      } catch (error) {
+        console.error('Failed to load location data:', error);
+        locationData = { locations: {} };
+      }
+    }
+
     // ===== Location Name Generator =====
     const locationNames = {
       residence: ['Apartment', 'Tenement', 'Capsule Pod', 'Luxury Suite', 'Slum Block', 'Hab-Unit'],
@@ -298,6 +312,9 @@
 
       blocks.forEach(block => {
         block.addEventListener('click', () => {
+          const locationType = block.dataset.type;
+          const locationName = block.dataset.name;
+          populateModal(locationType, locationName);
           modal.classList.add('active');
         });
 
@@ -331,6 +348,51 @@
         modal.classList.remove('active');
       }
     });
+
+    function populateModal(locationType, locationName) {
+      if (!locationData || !locationData.locations) {
+        console.error('Location data not loaded');
+        return;
+      }
+
+      const typeLocations = locationData.locations[locationType];
+      if (!typeLocations) {
+        console.error(`No data found for location type: ${locationType}`);
+        return;
+      }
+
+      const location = typeLocations[locationName];
+      if (!location) {
+        console.error(`No data found for location: ${locationName}`);
+        return;
+      }
+
+      const modalTitle = modal.querySelector('.modal-title');
+      const sections = modal.querySelectorAll('.detail-section');
+
+      modalTitle.textContent = locationName;
+
+      const description = location.description || '';
+      const security = location.security || {};
+      const notableItems = location.notableItems || [];
+      const activeEvents = location.activeEvents || [];
+
+      const securityLevel = security.level || 'low';
+      const guards = security.guards !== undefined ? `Guards: ${security.guards}` : '';
+      const cameras = security.cameras !== undefined ? `Cameras: ${security.cameras ? 'Yes' : 'No'}` : '';
+
+      sections[0].querySelector('.detail-section-content').textContent = description;
+
+      const securityContent = sections[1].querySelector('.detail-section-content');
+      securityContent.innerHTML = `
+        <span class="tag tag--threat-${securityLevel}">${securityLevel.charAt(0).toUpperCase() + securityLevel.slice(1)}</span>
+        ${guards ? `<span class="tag">${guards}</span>` : ''}
+        ${cameras ? `<span class="tag">${cameras}</span>` : ''}
+      `;
+
+      sections[2].querySelector('.detail-section-content').textContent = notableItems.join(', ');
+      sections[3].querySelector('.detail-section-content').textContent = activeEvents.join(', ');
+    }
 
     // ===== Settings & Regeneration =====
     let currentBuilding = null;
@@ -393,11 +455,14 @@
     });
 
     // ===== Initialize =====
-    // Attach listeners to existing blocks
-    attachBlockEventListeners();
+    // Load location data first, then initialize
+    loadLocationData().then(() => {
+      // Attach listeners to existing blocks
+      attachBlockEventListeners();
 
-    // Generate initial building
-    regenerateBuilding();
+      // Generate initial building
+      regenerateBuilding();
+    });
   </script>
 </body>
 </html>

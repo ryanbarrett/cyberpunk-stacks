@@ -1,0 +1,29 @@
+{
+  "category": "Uncategorized",
+  "description": "## Parent Task Context (Already Completed)\n\n> **Note:** The following parent task has already been completed. This context is provided to help you understand the background and requirements for this sub-task. Do not re-implement the parent task - focus only on the new sub-task described below.\n\n### Location Detail Data Population\n\n**Description:** Populate detail panel with location-specific data from JSON including description, tags, occupant list, security rating, and notable items. Handles data formatting and presentation logic.\n\n---\n\n## Task Description\n\nIssue. Everything I click on has the same location data (either not fully populated, or only one is being displayed)\n\ne.g.\nLocation Details\n×\nDescription\nA high-end cybernetic enhancement clinic with state-of-the-art surgical equipment and a questionable reputation.\nSecurity Level\nHigh Guards: 3 Cameras: Yes\nNotable Items\nMilitary-grade cyberdeck, Prototype neural interface, Stealth augments\nActive Events\nCorporate raid in progress, Security system offline, Hostage situation",
+  "title": "Fix duplicate location data in detail panel",
+  "images": [],
+  "imagePaths": [],
+  "textFilePaths": [],
+  "skipTests": true,
+  "model": "zai-coding-plan/glm-4.7",
+  "thinkingLevel": "none",
+  "reasoningEffort": "none",
+  "branchName": "master",
+  "priority": 2,
+  "planningMode": "skip",
+  "requirePlanApproval": false,
+  "workMode": "custom",
+  "titleGenerating": false,
+  "status": "in_progress",
+  "id": "feature-1769056907894-gkhxugsu2",
+  "descriptionHistory": [
+    {
+      "description": "## Parent Task Context (Already Completed)\n\n> **Note:** The following parent task has already been completed. This context is provided to help you understand the background and requirements for this sub-task. Do not re-implement the parent task - focus only on the new sub-task described below.\n\n### Location Detail Data Population\n\n**Description:** Populate detail panel with location-specific data from JSON including description, tags, occupant list, security rating, and notable items. Handles data formatting and presentation logic.\n\n---\n\n## Task Description\n\nIssue. Everything I click on has the same location data (either not fully populated, or only one is being displayed)\n\ne.g.\nLocation Details\n×\nDescription\nA high-end cybernetic enhancement clinic with state-of-the-art surgical equipment and a questionable reputation.\nSecurity Level\nHigh Guards: 3 Cameras: Yes\nNotable Items\nMilitary-grade cyberdeck, Prototype neural interface, Stealth augments\nActive Events\nCorporate raid in progress, Security system offline, Hostage situation",
+      "timestamp": "2026-01-22T04:41:48.014Z",
+      "source": "initial"
+    }
+  ],
+  "updatedAt": "2026-01-22T04:49:52.413Z",
+  "dependencies": []
+}

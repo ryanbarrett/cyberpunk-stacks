@@ -23,14 +23,30 @@ The server will be available at: **http://localhost:3500**
 
 ### Configuration
 
+The server binds to `0.0.0.0` by default, making it accessible both locally and via SSH tunnels.
+
 You can customize the server using environment variables:
 
 ```bash
 # Use a different port
 PORT=8080 npm start
 
-# Bind to a different host
+# Bind to localhost only (restrict to local machine access only)
+HOST=localhost PORT=3000 npm start
+
+# Explicitly bind to all interfaces (default behavior)
 HOST=0.0.0.0 PORT=3000 npm start
+```
+
+### Remote Access & SSH Tunneling
+
+The server listens on all network interfaces (`0.0.0.0`) by default, allowing access via SSH port forwarding:
+
+```bash
+# On your local machine, tunnel the remote port
+ssh -L 3500:localhost:3500 user@remote-server
+
+# Then access the server at http://localhost:3500 in your browser
 ```
 
 ### Features
@@ -52,8 +68,11 @@ The server provides clear console output:
 │   🚀 Development Server Running                 │
 └─────────────────────────────────────────────────┘
 
-  Local:   http://localhost:3500
-  Network: http://127.0.0.1:3500
+  Local:            http://localhost:3500
+  Network:          http://127.0.0.1:3500
+  Listening on:     0.0.0.0:3500 (all interfaces)
+
+  ✓ Accessible via SSH tunnel
 
   Press Ctrl+C to stop the server
 
@@ -78,10 +97,16 @@ The server provides clear console output:
 PORT=3501 npm start
 ```
 
+**Connection refused via SSH tunnel?**
+- The server now binds to `0.0.0.0` by default (fixed)
+- Verify the server shows "Listening on: 0.0.0.0:PORT (all interfaces)"
+- Check your SSH tunnel command: `ssh -L 3500:localhost:3500 user@server`
+
 **Can't access the server?**
 - Make sure you're using `http://` (not `https://`)
 - Check that no firewall is blocking the port
 - Verify the server is running (check console output)
+- For local-only access, use `HOST=localhost npm start`
 
 ## Development
 
