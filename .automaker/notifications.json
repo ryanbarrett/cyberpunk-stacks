@@ -274,6 +274,50 @@
       "dismissed": false,
       "featureId": "feature-1769056907894-gkhxugsu2",
       "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "b680b87c-734c-42e2-9ca3-c84c08db4f07",
+      "type": "feature_waiting_approval",
+      "title": "Feature Ready for Review",
+      "message": "\"feature-1769085293546-fciihr8nj\" is ready for your review and approval.",
+      "createdAt": "2026-01-22T12:45:51.311Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "feature-1769085293546-fciihr8nj",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "17ad7361-b0c7-4cf5-8e12-857792e9b454",
+      "type": "feature_waiting_approval",
+      "title": "Feature Ready for Review",
+      "message": "\"feature-1769085293546-fciihr8nj\" is ready for your review and approval.",
+      "createdAt": "2026-01-22T13:06:14.751Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "feature-1769085293546-fciihr8nj",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "831f37cc-1a48-4573-b976-87b001ab294f",
+      "type": "feature_waiting_approval",
+      "title": "Feature Ready for Review",
+      "message": "\"feature-1769085293546-fciihr8nj\" is ready for your review and approval.",
+      "createdAt": "2026-01-22T13:11:50.763Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "feature-1769085293546-fciihr8nj",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
+    },
+    {
+      "id": "68c289f7-b691-46b2-954c-574bd7e38cf3",
+      "type": "feature_waiting_approval",
+      "title": "Feature Ready for Review",
+      "message": "\"feature-1769085293546-fciihr8nj\" is ready for your review and approval.",
+      "createdAt": "2026-01-22T13:18:05.212Z",
+      "read": false,
+      "dismissed": false,
+      "featureId": "feature-1769085293546-fciihr8nj",
+      "projectPath": "/home/ansible/automaker-workspace/cyberpunk-stacks"
     }
   ]
 }

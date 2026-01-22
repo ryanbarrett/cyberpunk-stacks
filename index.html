@@ -43,58 +43,99 @@
     
     <aside>
       <div class="settings-panel">
-        <div class="settings-group">
-          <label class="settings-label">Floor Count</label>
-          <input type="number" id="floorCount" class="settings-input" value="24" min="1" max="100">
-        </div>
+        <button id="toggleSettings" class="btn">Hide Settings</button>
+        <div class="settings-body">
+          <div class="settings-group">
+            <label class="settings-label">Floor Count</label>
+            <input type="number" id="floorCount" class="settings-input" value="24" min="1" max="100">
+          </div>
 
-        <div class="settings-group">
-          <label class="settings-label">RNG Seed</label>
-          <input type="text" id="rngSeed" class="settings-input" value="cyberpunk-2077">
-        </div>
+          <div class="settings-group">
+            <label class="settings-label">RNG Seed</label>
+            <input type="text" id="rngSeed" class="settings-input" value="cyberpunk-2077">
+          </div>
 
-        <div class="settings-group">
-          <label class="settings-label">Density Preset</label>
-          <select id="densityPreset" class="settings-select">
-            <option value="1">Super Dense (Minimal spacing)</option>
-            <option value="3" selected>Medium (Balanced)</option>
-            <option value="6">Mixed (Maximum diversity)</option>
-          </select>
-        </div>
+          <div class="settings-group">
+            <label class="settings-label">Density Preset</label>
+            <select id="densityPreset" class="settings-select">
+              <option value="1">Super Dense (Minimal spacing)</option>
+              <option value="3" selected>Medium (Balanced)</option>
+              <option value="6">Mixed (Maximum diversity)</option>
+            </select>
+          </div>
 
-        <div class="settings-group">
-          <label class="settings-label">Connection Mode</label>
-          <select id="connectionMode" class="settings-select">
-            <option value="linear" selected>Linear</option>
-            <option value="labyrinth">Labyrinth</option>
-          </select>
-        </div>
+          <div class="settings-group">
+            <label class="settings-label">Connection Mode</label>
+            <select id="connectionMode" class="settings-select">
+              <option value="linear" selected>Linear</option>
+              <option value="labyrinth">Labyrinth</option>
+            </select>
+          </div>
 
-        <div class="settings-group">
-          <label class="settings-checkbox">
-            <input type="checkbox" id="showConnections">
-            <span>Show Connection Matrix</span>
-          </label>
-          <pre id="connectionMatrix" class="connection-matrix is-hidden"></pre>
-        </div>
+          <div class="settings-group">
+            <label class="settings-checkbox">
+              <input type="checkbox" id="showConnections">
+              <span>Show Connection Matrix</span>
+            </label>
+            <pre id="connectionMatrix" class="connection-matrix is-hidden"></pre>
+          </div>
 
-        <div class="settings-group">
-          <label class="settings-checkbox">
-            <input type="checkbox" id="neonTheme" checked>
-            <span>Neon Theme</span>
-          </label>
-        </div>
+          <div class="settings-group">
+            <div class="settings-label">Stack Legend</div>
+            <div class="legend">
+              <div class="legend-item">
+                <img class="legend-icon" src="assets/icons/residence.svg" alt="Residence icon">
+                <span>Residence</span>
+              </div>
+              <div class="legend-item">
+                <img class="legend-icon" src="assets/icons/business.svg" alt="Business icon">
+                <span>Business</span>
+              </div>
+              <div class="legend-item">
+                <img class="legend-icon" src="assets/icons/warehouse.svg" alt="Warehouse icon">
+                <span>Warehouse</span>
+              </div>
+              <div class="legend-item">
+                <img class="legend-icon" src="assets/icons/clinic.svg" alt="Clinic icon">
+                <span>Clinic</span>
+              </div>
+              <div class="legend-item">
+                <img class="legend-icon" src="assets/icons/temple.svg" alt="Temple icon">
+                <span>Temple</span>
+              </div>
+              <div class="legend-item">
+                <img class="legend-icon" src="assets/icons/club.svg" alt="Club icon">
+                <span>Club</span>
+              </div>
+              <div class="legend-item">
+                <img class="legend-icon" src="assets/icons/restaurant.svg" alt="Restaurant icon">
+                <span>Restaurant</span>
+              </div>
+              <div class="legend-item">
+                <img class="legend-icon" src="assets/icons/tech-shop.svg" alt="Tech shop icon">
+                <span>Tech Shop</span>
+              </div>
+            </div>
+          </div>
 
-        <div class="settings-group">
-          <label class="settings-checkbox">
-            <input type="checkbox" id="layoutLock">
-            <span>Lock Layout</span>
-          </label>
-        </div>
+          <div class="settings-group">
+            <label class="settings-checkbox">
+              <input type="checkbox" id="neonTheme" checked>
+              <span>Neon Theme</span>
+            </label>
+          </div>
 
-        <div class="settings-group">
-          <button id="regenerateBtn" class="btn btn--primary">Regenerate Building</button>
-          <button id="nextBeatBtn" class="btn btn--pink">Next Beat</button>
+          <div class="settings-group">
+            <label class="settings-checkbox">
+              <input type="checkbox" id="layoutLock">
+              <span>Lock Layout</span>
+            </label>
+          </div>
+
+          <div class="settings-group">
+            <button id="regenerateBtn" class="btn btn--primary">Regenerate Building</button>
+            <button id="nextBeatBtn" class="btn btn--pink">Next Beat</button>
+          </div>
         </div>
       </div>
     </aside>
@@ -501,6 +542,17 @@
       'tech-shop': ['Cyber Parts', 'Hardware Hub', 'Tech Bazaar', 'Circuit Shop', 'Mod Station', 'Data Market']
     };
 
+    const STACK_ICON_MAP = {
+      residence: { label: 'Residence', icon: 'assets/icons/residence.svg' },
+      business: { label: 'Business', icon: 'assets/icons/business.svg' },
+      warehouse: { label: 'Warehouse', icon: 'assets/icons/warehouse.svg' },
+      clinic: { label: 'Clinic', icon: 'assets/icons/clinic.svg' },
+      temple: { label: 'Temple', icon: 'assets/icons/temple.svg' },
+      club: { label: 'Club', icon: 'assets/icons/club.svg' },
+      restaurant: { label: 'Restaurant', icon: 'assets/icons/restaurant.svg' },
+      'tech-shop': { label: 'Tech Shop', icon: 'assets/icons/tech-shop.svg' }
+    };
+
     function generateLocationName(type, rng) {
       const names = locationNames[type] || ['Unknown'];
       const index = Math.floor(rng() * names.length);
@@ -657,7 +709,24 @@
       const unitSize = blockData.size || 1;
       block.dataset.size = unitSize;
       block.style.flex = `${unitSize} 0 0`;
-      block.textContent = blockData.type.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      const iconData = STACK_ICON_MAP[blockData.type];
+      const labelText = iconData
+        ? iconData.label
+        : blockData.type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+      block.textContent = '';
+
+      if (iconData) {
+        const icon = document.createElement('img');
+        icon.className = 'block-icon';
+        icon.src = iconData.icon;
+        icon.alt = `${labelText} icon`;
+        block.appendChild(icon);
+      }
+
+      const label = document.createElement('span');
+      label.className = 'block-label';
+      label.textContent = labelText;
+      block.appendChild(label);
 
       return block;
     }
@@ -1077,6 +1146,16 @@
       const showConnections = event.target.checked;
       updateConnectionMatrixVisibility(showConnections);
       saveSettings({ ...getSettings(), showConnections });
+    });
+
+    document.getElementById('toggleSettings').addEventListener('click', () => {
+      const panel = document.querySelector('.settings-panel');
+      if (!panel) return;
+      const collapsed = panel.classList.toggle('settings-panel--collapsed');
+      const toggleButton = document.getElementById('toggleSettings');
+      if (toggleButton) {
+        toggleButton.textContent = collapsed ? 'Show Settings' : 'Hide Settings';
+      }
     });
 
     // ===== Initialize =====

@@ -63,3 +63,32 @@ usageStats:
 - **Situation:** Initial implementation showed Med-Tech data for all locations, making the bug hard to spot
 - **Root cause:** Developer assumed dynamic data loading was working because the modal displayed content, just the wrong content
 - **How to avoid:** Hardcoded content aids visual design but masks data integration bugs
+
+### Replaced linear density slider with discrete dropdown selectors for density preset and stack size (2026-01-22)
+- **Context:** Need to control stack size variation and density in visual building generator
+- **Why:** Continuous density control has no meaningful analog in stacked building metaphor - discrete presets provide predictable, curated visual outcomes. Users couldn't meaningfully control density gradients via slider.
+- **Rejected:** Linear density slider providing fine-grained control over single density parameter
+- **Trade-offs:** Lost fine-grained control but gained predictable visual outcomes and simplified user mental model. Reduced implementation complexity significantly.
+- **Breaking if changed:** Changing to slider would break preset-specific distribution logic and probability weighting system.
+
+#### [Pattern] Auto-regeneration triggers on all settings changes without explicit save button (2026-01-22)
+- **Problem solved:** Users change density preset or stack size via dropdown
+- **Why this works:** Settings changes have immediate visual impact. Forcing manual save creates extra friction when users just want to explore options.
+- **Trade-offs:** Immediate feedback UX vs potential performance cost. Each dropdown change triggers full building regeneration.
+
+#### [Gotcha] localStorage saves on building regeneration, not on setting change events (2026-01-22)
+- **Situation:** User preferences for density preset and stack size need to persist across sessions
+- **Root cause:** Prevents saving invalid/intermediate states and ensures only successfully rendered configurations are persisted; also naturally batches writes if user rapidly changes multiple settings
+- **How to avoid:** State is always consistent with what's rendered, but user could lose preferences if they crash before regenerating building
+
+#### [Pattern] Three-tier size multiplication: blockSizeFromCombination × userSelectedStackSize × var(--base-block-size) for CSS calc() (2026-01-22)
+- **Problem solved:** Need block sizes controlled by density presets, user preferences, and responsive breakpoints simultaneously
+- **Why this works:** Each tier serves distinct purpose: preset determines size distribution pattern, user scales overall building height, base-block-size handles viewport responsiveness without changing logic
+- **Trade-offs:** Maximum flexibility with clean separation of concerns, but calculation logic must stay synchronized between JS generation and CSS rendering
+
+### Replaced linear density slider with discrete preset dropdown (3 presets: Super Dense, Medium, Mixed) (2026-01-22)
+- **Context:** Density controls which block sizes are available and their frequency distribution
+- **Why:** Presets create consistent, learnable visual patterns users can recognize and reuse; continuous slider would produce arbitrary combinations that users can't meaningfully select
+- **Rejected:** Linear slider with min/max density (rejected because doesn't capture meaningful size distribution patterns - density 2.3 vs 2.7 isn't distinguishable to users)
+- **Trade-offs:** UX is simpler and outcomes are predictable, but users lose fine-grained control for edge cases
+- **Breaking if changed:** Switching back to slider would require changing DENSITY_PRESETS from object to numeric range and updating generation logic to interpolate distributions

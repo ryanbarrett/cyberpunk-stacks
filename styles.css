@@ -169,14 +169,20 @@ aside {
   cursor: pointer;
   transition: all var(--transition-base), flex var(--transition-base);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: var(--spacing-xs);
   font-size: 0.7rem;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   min-width: 0;
+}
+
+.block-label {
+  display: none;
 }
 
 .connection {
@@ -230,22 +236,80 @@ aside {
 
 .block--residence {
   border-left: 3px solid var(--color-neon-cyan);
+  --block-accent: var(--color-neon-cyan);
 }
 
 .block--business {
   border-left: 3px solid var(--color-neon-purple);
+  --block-accent: var(--color-neon-purple);
 }
 
 .block--warehouse {
   border-left: 3px solid var(--color-neon-yellow);
+  --block-accent: var(--color-neon-yellow);
 }
 
 .block--clinic {
   border-left: 3px solid var(--color-neon-green);
+  --block-accent: var(--color-neon-green);
 }
 
 .block--club {
   border-left: 3px solid var(--color-neon-pink);
+  --block-accent: var(--color-neon-pink);
+}
+
+.block--temple {
+  border-left: 3px solid var(--color-neon-orange);
+  --block-accent: var(--color-neon-orange);
+}
+
+.block--restaurant {
+  border-left: 3px solid #ffb347;
+  --block-accent: #ffb347;
+}
+
+.block--tech-shop {
+  border-left: 3px solid #34d399;
+  --block-accent: #34d399;
+}
+
+.block-icon {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+}
+
+.block--residence .block-icon {
+  filter: brightness(0) saturate(100%) invert(75%) sepia(38%) saturate(5440%) hue-rotate(151deg) brightness(102%) contrast(104%);
+}
+
+.block--business .block-icon {
+  filter: brightness(0) saturate(100%) invert(54%) sepia(26%) saturate(3168%) hue-rotate(225deg) brightness(98%) contrast(96%);
+}
+
+.block--warehouse .block-icon {
+  filter: brightness(0) saturate(100%) invert(91%) sepia(72%) saturate(640%) hue-rotate(2deg) brightness(106%) contrast(103%);
+}
+
+.block--clinic .block-icon {
+  filter: brightness(0) saturate(100%) invert(75%) sepia(32%) saturate(741%) hue-rotate(94deg) brightness(101%) contrast(96%);
+}
+
+.block--club .block-icon {
+  filter: brightness(0) saturate(100%) invert(26%) sepia(77%) saturate(4232%) hue-rotate(320deg) brightness(105%) contrast(104%);
+}
+
+.block--temple .block-icon {
+  filter: brightness(0) saturate(100%) invert(58%) sepia(63%) saturate(542%) hue-rotate(6deg) brightness(104%) contrast(102%);
+}
+
+.block--restaurant .block-icon {
+  filter: brightness(0) saturate(100%) invert(77%) sepia(23%) saturate(1003%) hue-rotate(330deg) brightness(103%) contrast(101%);
+}
+
+.block--tech-shop .block-icon {
+  filter: brightness(0) saturate(100%) invert(73%) sepia(54%) saturate(464%) hue-rotate(92deg) brightness(96%) contrast(95%);
 }
 
 .settings-panel {
@@ -254,10 +318,70 @@ aside {
   gap: var(--spacing-lg);
 }
 
+.settings-panel--collapsed .settings-body {
+  display: none;
+}
+
+.settings-panel--collapsed #toggleSettings {
+  margin-bottom: 0;
+}
+
 .settings-group {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-sm);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 0.65rem;
+  color: var(--color-text-secondary);
+}
+
+.legend-icon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+}
+
+.legend-item:nth-child(1) .legend-icon {
+  filter: brightness(0) saturate(100%) invert(75%) sepia(38%) saturate(5440%) hue-rotate(151deg) brightness(102%) contrast(104%);
+}
+
+.legend-item:nth-child(2) .legend-icon {
+  filter: brightness(0) saturate(100%) invert(54%) sepia(26%) saturate(3168%) hue-rotate(225deg) brightness(98%) contrast(96%);
+}
+
+.legend-item:nth-child(3) .legend-icon {
+  filter: brightness(0) saturate(100%) invert(91%) sepia(72%) saturate(640%) hue-rotate(2deg) brightness(106%) contrast(103%);
+}
+
+.legend-item:nth-child(4) .legend-icon {
+  filter: brightness(0) saturate(100%) invert(75%) sepia(32%) saturate(741%) hue-rotate(94deg) brightness(101%) contrast(96%);
+}
+
+.legend-item:nth-child(5) .legend-icon {
+  filter: brightness(0) saturate(100%) invert(58%) sepia(63%) saturate(542%) hue-rotate(6deg) brightness(104%) contrast(102%);
+}
+
+.legend-item:nth-child(6) .legend-icon {
+  filter: brightness(0) saturate(100%) invert(26%) sepia(77%) saturate(4232%) hue-rotate(320deg) brightness(105%) contrast(104%);
+}
+
+.legend-item:nth-child(7) .legend-icon {
+  filter: brightness(0) saturate(100%) invert(77%) sepia(23%) saturate(1003%) hue-rotate(330deg) brightness(103%) contrast(101%);
+}
+
+.legend-item:nth-child(8) .legend-icon {
+  filter: brightness(0) saturate(100%) invert(73%) sepia(54%) saturate(464%) hue-rotate(92deg) brightness(96%) contrast(95%);
 }
 
 .connection-matrix {

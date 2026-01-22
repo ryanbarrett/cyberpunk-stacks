@@ -1,0 +1,33 @@
+{
+  "category": "Uncategorized",
+  "description": "Implement Vertical Movement System with Stairs and Lifts\n\nAdd a multi-level vertical movement system allowing players to navigate between floors via stairs and lifts with configurable connection patterns.\n\nRequirements:\n\n**Data Structure:**\n- Add connection metadata to each level defining which other levels it connects to\n- Store connection type (stair/lift) and position (left/right)\n- Use 1-unit dimensions for both stairs and lifts\n\n**Default Mode (Linear):**\n- Place lift on left side of each level connecting all levels sequentially\n- Place stairs on right side of each level connecting all levels sequentially\n- Ensure consistent vertical progression through all levels\n\n**Labyrinth Mode (Complex Connections):**\n- Generate non-linear connections where levels connect to specific other levels vertically\n- Example pattern: Level 1 stairs connect to 5, 10, 15, 20; lifts connect to all even levels\n- Each level must have an even number of connections (2-4 total)\n- Each level requires minimum 1 stair and 1 lift connecting to different levels\n- Maximum of 4 total connections to other levels per level\n- Acceptable combinations: 1 stair + 1 lift, 1 stair + 3 lifts, 2 stairs + 2 lifts, 3 stairs + 1 lift\n\n**Connection Logic:**\n- Implement validation to ensure all constraints are met\n- Ensure connections are bidirectional (if A connects to B, B must connect to A)\n- Generate labyrinth connections algorithmically to ensure logical consistency\n- Prevent connection loops that could trap players\n\n**Implementation Tasks:**\n1. Design and implement connection data structure in level configuration\n2. Add position rendering logic for stairs (right side) and lifts (left side)\n3. Implement default linear connection generator\n4. Implement labyrinth connection generator with constraint validation\n5. Add movement mechanics to handle level transitions\n6. Add UI indicators showing available connections on each level",
+  "title": "Lifts and Stairs",
+  "images": [],
+  "imagePaths": [],
+  "textFilePaths": [],
+  "skipTests": true,
+  "model": "zai-coding-plan/glm-4.7",
+  "thinkingLevel": "none",
+  "reasoningEffort": "none",
+  "branchName": "master",
+  "priority": 2,
+  "planningMode": "skip",
+  "requirePlanApproval": false,
+  "dependencies": [],
+  "workMode": "custom",
+  "titleGenerating": false,
+  "status": "backlog",
+  "id": "feature-1769085483921-jfmzdu5rj",
+  "descriptionHistory": [
+    {
+      "description": "Implement Vertical Movement System with Stairs and Lifts\n\nAdd a multi-level vertical movement system allowing players to navigate between floors via stairs and lifts with configurable connection patterns.\n\nRequirements:\n\n**Data Structure:**\n- Add connection metadata to each level defining which other levels it connects to\n- Store connection type (stair/lift) and position (left/right)\n- Use half-block dimensions for both stairs and lifts\n\n**Default Mode (Linear):**\n- Place lift on left side of each level connecting all levels sequentially\n- Place stairs on right side of each level connecting all levels sequentially\n- Ensure consistent vertical progression through all levels\n\n**Labyrinth Mode (Complex Connections):**\n- Generate non-linear connections where levels connect to specific other levels vertically\n- Example pattern: Level 1 stairs connect to 5, 10, 15, 20; lifts connect to all even levels\n- Each level must have an even number of connections (2-4 total)\n- Each level requires minimum 1 stair and 1 lift connecting to different levels\n- Maximum of 4 total connections to other levels per level\n- Acceptable combinations: 1 stair + 1 lift, 1 stair + 3 lifts, 2 stairs + 2 lifts, 3 stairs + 1 lift\n\n**Connection Logic:**\n- Implement validation to ensure all constraints are met\n- Ensure connections are bidirectional (if A connects to B, B must connect to A)\n- Generate labyrinth connections algorithmically to ensure logical consistency\n- Prevent connection loops that could trap players\n\n**Implementation Tasks:**\n1. Design and implement connection data structure in level configuration\n2. Add position rendering logic for stairs (right side) and lifts (left side)\n3. Implement default linear connection generator\n4. Implement labyrinth connection generator with constraint validation\n5. Add movement mechanics to handle level transitions\n6. Add UI indicators showing available connections on each level",
+      "timestamp": "2026-01-22T12:38:04.040Z",
+      "source": "initial"
+    },
+    {
+      "description": "Implement Vertical Movement System with Stairs and Lifts\n\nAdd a multi-level vertical movement system allowing players to navigate between floors via stairs and lifts with configurable connection patterns.\n\nRequirements:\n\n**Data Structure:**\n- Add connection metadata to each level defining which other levels it connects to\n- Store connection type (stair/lift) and position (left/right)\n- Use 1-unit dimensions for both stairs and lifts\n\n**Default Mode (Linear):**\n- Place lift on left side of each level connecting all levels sequentially\n- Place stairs on right side of each level connecting all levels sequentially\n- Ensure consistent vertical progression through all levels\n\n**Labyrinth Mode (Complex Connections):**\n- Generate non-linear connections where levels connect to specific other levels vertically\n- Example pattern: Level 1 stairs connect to 5, 10, 15, 20; lifts connect to all even levels\n- Each level must have an even number of connections (2-4 total)\n- Each level requires minimum 1 stair and 1 lift connecting to different levels\n- Maximum of 4 total connections to other levels per level\n- Acceptable combinations: 1 stair + 1 lift, 1 stair + 3 lifts, 2 stairs + 2 lifts, 3 stairs + 1 lift\n\n**Connection Logic:**\n- Implement validation to ensure all constraints are met\n- Ensure connections are bidirectional (if A connects to B, B must connect to A)\n- Generate labyrinth connections algorithmically to ensure logical consistency\n- Prevent connection loops that could trap players\n\n**Implementation Tasks:**\n1. Design and implement connection data structure in level configuration\n2. Add position rendering logic for stairs (right side) and lifts (left side)\n3. Implement default linear connection generator\n4. Implement labyrinth connection generator with constraint validation\n5. Add movement mechanics to handle level transitions\n6. Add UI indicators showing available connections on each level",
+      "timestamp": "2026-01-22T13:05:53.188Z",
+      "source": "edit"
+    }
+  ]
+}
