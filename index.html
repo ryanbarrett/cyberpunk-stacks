@@ -54,8 +54,12 @@
         </div>
 
         <div class="settings-group">
-          <label class="settings-label">Density</label>
-          <input type="range" id="density" class="settings-range" min="1" max="10" value="7">
+          <label class="settings-label">Density Preset</label>
+          <select id="densityPreset" class="settings-select">
+            <option value="1">Super Dense (Minimal spacing)</option>
+            <option value="3" selected>Medium (Balanced)</option>
+            <option value="6">Mixed (Maximum diversity)</option>
+          </select>
         </div>
 
         <div class="settings-group">
@@ -136,6 +140,137 @@
       };
     }
 
+    // ===== Density Presets Configuration =====
+    const DENSITY_PRESETS = {
+      1: {
+        name: 'Super Dense',
+        description: 'Prioritize smallest sizes, minimal spacing',
+        sizeWeights: [0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 1, 2, 2],
+        spacingMultiplier: 0.5,
+        minBlockSize: 0.5,
+        maxBlockSize: 2
+      },
+      3: {
+        name: 'Medium',
+        description: 'Balanced distribution',
+        sizeWeights: [0.5, 1, 1, 2, 2, 2, 3, 3, 4, 4],
+        spacingMultiplier: 1.0,
+        minBlockSize: 0.5,
+        maxBlockSize: 4
+      },
+      6: {
+        name: 'Mixed',
+        description: 'Maximum diversity and alternation',
+        sizeWeights: [0.5, 1, 2, 3, 4, 5, 6],
+        spacingMultiplier: 1.5,
+        minBlockSize: 0.5,
+        maxBlockSize: 6
+      }
+    };
+
+    // ===== Block Level Filling System =====
+    const LEVEL_WIDTH = 16;
+    const MIN_BLOCK_SIZE = 1;
+    const MAX_BLOCK_SIZE = 6;
+
+    function validateBlockSizes(blockSizes) {
+      if (!Array.isArray(blockSizes)) {
+        console.error('Block sizes must be an array');
+        return { valid: false, error: 'Block sizes must be an array' };
+      }
+
+      if (blockSizes.length === 0) {
+        console.error('Block sizes array cannot be empty');
+        return { valid: false, error: 'Block sizes array cannot be empty' };
+      }
+
+      for (let i = 0; i < blockSizes.length; i++) {
+        const size = blockSizes[i];
+        if (typeof size !== 'number' || size < MIN_BLOCK_SIZE || size > MAX_BLOCK_SIZE) {
+          console.error(`Block at index ${i} has invalid size: ${size}. Must be between ${MIN_BLOCK_SIZE} and ${MAX_BLOCK_SIZE}`);
+          return { valid: false, error: `Block at index ${i} has invalid size: ${size}. Must be between ${MIN_BLOCK_SIZE} and ${MAX_BLOCK_SIZE}` };
+        }
+      }
+
+      const totalWidth = blockSizes.reduce((sum, size) => sum + size, 0);
+
+      if (totalWidth !== LEVEL_WIDTH) {
+        console.error(`Total width ${totalWidth} does not equal level width ${LEVEL_WIDTH}`);
+        return { valid: false, error: `Total width ${totalWidth} does not equal level width ${LEVEL_WIDTH}` };
+      }
+
+      return { valid: true, totalWidth: totalWidth };
+    }
+
+    function generateValidBlockCombinations(maxResults = 1000) {
+      const combinations = [];
+      const combination = [];
+
+      function backtrack(remainingSpace) {
+        if (combinations.length >= maxResults) return;
+
+        if (remainingSpace === 0) {
+          combinations.push([...combination]);
+          return;
+        }
+
+        for (let size = MIN_BLOCK_SIZE; size <= MAX_BLOCK_SIZE && size <= remainingSpace; size++) {
+          if (remainingSpace - size >= 0) {
+            combination.push(size);
+            backtrack(remainingSpace - size);
+            combination.pop();
+          }
+        }
+      }
+
+      backtrack(LEVEL_WIDTH);
+      return combinations;
+    }
+
+    function getRandomBlockCombination(rng, densityPreset) {
+      const preset = DENSITY_PRESETS[densityPreset];
+      const combinations = generateValidBlockCombinations(500);
+
+      if (combinations.length === 0) {
+        console.error('No valid combinations found');
+        return null;
+      }
+
+      const index = Math.floor(rng() * combinations.length);
+      return combinations[index];
+    }
+
+    function generateFilledFloor(blockSizes, rng, densityPreset) {
+      const validation = validateBlockSizes(blockSizes);
+
+      if (!validation.valid) {
+        console.error(`Invalid block sizes: ${validation.error}`);
+        return null;
+      }
+
+      const blockTypes = ['residence', 'business', 'warehouse', 'clinic',
+                          'temple', 'club', 'restaurant', 'tech-shop'];
+      const blocks = [];
+
+      blockSizes.forEach(size => {
+        const typeIndex = Math.floor(rng() * blockTypes.length);
+        const type = blockTypes[typeIndex];
+
+        blocks.push({
+          type: type,
+          name: generateLocationName(type, rng),
+          threat: generateThreatLevel(rng),
+          size: size
+        });
+      });
+
+      return {
+        floorNumber: null,
+        blocks,
+        totalWidth: LEVEL_WIDTH
+      };
+    }
+
     // ===== Location Data Loading =====
     let locationData = null;
 
@@ -176,44 +311,71 @@
       return 'high';
     }
 
+    // ===== LocalStorage Persistence =====
+    function saveSettings(settings) {
+      try {
+        localStorage.setItem('cyberpunk-stacks-settings', JSON.stringify({
+          densityPreset: settings.densityPreset
+        }));
+      } catch (e) {
+        console.error('Failed to save settings:', e);
+      }
+    }
+
+    function loadSettings() {
+      try {
+        const saved = localStorage.getItem('cyberpunk-stacks-settings');
+        if (saved) {
+          return JSON.parse(saved);
+        }
+      } catch (e) {
+        console.error('Failed to load settings:', e);
+      }
+      return null;
+    }
+
     // ===== Floor Generation =====
-    function generateFloor(floorNumber, rng, density) {
-      const blockTypes = ['residence', 'business', 'warehouse', 'clinic',
-                          'temple', 'club', 'restaurant', 'tech-shop'];
+    function generateFloor(floorNumber, rng, densityPreset) {
+      const blockSizes = getRandomBlockCombination(rng, densityPreset);
 
-      // Density affects block count (2-8 blocks per floor)
-      const blockCount = Math.floor(2 + (density / 10) * 6);
-
-      const blocks = [];
-      for (let i = 0; i < blockCount; i++) {
-        const typeIndex = Math.floor(rng() * blockTypes.length);
-        const type = blockTypes[typeIndex];
-        blocks.push({
-          type: type,
-          name: generateLocationName(type, rng),
-          threat: generateThreatLevel(rng)
-        });
+      if (!blockSizes) {
+        console.error('Failed to generate valid block combination for floor:', floorNumber);
+        return {
+          floorNumber,
+          blocks: [],
+          totalWidth: 0
+        };
       }
 
-      return {
-        floorNumber,
-        blocks
-      };
+      const floorData = generateFilledFloor(blockSizes, rng, densityPreset);
+
+      if (!floorData) {
+        console.error('Failed to create filled floor for floor:', floorNumber);
+        return {
+          floorNumber,
+          blocks: [],
+          totalWidth: 0
+        };
+      }
+
+      floorData.floorNumber = floorNumber;
+
+      return floorData;
     }
 
     // ===== Building Generation =====
-    function generateBuilding(floorCount, seed, density) {
+    function generateBuilding(floorCount, seed, densityPreset) {
       const rng = mulberry32(seed);
       const floors = [];
 
       for (let i = floorCount; i >= 1; i--) {
-        floors.push(generateFloor(i, rng, density));
+        floors.push(generateFloor(i, rng, densityPreset));
       }
 
       return {
         seed,
         floorCount,
-        density,
+        densityPreset,
         floors
       };
     }
@@ -225,6 +387,9 @@
       block.dataset.type = blockData.type;
       block.dataset.name = blockData.name;
       block.dataset.threat = blockData.threat;
+      const unitSize = blockData.size || 1;
+      block.dataset.size = unitSize;
+      block.style.flex = `${unitSize} 0 0`;
       block.textContent = blockData.type.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 
       return block;
@@ -400,7 +565,7 @@
     function getSettings() {
       const floorCountInput = document.getElementById('floorCount');
       const seedInput = document.getElementById('rngSeed');
-      const densityInput = document.getElementById('density');
+      const densityPresetInput = document.getElementById('densityPreset');
       const layoutLockInput = document.getElementById('layoutLock');
 
       let floorCount = parseInt(floorCountInput.value);
@@ -414,15 +579,16 @@
         seedInput.value = seed;
       }
 
-      let density = parseInt(densityInput.value);
-      if (isNaN(density) || density < 1) density = 1;
-      if (density > 10) density = 10;
-      densityInput.value = density;
+      let densityPreset = parseInt(densityPresetInput.value);
+      if (!DENSITY_PRESETS[densityPreset]) {
+        densityPreset = 3;
+      }
+      densityPresetInput.value = densityPreset;
 
       return {
         floorCount,
         seed,
-        density,
+        densityPreset,
         layoutLock: layoutLockInput.checked
       };
     }
@@ -438,8 +604,11 @@
         return;
       }
 
+      // Save settings to localStorage
+      saveSettings(settings);
+
       // Full regeneration
-      currentBuilding = generateBuilding(settings.floorCount, settings.seed, settings.density);
+      currentBuilding = generateBuilding(settings.floorCount, settings.seed, settings.densityPreset);
       renderBuilding(currentBuilding);
 
       // Scroll to top
@@ -454,9 +623,22 @@
       console.log('Next Beat clicked - event re-roll not yet implemented');
     });
 
+    // Auto-regenerate on settings change for immediate feedback
+    document.getElementById('densityPreset').addEventListener('change', () => {
+      regenerateBuilding();
+    });
+
     // ===== Initialize =====
     // Load location data first, then initialize
     loadLocationData().then(() => {
+      // Load saved settings
+      const savedSettings = loadSettings();
+      if (savedSettings) {
+        if (DENSITY_PRESETS[savedSettings.densityPreset]) {
+          document.getElementById('densityPreset').value = savedSettings.densityPreset;
+        }
+      }
+
       // Attach listeners to existing blocks
       attachBlockEventListeners();
 

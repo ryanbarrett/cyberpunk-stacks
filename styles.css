@@ -5,6 +5,8 @@
   --color-text-primary: #e0e0e0;
   --color-text-secondary: #a0a0a0;
   --color-text-muted: #606060;
+
+  --base-block-size: 40px;
   
   --color-neon-pink: #ff006e;
   --color-neon-cyan: #00f0ff;
@@ -25,6 +27,7 @@
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
   
   --border-radius-sm: 2px;
   --border-radius-md: 4px;
@@ -124,9 +127,7 @@ aside {
 
 .floor {
   display: flex;
-  gap: var(--spacing-xs);
   min-height: 60px;
-  padding: var(--spacing-xs);
   background: var(--color-bg-tertiary);
   border: 1px solid var(--color-border);
   position: relative;
@@ -143,20 +144,21 @@ aside {
 }
 
 .block {
-  flex: 1;
-  min-width: 40px;
   padding: var(--spacing-sm);
   background: var(--color-bg-primary);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-sm);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base), flex var(--transition-base);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.7rem;
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .block:hover {
@@ -234,6 +236,33 @@ aside {
   background: var(--color-bg-primary);
   border-radius: 3px;
   outline: none;
+}
+
+.settings-select {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  padding: var(--spacing-sm);
+  font-family: var(--font-tech);
+  font-size: 0.875rem;
+  border-radius: var(--border-radius-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300f0ff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+
+.settings-select:focus {
+  outline: none;
+  border-color: var(--color-neon-cyan);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.settings-select:hover {
+  border-color: var(--color-neon-cyan);
 }
 
 .settings-range::-webkit-slider-thumb {
@@ -552,11 +581,15 @@ aside {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
   }
-  
+
   aside {
     border-left: none;
     border-top: 1px solid var(--color-border);
     max-height: 300px;
+  }
+
+  :root {
+    --base-block-size: 35px;
   }
 }
 
@@ -564,31 +597,41 @@ aside {
   header {
     padding: var(--spacing-md);
   }
-  
+
   .header-title {
     font-size: 1.125rem;
   }
-  
+
   main,
   aside {
     padding: var(--spacing-md);
   }
-  
+
   .building-container {
     padding: var(--spacing-md);
   }
-  
+
   .floor {
     min-height: 50px;
   }
-  
+
   .block {
     font-size: 0.6rem;
     padding: var(--spacing-xs);
   }
-  
+
   .modal-content {
     width: 95%;
     padding: var(--spacing-md);
+  }
+
+  :root {
+    --base-block-size: 30px;
+  }
+}
+
+@media (min-width: 1400px) {
+  :root {
+    --base-block-size: 45px;
   }
 }
