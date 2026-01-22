@@ -133,6 +133,24 @@ aside {
   position: relative;
 }
 
+.floor--highlight {
+  border-color: var(--color-neon-pink);
+  box-shadow: 0 0 18px rgba(255, 0, 110, 0.4);
+  animation: floorPulse 1.2s ease;
+}
+
+@keyframes floorPulse {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 0, 110, 0);
+  }
+  40% {
+    box-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(255, 0, 110, 0);
+  }
+}
+
 .floor-number {
   position: absolute;
   left: -30px;
@@ -159,6 +177,44 @@ aside {
   white-space: nowrap;
   text-overflow: ellipsis;
   min-width: 0;
+}
+
+.connection {
+  flex: 0.5 0 0;
+  min-width: 0;
+  padding: var(--spacing-xs);
+  background: var(--color-bg-primary);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  transition: all var(--transition-base), flex var(--transition-base);
+}
+
+.connection-label {
+  font-size: 0.55rem;
+}
+
+.connection-arrow {
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.connection--stairs {
+  color: var(--color-neon-cyan);
+  border-color: rgba(0, 240, 255, 0.6);
+}
+
+.connection--lift {
+  color: var(--color-neon-yellow);
+  border-color: rgba(247, 255, 0, 0.6);
 }
 
 .block:hover {
@@ -202,6 +258,22 @@ aside {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
+}
+
+.connection-matrix {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-sm);
+  font-size: 0.65rem;
+  line-height: 1.4;
+  max-height: 240px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+.is-hidden {
+  display: none;
 }
 
 .settings-label {

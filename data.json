@@ -880,5 +880,43 @@
         ]
       }
     }
+  },
+  "connections": {
+    "stairs": {
+      "description": "Narrow maintenance stairwells with flickering neon guides and battered handrails.",
+      "security": {
+        "level": "low",
+        "guards": 0,
+        "cameras": false
+      },
+      "notableItems": [
+        "Graffiti-coded route markers",
+        "Emergency power conduit",
+        "Hidden cache alcove"
+      ],
+      "activeEvents": [
+        "Footsteps echoing above",
+        "Power surge in the stairwell",
+        "Door panel jammed"
+      ]
+    },
+    "lift": {
+      "description": "Industrial lift cages with unreliable motors and corporate override locks.",
+      "security": {
+        "level": "medium",
+        "guards": 1,
+        "cameras": true
+      },
+      "notableItems": [
+        "Override key slot",
+        "Broken floor display",
+        "Hidden maintenance hatch"
+      ],
+      "activeEvents": [
+        "Lift stalled between floors",
+        "Security scan in progress",
+        "Emergency alarm triggered"
+      ]
+    }
   }
 }

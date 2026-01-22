@@ -63,6 +63,22 @@
         </div>
 
         <div class="settings-group">
+          <label class="settings-label">Connection Mode</label>
+          <select id="connectionMode" class="settings-select">
+            <option value="linear" selected>Linear</option>
+            <option value="labyrinth">Labyrinth</option>
+          </select>
+        </div>
+
+        <div class="settings-group">
+          <label class="settings-checkbox">
+            <input type="checkbox" id="showConnections">
+            <span>Show Connection Matrix</span>
+          </label>
+          <pre id="connectionMatrix" class="connection-matrix is-hidden"></pre>
+        </div>
+
+        <div class="settings-group">
           <label class="settings-checkbox">
             <input type="checkbox" id="neonTheme" checked>
             <span>Neon Theme</span>
@@ -170,10 +186,15 @@
 
     // ===== Block Level Filling System =====
     const LEVEL_WIDTH = 16;
+    const CONNECTION_WIDTH = 0.5;
     const MIN_BLOCK_SIZE = 1;
     const MAX_BLOCK_SIZE = 6;
+    const CONNECTION_MODES = {
+      linear: 'linear',
+      labyrinth: 'labyrinth'
+    };
 
-    function validateBlockSizes(blockSizes) {
+    function validateBlockSizes(blockSizes, levelWidth) {
       if (!Array.isArray(blockSizes)) {
         console.error('Block sizes must be an array');
         return { valid: false, error: 'Block sizes must be an array' };
@@ -194,15 +215,15 @@
 
       const totalWidth = blockSizes.reduce((sum, size) => sum + size, 0);
 
-      if (totalWidth !== LEVEL_WIDTH) {
-        console.error(`Total width ${totalWidth} does not equal level width ${LEVEL_WIDTH}`);
-        return { valid: false, error: `Total width ${totalWidth} does not equal level width ${LEVEL_WIDTH}` };
+      if (totalWidth !== levelWidth) {
+        console.error(`Total width ${totalWidth} does not equal level width ${levelWidth}`);
+        return { valid: false, error: `Total width ${totalWidth} does not equal level width ${levelWidth}` };
       }
 
       return { valid: true, totalWidth: totalWidth };
     }
 
-    function generateValidBlockCombinations(maxResults = 1000) {
+    function generateValidBlockCombinations(levelWidth, maxResults = 1000) {
       const combinations = [];
       const combination = [];
 
@@ -223,13 +244,12 @@
         }
       }
 
-      backtrack(LEVEL_WIDTH);
+      backtrack(levelWidth);
       return combinations;
     }
 
-    function getRandomBlockCombination(rng, densityPreset) {
-      const preset = DENSITY_PRESETS[densityPreset];
-      const combinations = generateValidBlockCombinations(500);
+    function getRandomBlockCombination(rng, densityPreset, levelWidth) {
+      const combinations = generateValidBlockCombinations(levelWidth, 500);
 
       if (combinations.length === 0) {
         console.error('No valid combinations found');
@@ -240,8 +260,8 @@
       return combinations[index];
     }
 
-    function generateFilledFloor(blockSizes, rng, densityPreset) {
-      const validation = validateBlockSizes(blockSizes);
+    function generateFilledFloor(blockSizes, rng, densityPreset, levelWidth) {
+      const validation = validateBlockSizes(blockSizes, levelWidth);
 
       if (!validation.valid) {
         console.error(`Invalid block sizes: ${validation.error}`);
@@ -267,8 +287,192 @@
       return {
         floorNumber: null,
         blocks,
-        totalWidth: LEVEL_WIDTH
+        totalWidth: levelWidth
       };
+    }
+
+    // ===== Vertical Connection System =====
+    function createEmptyConnections(floorCount) {
+      const connections = {};
+      for (let i = 1; i <= floorCount; i++) {
+        connections[i] = { stairs: [], lifts: [] };
+      }
+      return connections;
+    }
+
+    function hasConnection(connections, type, from, to) {
+      return connections[from][type].some(connection => connection.to === to);
+    }
+
+    function addConnection(connections, type, from, to) {
+      if (from === to) return false;
+      if (hasConnection(connections, type, from, to)) return false;
+      connections[from][type].push({ to, position: null, slotIndex: null });
+      connections[to][type].push({ to: from, position: null, slotIndex: null });
+      return true;
+    }
+
+    function getConnectionCount(floorConnections) {
+      return floorConnections.stairs.length + floorConnections.lifts.length;
+    }
+
+    function getAvailableBlockWidth(connectionCount) {
+      const width = LEVEL_WIDTH - connectionCount * CONNECTION_WIDTH;
+      return Math.max(width, MIN_BLOCK_SIZE);
+    }
+
+    function shuffleArray(array, rng) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function generateLinearConnections(floorCount) {
+      const connections = createEmptyConnections(floorCount);
+
+      for (let i = 1; i < floorCount; i++) {
+        addConnection(connections, 'lifts', i, i + 1);
+        addConnection(connections, 'stairs', i, i + 1);
+      }
+
+      return connections;
+    }
+
+    function generateLabyrinthConnections(floorCount, rng) {
+      const combos = [
+        { stairs: 1, lifts: 1 },
+        { stairs: 1, lifts: 3 },
+        { stairs: 2, lifts: 2 },
+        { stairs: 3, lifts: 1 }
+      ];
+      const maxAttempts = 40;
+
+      for (let attempt = 0; attempt < maxAttempts; attempt++) {
+        const connections = createEmptyConnections(floorCount);
+        const targets = {};
+        let totalStairs = 0;
+        let totalLifts = 0;
+
+        for (let i = 1; i <= floorCount; i++) {
+          const combo = combos[Math.floor(rng() * combos.length)];
+          targets[i] = { stairs: combo.stairs, lifts: combo.lifts };
+          totalStairs += combo.stairs;
+          totalLifts += combo.lifts;
+        }
+
+        if (totalStairs % 2 !== 0 || totalLifts % 2 !== 0) {
+          continue;
+        }
+
+        if (!pairConnections('stairs', connections, targets, rng, floorCount)) {
+          continue;
+        }
+
+        if (!pairConnections('lifts', connections, targets, rng, floorCount)) {
+          continue;
+        }
+
+        if (!validateLabyrinthConnections(connections, floorCount)) {
+          continue;
+        }
+
+        return connections;
+      }
+
+      console.warn('Labyrinth generation failed; falling back to linear connections');
+      return generateLinearConnections(floorCount);
+    }
+
+    function pairConnections(type, connections, targets, rng, floorCount) {
+      const floors = [];
+      for (let i = 1; i <= floorCount; i++) {
+        floors.push(i);
+      }
+
+      let safety = floorCount * floorCount * 6;
+      while (safety > 0) {
+        const remaining = floors.filter(floor => targets[floor][type] > 0);
+        if (remaining.length === 0) {
+          return true;
+        }
+        if (remaining.length === 1) {
+          return false;
+        }
+
+        const from = remaining[Math.floor(rng() * remaining.length)];
+        const candidates = remaining.filter(
+          floor => floor !== from && !hasConnection(connections, type, from, floor)
+        );
+        if (candidates.length === 0) {
+          return false;
+        }
+        const to = candidates[Math.floor(rng() * candidates.length)];
+        if (!addConnection(connections, type, from, to)) {
+          return false;
+        }
+        targets[from][type] -= 1;
+        targets[to][type] -= 1;
+        safety -= 1;
+      }
+
+      return false;
+    }
+
+    function validateLabyrinthConnections(connections, floorCount) {
+      for (let i = 1; i <= floorCount; i++) {
+        const floorConnections = connections[i];
+        const total = getConnectionCount(floorConnections);
+        if (total < 2 || total > 4 || total % 2 !== 0) {
+          return false;
+        }
+        if (floorConnections.stairs.length < 1 || floorConnections.lifts.length < 1) {
+          return false;
+        }
+        const stairTargets = new Set(floorConnections.stairs.map(conn => conn.to));
+        const liftTargets = new Set(floorConnections.lifts.map(conn => conn.to));
+        let hasDistinct = false;
+        stairTargets.forEach(target => {
+          if (!liftTargets.has(target)) {
+            hasDistinct = true;
+          }
+        });
+        if (!hasDistinct) {
+          return false;
+        }
+      }
+
+      return isConnectionGraphConnected(connections, floorCount);
+    }
+
+    function isConnectionGraphConnected(connections, floorCount) {
+      const visited = new Set();
+      const stack = [floorCount];
+
+      while (stack.length) {
+        const current = stack.pop();
+        if (visited.has(current)) continue;
+        visited.add(current);
+        const neighbors = [
+          ...connections[current].stairs.map(conn => conn.to),
+          ...connections[current].lifts.map(conn => conn.to)
+        ];
+        neighbors.forEach(neighbor => {
+          if (!visited.has(neighbor)) stack.push(neighbor);
+        });
+      }
+
+      return visited.size === floorCount;
+    }
+
+    function generateConnections(floorCount, rng, mode) {
+      if (floorCount < 2) {
+        return createEmptyConnections(floorCount);
+      }
+      if (mode === CONNECTION_MODES.labyrinth) {
+        return generateLabyrinthConnections(floorCount, rng);
+      }
+      return generateLinearConnections(floorCount);
     }
 
     // ===== Location Data Loading =====
@@ -315,7 +519,9 @@
     function saveSettings(settings) {
       try {
         localStorage.setItem('cyberpunk-stacks-settings', JSON.stringify({
-          densityPreset: settings.densityPreset
+          densityPreset: settings.densityPreset,
+          connectionMode: settings.connectionMode,
+          showConnections: settings.showConnections
         }));
       } catch (e) {
         console.error('Failed to save settings:', e);
@@ -335,8 +541,10 @@
     }
 
     // ===== Floor Generation =====
-    function generateFloor(floorNumber, rng, densityPreset) {
-      const blockSizes = getRandomBlockCombination(rng, densityPreset);
+    function generateFloor(floorNumber, rng, densityPreset, floorConnections, connectionMode) {
+      const connectionCount = getConnectionCount(floorConnections);
+      const availableWidth = getAvailableBlockWidth(connectionCount);
+      const blockSizes = getRandomBlockCombination(rng, densityPreset, availableWidth);
 
       if (!blockSizes) {
         console.error('Failed to generate valid block combination for floor:', floorNumber);
@@ -347,7 +555,7 @@
         };
       }
 
-      const floorData = generateFilledFloor(blockSizes, rng, densityPreset);
+      const floorData = generateFilledFloor(blockSizes, rng, densityPreset, availableWidth);
 
       if (!floorData) {
         console.error('Failed to create filled floor for floor:', floorNumber);
@@ -359,25 +567,84 @@
       }
 
       floorData.floorNumber = floorNumber;
+      floorData.connections = floorConnections;
+      assignConnectionPositions(floorData, rng, connectionMode);
 
       return floorData;
     }
 
     // ===== Building Generation =====
-    function generateBuilding(floorCount, seed, densityPreset) {
+    function generateBuilding(floorCount, seed, densityPreset, connectionMode) {
       const rng = mulberry32(seed);
+      const connections = generateConnections(floorCount, rng, connectionMode);
       const floors = [];
 
       for (let i = floorCount; i >= 1; i--) {
-        floors.push(generateFloor(i, rng, densityPreset));
+        floors.push(generateFloor(i, rng, densityPreset, connections[i], connectionMode));
       }
 
       return {
         seed,
         floorCount,
         densityPreset,
+        connectionMode,
         floors
       };
+    }
+
+    function getConnectionEntries(floorConnections) {
+      const entries = [];
+      floorConnections.stairs.forEach(connection => {
+        entries.push({ type: 'stairs', data: connection });
+      });
+      floorConnections.lifts.forEach(connection => {
+        entries.push({ type: 'lift', data: connection });
+      });
+      return entries;
+    }
+
+    function getSlotUnitOffset(blocks, slotIndex) {
+      let offset = 0;
+      for (let i = 0; i < slotIndex; i++) {
+        offset += blocks[i].size || 1;
+      }
+      return offset;
+    }
+
+    function assignConnectionPositions(floorData, rng, connectionMode) {
+      const blocks = floorData.blocks;
+      const entries = getConnectionEntries(floorData.connections);
+
+      if (connectionMode === CONNECTION_MODES.linear) {
+        floorData.connections.lifts.forEach(connection => {
+          connection.position = 'left';
+          connection.slotIndex = 0;
+        });
+        floorData.connections.stairs.forEach(connection => {
+          connection.position = 'right';
+          connection.slotIndex = blocks.length;
+        });
+        return;
+      }
+
+      const slots = [];
+      for (let i = 0; i <= blocks.length; i++) {
+        slots.push(i);
+      }
+      shuffleArray(slots, rng);
+      shuffleArray(entries, rng);
+
+      entries.forEach((entry, index) => {
+        entry.data.slotIndex = slots[index % slots.length];
+      });
+
+      const totalWidth = blocks.reduce((sum, block) => sum + (block.size || 1), 0) +
+        entries.length * CONNECTION_WIDTH;
+
+      entries.forEach(entry => {
+        const unitOffset = getSlotUnitOffset(blocks, entry.data.slotIndex);
+        entry.data.position = unitOffset < totalWidth / 2 ? 'left' : 'right';
+      });
     }
 
     // ===== DOM Rendering =====
@@ -395,6 +662,69 @@
       return block;
     }
 
+    function createConnectionElement(connectionEntry, fromFloor) {
+      const connection = connectionEntry.data;
+      const type = connectionEntry.type;
+      const label = type === 'stairs' ? 'STAIRS' : 'LIFT';
+      const direction = connection.to > fromFloor ? 'up' : 'down';
+      const arrow = direction === 'up' ? '▲' : '▼';
+
+      const connectionEl = document.createElement('div');
+      connectionEl.className = `connection connection--${type}`;
+      connectionEl.dataset.type = type;
+      connectionEl.dataset.from = fromFloor;
+      connectionEl.dataset.to = connection.to;
+      connectionEl.dataset.direction = direction;
+      connectionEl.dataset.position = connection.position || 'left';
+      connectionEl.innerHTML = `
+        <span class="connection-label">${label}</span>
+        <span class="connection-arrow">${arrow}</span>
+      `;
+      connectionEl.title = `${label} ${arrow} Floor ${connection.to}`;
+
+      return connectionEl;
+    }
+
+    function buildFloorItems(floorData, connectionMode) {
+      const blocks = floorData.blocks;
+      const connectionEntries = getConnectionEntries(floorData.connections);
+
+      if (connectionEntries.length === 0) {
+        return blocks.map(block => ({ kind: 'block', data: block }));
+      }
+
+      if (connectionMode === CONNECTION_MODES.linear) {
+        const lifts = connectionEntries.filter(entry => entry.type === 'lift');
+        const stairs = connectionEntries.filter(entry => entry.type === 'stairs');
+        lifts.sort((a, b) => a.data.to - b.data.to);
+        stairs.sort((a, b) => a.data.to - b.data.to);
+        return [
+          ...lifts.map(entry => ({ kind: 'connection', data: entry })),
+          ...blocks.map(block => ({ kind: 'block', data: block })),
+          ...stairs.map(entry => ({ kind: 'connection', data: entry }))
+        ];
+      }
+
+      const slotMap = new Map();
+      connectionEntries.forEach(entry => {
+        const slotIndex = entry.data.slotIndex ?? 0;
+        if (!slotMap.has(slotIndex)) {
+          slotMap.set(slotIndex, []);
+        }
+        slotMap.get(slotIndex).push(entry);
+      });
+
+      const items = [];
+      for (let i = 0; i <= blocks.length; i++) {
+        const connections = slotMap.get(i) || [];
+        connections.forEach(entry => items.push({ kind: 'connection', data: entry }));
+        if (i < blocks.length) {
+          items.push({ kind: 'block', data: blocks[i] });
+        }
+      }
+      return items;
+    }
+
     function renderBuilding(buildingData) {
       const container = document.querySelector('.building-container');
       container.innerHTML = '';
@@ -402,15 +732,20 @@
       buildingData.floors.forEach(floorData => {
         const floorDiv = document.createElement('div');
         floorDiv.className = 'floor';
+        floorDiv.dataset.floor = floorData.floorNumber;
 
         const floorNumber = document.createElement('span');
         floorNumber.className = 'floor-number';
         floorNumber.textContent = floorData.floorNumber;
         floorDiv.appendChild(floorNumber);
 
-        floorData.blocks.forEach(blockData => {
-          const blockElement = createBlockElement(blockData);
-          floorDiv.appendChild(blockElement);
+        const items = buildFloorItems(floorData, buildingData.connectionMode);
+        items.forEach(item => {
+          if (item.kind === 'block') {
+            floorDiv.appendChild(createBlockElement(item.data));
+          } else {
+            floorDiv.appendChild(createConnectionElement(item.data, floorData.floorNumber));
+          }
         });
 
         container.appendChild(floorDiv);
@@ -418,6 +753,8 @@
 
       // Re-attach event listeners to new blocks
       attachBlockEventListeners();
+      attachConnectionEventListeners();
+      renderConnectionMatrix(buildingData);
     }
 
     // ===== Tooltip & Modal System =====
@@ -479,7 +816,7 @@
         block.addEventListener('click', () => {
           const locationType = block.dataset.type;
           const locationName = block.dataset.name;
-          populateModal(locationType, locationName);
+          populateLocationModal(locationType, locationName);
           modal.classList.add('active');
         });
 
@@ -504,6 +841,48 @@
       });
     }
 
+    function attachConnectionEventListeners() {
+      const connections = document.querySelectorAll('.connection');
+
+      connections.forEach(connection => {
+        connection.addEventListener('click', () => {
+          const connectionType = connection.dataset.type;
+          const fromFloor = parseInt(connection.dataset.from, 10);
+          const toFloor = parseInt(connection.dataset.to, 10);
+          populateConnectionModal(connectionType, fromFloor, toFloor);
+          modal.classList.add('active');
+          focusFloor(toFloor);
+        });
+      });
+    }
+
+    function focusFloor(targetFloor) {
+      const floorElement = document.querySelector(`.floor[data-floor="${targetFloor}"]`);
+      if (!floorElement) return;
+      floorElement.classList.remove('floor--highlight');
+      void floorElement.offsetWidth;
+      floorElement.classList.add('floor--highlight');
+      floorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function renderConnectionMatrix(buildingData) {
+      const matrixEl = document.getElementById('connectionMatrix');
+      if (!matrixEl) return;
+
+      const lines = [];
+      buildingData.floors.forEach(floorData => {
+        const stairs = floorData.connections.stairs
+          .map(conn => `${conn.to > floorData.floorNumber ? '▲' : '▼'}${conn.to}`)
+          .join(', ');
+        const lifts = floorData.connections.lifts
+          .map(conn => `${conn.to > floorData.floorNumber ? '▲' : '▼'}${conn.to}`)
+          .join(', ');
+        lines.push(`Floor ${floorData.floorNumber}: S[${stairs || '-'}] L[${lifts || '-'}]`);
+      });
+
+      matrixEl.textContent = lines.join('\n');
+    }
+
     modalClose.addEventListener('click', () => {
       modal.classList.remove('active');
     });
@@ -514,7 +893,7 @@
       }
     });
 
-    function populateModal(locationType, locationName) {
+    function populateLocationModal(locationType, locationName) {
       if (!locationData || !locationData.locations) {
         console.error('Location data not loaded');
         return;
@@ -532,19 +911,55 @@
         return;
       }
 
-      const modalTitle = modal.querySelector('.modal-title');
-      const sections = modal.querySelectorAll('.detail-section');
-
-      modalTitle.textContent = locationName;
-
       const description = location.description || '';
       const security = location.security || {};
       const notableItems = location.notableItems || [];
       const activeEvents = location.activeEvents || [];
+      populateModalContent({
+        title: locationName,
+        description,
+        security,
+        tags: [],
+        notableItems,
+        activeEvents
+      });
+    }
+
+    function populateConnectionModal(connectionType, fromFloor, toFloor) {
+      if (!locationData || !locationData.connections) {
+        console.error('Connection data not loaded');
+        return;
+      }
+
+      const connectionData = locationData.connections[connectionType];
+      if (!connectionData) {
+        console.error(`No data found for connection type: ${connectionType}`);
+        return;
+      }
+
+      const direction = toFloor > fromFloor ? 'Up' : 'Down';
+      const titleLabel = connectionType === 'stairs' ? 'Stairs' : 'Lift';
+
+      populateModalContent({
+        title: `${titleLabel} ${direction} (Floor ${fromFloor} -> ${toFloor})`,
+        description: connectionData.description || '',
+        security: connectionData.security || {},
+        tags: [`From: ${fromFloor}`, `To: ${toFloor}`],
+        notableItems: connectionData.notableItems || [],
+        activeEvents: connectionData.activeEvents || []
+      });
+    }
+
+    function populateModalContent({ title, description, security, tags, notableItems, activeEvents }) {
+      const modalTitle = modal.querySelector('.modal-title');
+      const sections = modal.querySelectorAll('.detail-section');
+
+      modalTitle.textContent = title;
 
       const securityLevel = security.level || 'low';
       const guards = security.guards !== undefined ? `Guards: ${security.guards}` : '';
       const cameras = security.cameras !== undefined ? `Cameras: ${security.cameras ? 'Yes' : 'No'}` : '';
+      const extraTags = tags || [];
 
       sections[0].querySelector('.detail-section-content').textContent = description;
 
@@ -553,6 +968,7 @@
         <span class="tag tag--threat-${securityLevel}">${securityLevel.charAt(0).toUpperCase() + securityLevel.slice(1)}</span>
         ${guards ? `<span class="tag">${guards}</span>` : ''}
         ${cameras ? `<span class="tag">${cameras}</span>` : ''}
+        ${extraTags.map(tag => `<span class="tag">${tag}</span>`).join('')}
       `;
 
       sections[2].querySelector('.detail-section-content').textContent = notableItems.join(', ');
@@ -566,6 +982,8 @@
       const floorCountInput = document.getElementById('floorCount');
       const seedInput = document.getElementById('rngSeed');
       const densityPresetInput = document.getElementById('densityPreset');
+      const connectionModeInput = document.getElementById('connectionMode');
+      const showConnectionsInput = document.getElementById('showConnections');
       const layoutLockInput = document.getElementById('layoutLock');
 
       let floorCount = parseInt(floorCountInput.value);
@@ -585,10 +1003,20 @@
       }
       densityPresetInput.value = densityPreset;
 
+      let connectionMode = connectionModeInput.value;
+      if (!CONNECTION_MODES[connectionMode]) {
+        connectionMode = CONNECTION_MODES.linear;
+      }
+      connectionModeInput.value = connectionMode;
+
+      const showConnections = showConnectionsInput.checked;
+
       return {
         floorCount,
         seed,
         densityPreset,
+        connectionMode,
+        showConnections,
         layoutLock: layoutLockInput.checked
       };
     }
@@ -601,6 +1029,7 @@
         // For now, we'll just keep the current building
         // In future, this would re-roll event data while preserving structure
         console.log('Layout locked - preserving current building structure');
+        updateConnectionMatrixVisibility(settings.showConnections);
         return;
       }
 
@@ -608,11 +1037,23 @@
       saveSettings(settings);
 
       // Full regeneration
-      currentBuilding = generateBuilding(settings.floorCount, settings.seed, settings.densityPreset);
+      currentBuilding = generateBuilding(
+        settings.floorCount,
+        settings.seed,
+        settings.densityPreset,
+        settings.connectionMode
+      );
       renderBuilding(currentBuilding);
+      updateConnectionMatrixVisibility(settings.showConnections);
 
       // Scroll to top
       window.scrollTo(0, 0);
+    }
+
+    function updateConnectionMatrixVisibility(showConnections) {
+      const matrixEl = document.getElementById('connectionMatrix');
+      if (!matrixEl) return;
+      matrixEl.classList.toggle('is-hidden', !showConnections);
     }
 
     // ===== Event Handlers =====
@@ -628,6 +1069,16 @@
       regenerateBuilding();
     });
 
+    document.getElementById('connectionMode').addEventListener('change', () => {
+      regenerateBuilding();
+    });
+
+    document.getElementById('showConnections').addEventListener('change', (event) => {
+      const showConnections = event.target.checked;
+      updateConnectionMatrixVisibility(showConnections);
+      saveSettings({ ...getSettings(), showConnections });
+    });
+
     // ===== Initialize =====
     // Load location data first, then initialize
     loadLocationData().then(() => {
@@ -636,6 +1087,12 @@
       if (savedSettings) {
         if (DENSITY_PRESETS[savedSettings.densityPreset]) {
           document.getElementById('densityPreset').value = savedSettings.densityPreset;
+        }
+        if (savedSettings.connectionMode && CONNECTION_MODES[savedSettings.connectionMode]) {
+          document.getElementById('connectionMode').value = savedSettings.connectionMode;
+        }
+        if (typeof savedSettings.showConnections === 'boolean') {
+          document.getElementById('showConnections').checked = savedSettings.showConnections;
         }
       }
 
