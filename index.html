@@ -205,7 +205,7 @@
         sizeWeights: [0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 1, 2, 2],
         spacingMultiplier: 0.5,
         minBlockSize: 0.5,
-        maxBlockSize: 2
+        maxBlockSize: 4.5
       },
       3: {
         name: 'Medium',
@@ -213,7 +213,9 @@
         sizeWeights: [0.5, 1, 1, 2, 2, 2, 3, 3, 4, 4],
         spacingMultiplier: 1.0,
         minBlockSize: 0.5,
-        maxBlockSize: 4
+        maxBlockSize: 4,
+        halfUnitMin: 2,
+        halfUnitMax: 10
       },
       6: {
         name: 'Mixed',
@@ -221,21 +223,23 @@
         sizeWeights: [0.5, 1, 2, 3, 4, 5, 6],
         spacingMultiplier: 1.5,
         minBlockSize: 0.5,
-        maxBlockSize: 6
+        maxBlockSize: 6,
+        halfUnitMin: 2,
+        halfUnitMax: 6
       }
     };
 
     // ===== Block Level Filling System =====
     const LEVEL_WIDTH = 16;
     const CONNECTION_WIDTH = 0.5;
-    const MIN_BLOCK_SIZE = 1;
+    const MIN_BLOCK_SIZE = 0.5;
     const MAX_BLOCK_SIZE = 6;
     const CONNECTION_MODES = {
       linear: 'linear',
       labyrinth: 'labyrinth'
     };
 
-    function validateBlockSizes(blockSizes, levelWidth) {
+    function validateBlockSizes(blockSizes, levelWidth, minBlockSize, maxBlockSize) {
       if (!Array.isArray(blockSizes)) {
         console.error('Block sizes must be an array');
         return { valid: false, error: 'Block sizes must be an array' };
@@ -248,49 +252,61 @@
 
       for (let i = 0; i < blockSizes.length; i++) {
         const size = blockSizes[i];
-        if (typeof size !== 'number' || size < MIN_BLOCK_SIZE || size > MAX_BLOCK_SIZE) {
-          console.error(`Block at index ${i} has invalid size: ${size}. Must be between ${MIN_BLOCK_SIZE} and ${MAX_BLOCK_SIZE}`);
-          return { valid: false, error: `Block at index ${i} has invalid size: ${size}. Must be between ${MIN_BLOCK_SIZE} and ${MAX_BLOCK_SIZE}` };
+        const sizeHalf = Math.round(size * 2);
+        if (Math.abs(sizeHalf / 2 - size) > 0.001) {
+          console.error(`Block at index ${i} has invalid size: ${size}. Must be in 0.5-unit steps`);
+          return { valid: false, error: `Block at index ${i} has invalid size: ${size}. Must be in 0.5-unit steps` };
+        }
+        if (typeof size !== 'number' || size < minBlockSize || size > maxBlockSize) {
+          console.error(`Block at index ${i} has invalid size: ${size}. Must be between ${minBlockSize} and ${maxBlockSize}`);
+          return { valid: false, error: `Block at index ${i} has invalid size: ${size}. Must be between ${minBlockSize} and ${maxBlockSize}` };
         }
       }
 
-      const totalWidth = blockSizes.reduce((sum, size) => sum + size, 0);
+      const totalHalf = blockSizes.reduce((sum, size) => sum + Math.round(size * 2), 0);
+      const levelHalf = Math.round(levelWidth * 2);
 
-      if (totalWidth !== levelWidth) {
-        console.error(`Total width ${totalWidth} does not equal level width ${levelWidth}`);
-        return { valid: false, error: `Total width ${totalWidth} does not equal level width ${levelWidth}` };
+      if (totalHalf !== levelHalf) {
+        console.error(`Total width ${totalHalf / 2} does not equal level width ${levelWidth}`);
+        return { valid: false, error: `Total width ${totalHalf / 2} does not equal level width ${levelWidth}` };
       }
 
-      return { valid: true, totalWidth: totalWidth };
+      return { valid: true, totalWidth: totalHalf / 2 };
     }
 
-    function generateValidBlockCombinations(levelWidth, maxResults = 1000) {
+    function generateValidBlockCombinations(levelWidth, minBlockSize, maxBlockSize, halfUnitMin, halfUnitMax, maxResults = 1000) {
       const combinations = [];
       const combination = [];
+      const levelHalf = Math.round(levelWidth * 2);
+      const minHalf = Math.round(minBlockSize * 2);
+      const maxHalf = Math.round(maxBlockSize * 2);
 
       function backtrack(remainingSpace) {
         if (combinations.length >= maxResults) return;
 
         if (remainingSpace === 0) {
-          combinations.push([...combination]);
+          const halfCount = combination.filter(sizeHalf => sizeHalf === 1).length;
+          if (halfUnitMin !== null && halfCount < halfUnitMin) return;
+          if (halfUnitMax !== null && halfCount > halfUnitMax) return;
+          combinations.push(combination.map(sizeHalf => sizeHalf / 2));
           return;
         }
 
-        for (let size = MIN_BLOCK_SIZE; size <= MAX_BLOCK_SIZE && size <= remainingSpace; size++) {
-          if (remainingSpace - size >= 0) {
-            combination.push(size);
-            backtrack(remainingSpace - size);
+        for (let sizeHalf = minHalf; sizeHalf <= maxHalf && sizeHalf <= remainingSpace; sizeHalf += 1) {
+          if (remainingSpace - sizeHalf >= 0) {
+            combination.push(sizeHalf);
+            backtrack(remainingSpace - sizeHalf);
             combination.pop();
           }
         }
       }
 
-      backtrack(levelWidth);
+      backtrack(levelHalf);
       return combinations;
     }
 
-    function getRandomBlockCombination(rng, densityPreset, levelWidth) {
-      const combinations = generateValidBlockCombinations(levelWidth, 500);
+    function getRandomBlockCombination(rng, densityPreset, levelWidth, minBlockSize, maxBlockSize, halfUnitMin, halfUnitMax) {
+      const combinations = generateValidBlockCombinations(levelWidth, minBlockSize, maxBlockSize, halfUnitMin, halfUnitMax, 500);
 
       if (combinations.length === 0) {
         console.error('No valid combinations found');
@@ -301,8 +317,8 @@
       return combinations[index];
     }
 
-    function generateFilledFloor(blockSizes, rng, densityPreset, levelWidth) {
-      const validation = validateBlockSizes(blockSizes, levelWidth);
+    function generateFilledFloor(blockSizes, rng, densityPreset, levelWidth, minBlockSize, maxBlockSize) {
+      const validation = validateBlockSizes(blockSizes, levelWidth, minBlockSize, maxBlockSize);
 
       if (!validation.valid) {
         console.error(`Invalid block sizes: ${validation.error}`);
@@ -605,9 +621,21 @@
 
     // ===== Floor Generation =====
     function generateFloor(floorNumber, rng, densityPreset, floorConnections, connectionMode) {
+      const preset = DENSITY_PRESETS[densityPreset];
       const connectionCount = getConnectionCount(floorConnections);
       const availableWidth = getAvailableBlockWidth(connectionCount);
-      const blockSizes = getRandomBlockCombination(rng, densityPreset, availableWidth);
+      const blockSizes = getRandomBlockCombination(
+        rng,
+        densityPreset,
+        availableWidth,
+        preset.minBlockSize,
+        preset.maxBlockSize,
+        preset.halfUnitMin ?? null,
+        preset.halfUnitMax ?? null
+      );
+      if (blockSizes) {
+        shuffleArray(blockSizes, rng);
+      }
 
       if (!blockSizes) {
         console.error('Failed to generate valid block combination for floor:', floorNumber);
@@ -618,7 +646,14 @@
         };
       }
 
-      const floorData = generateFilledFloor(blockSizes, rng, densityPreset, availableWidth);
+      const floorData = generateFilledFloor(
+        blockSizes,
+        rng,
+        densityPreset,
+        availableWidth,
+        preset.minBlockSize,
+        preset.maxBlockSize
+      );
 
       if (!floorData) {
         console.error('Failed to create filled floor for floor:', floorNumber);
