@@ -345,11 +345,11 @@
       return connections[from][type].some(connection => connection.to === to);
     }
 
-    function addConnection(connections, type, from, to) {
+    function addConnection(connections, type, from, to, variantKey) {
       if (from === to) return false;
       if (hasConnection(connections, type, from, to)) return false;
-      connections[from][type].push({ to, position: null, slotIndex: null });
-      connections[to][type].push({ to: from, position: null, slotIndex: null });
+      connections[from][type].push({ to, position: null, slotIndex: null, variantKey });
+      connections[to][type].push({ to: from, position: null, slotIndex: null, variantKey });
       return true;
     }
 
@@ -369,12 +369,12 @@
       }
     }
 
-    function generateLinearConnections(floorCount) {
+    function generateLinearConnections(floorCount, rng) {
       const connections = createEmptyConnections(floorCount);
 
       for (let i = 1; i < floorCount; i++) {
-        addConnection(connections, 'lifts', i, i + 1);
-        addConnection(connections, 'stairs', i, i + 1);
+        addConnection(connections, 'lifts', i, i + 1, pickConnectionVariant('lift', rng));
+        addConnection(connections, 'stairs', i, i + 1, pickConnectionVariant('stairs', rng));
       }
 
       return connections;
@@ -449,7 +449,8 @@
           return false;
         }
         const to = candidates[Math.floor(rng() * candidates.length)];
-        if (!addConnection(connections, type, from, to)) {
+        const variantKey = pickConnectionVariant(type === 'lifts' ? 'lift' : type, rng);
+        if (!addConnection(connections, type, from, to, variantKey)) {
           return false;
         }
         targets[from][type] -= 1;
@@ -513,7 +514,17 @@
       if (mode === CONNECTION_MODES.labyrinth) {
         return generateLabyrinthConnections(floorCount, rng);
       }
-      return generateLinearConnections(floorCount);
+      return generateLinearConnections(floorCount, rng);
+    }
+
+    function pickConnectionVariant(type, rng) {
+      if (!locationData || !locationData.connections) return null;
+      const variants = locationData.connections[type];
+      if (!variants) return null;
+      const keys = Object.keys(variants);
+      if (keys.length === 0) return null;
+      const index = Math.floor(rng() * keys.length);
+      return keys[index];
     }
 
     // ===== Location Data Loading =====
@@ -743,6 +754,9 @@
       connectionEl.dataset.type = type;
       connectionEl.dataset.from = fromFloor;
       connectionEl.dataset.to = connection.to;
+      if (connection.variantKey) {
+        connectionEl.dataset.variant = connection.variantKey;
+      }
       connectionEl.dataset.direction = direction;
       connectionEl.dataset.position = connection.position || 'left';
       connectionEl.innerHTML = `
@@ -918,7 +932,8 @@
           const connectionType = connection.dataset.type;
           const fromFloor = parseInt(connection.dataset.from, 10);
           const toFloor = parseInt(connection.dataset.to, 10);
-          populateConnectionModal(connectionType, fromFloor, toFloor);
+          const variantKey = connection.dataset.variant || null;
+          populateConnectionModal(connectionType, fromFloor, toFloor, variantKey);
           modal.classList.add('active');
           focusFloor(toFloor);
         });
@@ -994,13 +1009,22 @@
       });
     }
 
-    function populateConnectionModal(connectionType, fromFloor, toFloor) {
+    function populateConnectionModal(connectionType, fromFloor, toFloor, variantKey) {
       if (!locationData || !locationData.connections) {
         console.error('Connection data not loaded');
         return;
       }
 
-      const connectionData = locationData.connections[connectionType];
+      const connectionVariants = locationData.connections[connectionType];
+      if (!connectionVariants) {
+        console.error(`No data found for connection type: ${connectionType}`);
+        return;
+      }
+      const availableKeys = Object.keys(connectionVariants);
+      const selectedKey = variantKey && connectionVariants[variantKey]
+        ? variantKey
+        : availableKeys[0];
+      const connectionData = connectionVariants[selectedKey];
       if (!connectionData) {
         console.error(`No data found for connection type: ${connectionType}`);
         return;
@@ -1013,7 +1037,7 @@
         title: `${titleLabel} ${direction} (Floor ${fromFloor} -> ${toFloor})`,
         description: connectionData.description || '',
         security: connectionData.security || {},
-        tags: [`From: ${fromFloor}`, `To: ${toFloor}`],
+        tags: [`From: ${fromFloor}`, `To: ${toFloor}`, selectedKey ? `Variant: ${selectedKey.replace(/_/g, ' ')}` : ''],
         notableItems: connectionData.notableItems || [],
         activeEvents: connectionData.activeEvents || []
       });
@@ -1028,7 +1052,7 @@
       const securityLevel = security.level || 'low';
       const guards = security.guards !== undefined ? `Guards: ${security.guards}` : '';
       const cameras = security.cameras !== undefined ? `Cameras: ${security.cameras ? 'Yes' : 'No'}` : '';
-      const extraTags = tags || [];
+      const extraTags = (tags || []).filter(Boolean);
 
       sections[0].querySelector('.detail-section-content').textContent = description;
 

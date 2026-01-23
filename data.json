@@ -108,6 +108,114 @@
           "Celebrity client visiting",
           "Competitor sabotage suspected"
         ]
+      },
+      "Ghostline Pediatrics": {
+        "description": "A stripped-down clinic quietly treating augmented children whose parents vanished into debt slavery (missing parents trail).",
+        "security": {
+          "level": "medium",
+          "guards": 1,
+          "cameras": true
+        },
+        "notableItems": [
+          "Child-sized neural braces",
+          "Encrypted patient ledger",
+          "Expired corp meds"
+        ],
+        "activeEvents": [
+          "Corporate audit delayed",
+          "Power rationing in effect",
+          "Unregistered patient admitted"
+        ]
+      },
+      "Red Channel Recovery": {
+        "description": "Emergency chop-clinic specializing in extraction after botched corporate ops (client bleeding out).",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Disposable surgical rigs",
+          "Blood-soaked smart tarp",
+          "Signal jammer"
+        ],
+        "activeEvents": [
+          "Trauma patient arriving",
+          "Supplier no-show",
+          "Gang lookout posted"
+        ]
+      },
+      "Pulse_Diagnostics": {
+        "description": "Sterile white walls contrast with rust-stained floor drains. Autodoc arms hang motionless over three surgical beds. A flickering holoscreen displays a queue of 47 patients. (unauthorized organ harvest)",
+        "security": {
+          "level": "medium",
+          "guards": 1,
+          "cameras": true
+        },
+        "notableItems": [
+          "Military-grade trauma kit",
+          "Encrypted patient database terminal",
+          "Contraband cyberware shipment"
+        ],
+        "activeEvents": [
+          "Medical examiner from Zone Authority conducting surprise inspection",
+          "Rival clinic's hired muscle demanding territorial payment",
+          "Patient flatlined during illegal neural mod installation"
+        ]
+      },
+      "Blackwell_Recovery": {
+        "description": "Former parking garage converted to mass triage center. Hundreds of cots stretch into darkness. Volunteer medics work under emergency lighting. Corporate insurance verifiers block the entrance. (refugee surge incoming)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Donated pharmaceutical stockpile",
+          "Makeshift bio-printer",
+          "Stolen ambulance with active tracker"
+        ],
+        "activeEvents": [
+          "Drug shortage causing violent disputes",
+          "Creditors threatening to seize equipment",
+          "Infected patient spreading unknown pathogen"
+        ]
+      },
+      "ChromeDoc_Augmentation": {
+        "description": "Neon chrome signage advertises combat-grade enhancements. Waiting room packed with mercenaries and corpo security. Installation bay behind reinforced glass hums with servo motors. (botched mod screaming)",
+        "security": {
+          "level": "high",
+          "guards": 3,
+          "cameras": true
+        },
+        "notableItems": [
+          "Military cyberware catalog",
+          "Neural interface calibration rig",
+          "Black-market dermal plating stock"
+        ],
+        "activeEvents": [
+          "Corpo client demanding immediate service over street customers",
+          "Installation malfunction causing customer to seize violently",
+          "Underground boxer shopping for illegal combat mods"
+        ]
+      },
+      "Mercy_Street_Clinic": {
+        "description": "Graffiti-covered storefront operates on donations. Single doctor treats gunshot wounds without questions. Blood-stained towels pile in corner. Generator stutters. (supplier cut them off)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Unregistered surgical tools",
+          "Stash of counterfeit antibiotics",
+          "Handwritten patient ledger"
+        ],
+        "activeEvents": [
+          "Gang member bleeding out on operating table",
+          "Drug enforcement agents staking out entrance",
+          "Doctor's medical license revocation notice arrived"
+        ]
       }
     },
     "club": {
@@ -217,6 +325,114 @@
           "Celebrity DJ set",
           "Flash mob planned",
           "Entry system hacked"
+        ]
+      },
+      "Afterimage": {
+        "description": "A strobe-lit club where dancers are recorded, remixed, and sold as licensed memories (identity theft scandal).",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Memory capture lenses",
+          "Talent contracts",
+          "Blackmail archive"
+        ],
+        "activeEvents": [
+          "Performer refusing scan",
+          "Licensing dispute",
+          "Media leak imminent"
+        ]
+      },
+      "Static Veil": {
+        "description": "Noise-metal club built around an illegal broadcast tower (signal traced tonight).",
+        "security": {
+          "level": "low",
+          "guards": 1,
+          "cameras": false
+        },
+        "notableItems": [
+          "Pirate transmitter",
+          "Crowd dampeners",
+          "Encrypted playlist core"
+        ],
+        "activeEvents": [
+          "Signal spike detected",
+          "Rival crew arrival",
+          "Police frequency chatter"
+        ]
+      },
+      "Voltage_Den": {
+        "description": "Subterranean dancehall pulses with illegal sound systems. Bodies writhe under UV lights and holographic projections. Bartender serves synth-alcohol in cracked glasses. Air thick with vape and sweat. (corpo raid imminent)",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Bootleg music server",
+          "Hidden weapons cache behind bar",
+          "Dealer's sample case of designer narcotics"
+        ],
+        "activeEvents": [
+          "DJ spinning encoded resistance broadcasts",
+          "Undercover agent identified by regulars",
+          "Fire suppression system sabotaged by competitor"
+        ]
+      },
+      "Neon_Lotus": {
+        "description": "Private VIP booths overlook crowded floor. Servers in chrome masks deliver overpriced drinks. Backroom hosts high-stakes card games. Owner bribes Zone Authority weekly. (protection money doubled)",
+        "security": {
+          "level": "high",
+          "guards": 4,
+          "cameras": true
+        },
+        "notableItems": [
+          "Military-spec jamming device",
+          "Vault containing client blackmail files",
+          "Gold-plated neural interface booth"
+        ],
+        "activeEvents": [
+          "Corpo executive conducting illegal business deal",
+          "Bouncer roughing up journalist asking questions",
+          "Rival gang lieutenant entered without permission"
+        ]
+      },
+      "The_Substrate": {
+        "description": "Abandoned subway platform transformed into underground rave. Squatters control entrance. DIY light rigs hang from crumbling ceiling. Music shakes loose tiles. No official exits. (structural collapse risk)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Pirated entertainment streams",
+          "Improvised drug lab in corner booth",
+          "Stolen power cables tapped into grid"
+        ],
+        "activeEvents": [
+          "Building inspector discovered dead outside",
+          "Dealer selling tainted product causing overdoses",
+          "Activist planning flash mob demonstration"
+        ]
+      },
+      "Crimson_Wire": {
+        "description": "Two-story club built inside gutted factory. Cage dancers perform on catwalks. Bar serves recycled alcohol. Management runs illegal betting operation upstairs. (debt collectors arrived)",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Server with gambling records",
+          "Confiscated weapons locker",
+          "Counterfeit credit chit press"
+        ],
+        "activeEvents": [
+          "Patron refusing to pay lost bet",
+          "Competing club owner scouting talent",
+          "Health inspector taking bribes to ignore violations"
         ]
       }
     },
@@ -328,6 +544,132 @@
           "Product recall",
           "Customer complaint escalation"
         ]
+      },
+      "Indenture Exchange": {
+        "description": "A legal office brokering debt contracts with permanent consequences (contract loophole found).",
+        "security": {
+          "level": "high",
+          "guards": 3,
+          "cameras": true
+        },
+        "notableItems": [
+          "Biometric contract seals",
+          "Debtor database",
+          "Corp arbitration AI"
+        ],
+        "activeEvents": [
+          "Class-action threat",
+          "Client collapse",
+          "Records quietly altered"
+        ]
+      },
+      "Rainline Insurance": {
+        "description": "Claims office famous for denying disaster coverage after disasters (evidence buried deep).",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Disaster footage archive",
+          "Risk prediction models",
+          "Whistleblower memo"
+        ],
+        "activeEvents": [
+          "Claim protest outside",
+          "Data purge scheduled",
+          "Internal review stalled"
+        ]
+      },
+      "Horizon_Logistics": {
+        "description": "Corporate front office with bulletproof windows. Receptionist screens all visitors through intercom. Back warehouse stores mysterious shipping containers. Armed drivers loading trucks constantly. (missing shipment scandal)",
+        "security": {
+          "level": "high",
+          "guards": 5,
+          "cameras": true
+        },
+        "notableItems": [
+          "Encrypted shipping manifests",
+          "GPS-tracked delivery vehicles",
+          "Contraband scanning equipment"
+        ],
+        "activeEvents": [
+          "Auditor demanding to inspect restricted cargo bay",
+          "Driver claiming shipment was hijacked",
+          "Anonymous tip about illegal weapons transport"
+        ]
+      },
+      "Scrap_&_Salvage": {
+        "description": "Open-air lot filled with rusted vehicles and stripped machinery. Owner buys anything no questions asked. Crusher operates 24/7. Surveillance drones avoid the area. (hot merchandise cooling)",
+        "security": {
+          "level": "low",
+          "guards": 1,
+          "cameras": false
+        },
+        "notableItems": [
+          "Stolen vehicle with active tracker",
+          "Military drone wreckage",
+          "Pile of unregistered cyberware"
+        ],
+        "activeEvents": [
+          "Original owner arrived demanding property back",
+          "Fence offering premium for specific corporate tech",
+          "Environmental inspector citing toxic waste violations"
+        ]
+      },
+      "Nexus_Data_Solutions": {
+        "description": "Sleek office tower lobby with biometric scanners. Glass walls reveal rows of server racks. Employees work in silent cubicles. HVAC hums constantly. Security escorts all visitors. (data breach discovered)",
+        "security": {
+          "level": "high",
+          "guards": 6,
+          "cameras": true
+        },
+        "notableItems": [
+          "Quantum encryption server",
+          "Executive access keycards",
+          "Prototype neural interface prototype"
+        ],
+        "activeEvents": [
+          "Whistleblower planning to leak documents",
+          "Client threatening lawsuit over security failure",
+          "IT discovering unauthorized network access"
+        ]
+      },
+      "Quickfix_Electronics": {
+        "description": "Cramped storefront overflowing with salvaged tech. Owner repairs anything for right price. Shelves stocked with counterfeit parts. Back room assembles custom devices. (supplier turned informant)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Stolen corporate prototypes",
+          "Component smuggling contact list",
+          "Toolkit for bypassing security chips"
+        ],
+        "activeEvents": [
+          "Customer demanding refund for faulty explosive device",
+          "Competitor spreading rumors about quality",
+          "Zone Authority flagged shop for investigation"
+        ]
+      },
+      "Crown_Pawn": {
+        "description": "Fortified shopfront with steel shutters. Everything behind reinforced glass. Owner sits behind bulletproof partition. Backroom vault requires three keys. (loan shark collecting)",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Ledger of debtors and collateral",
+          "Military-grade weapons cache",
+          "Stolen family heirlooms"
+        ],
+        "activeEvents": [
+          "Debtor begging for extended payment terms",
+          "Fence bringing in obviously stolen goods",
+          "Former employee threatening to expose illegal operations"
+        ]
       }
     },
     "residence": {
@@ -437,6 +779,114 @@
           "Maintenance scheduled",
           "Neighbor dispute",
           "Package delivery"
+        ]
+      },
+      "Stack 9C": {
+        "description": "Vertical slum stack held together by patched power lines and favors (floor went dark).",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Shared battery cache",
+          "Community warning board",
+          "Illegal tap junction"
+        ],
+        "activeEvents": [
+          "Power theft dispute",
+          "Corp eviction drones spotted",
+          "Water recycler failing"
+        ]
+      },
+      "Proxy Loft": {
+        "description": "Rented living space for people who don’t exist on paper (identity burned).",
+        "security": {
+          "level": "medium",
+          "guards": 1,
+          "cameras": true
+        },
+        "notableItems": [
+          "False ID printer",
+          "Burner terminals",
+          "Soundproof sleep pod"
+        ],
+        "activeEvents": [
+          "Neighbor asking questions",
+          "Data trail resurfaced",
+          "Emergency relocation planned"
+        ]
+      },
+      "Towers_Block_7": {
+        "description": "Concrete housing block with broken elevator. Graffiti covers every surface. Flickering hall lights reveal trash-filled corridors. Doors reinforced with metal bars. Smell of cooking fires. (eviction notices posted)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Pirated utility hookups",
+          "Makeshift barricades",
+          "Squatter's supply cache"
+        ],
+        "activeEvents": [
+          "Landlord's enforcers changing locks",
+          "Water main burst flooding lower floors",
+          "Gang recruiting children in courtyard"
+        ]
+      },
+      "Zenith_Condos": {
+        "description": "Luxury high-rise with facial recognition entry. Concierge desk staffed 24/7. Marble floors and climate control. Residents avoid eye contact. Rooftop helipad services executives. (resident murdered overnight)",
+        "security": {
+          "level": "high",
+          "guards": 4,
+          "cameras": true
+        },
+        "notableItems": [
+          "Resident database terminal",
+          "Executive's panic room",
+          "Automated defense turret controls"
+        ],
+        "activeEvents": [
+          "Corpo spouse hiring private security against threats",
+          "Maid discovered smuggling valuables",
+          "Tenant association demanding better security"
+        ]
+      },
+      "Riverside_Squat": {
+        "description": "Abandoned apartment complex claimed by homeless. Windows boarded with scrap metal. Fires burn in oil drums. Lookouts posted on each floor. Community kitchen operates in lobby. (gang claiming territory)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Community weapons stash",
+          "Stolen food rations",
+          "Makeshift medical supplies"
+        ],
+        "activeEvents": [
+          "Residents organizing against incoming displacement",
+          "Disease outbreak from contaminated water",
+          "Developer scouts surveying for demolition"
+        ]
+      },
+      "Parkside_Commons": {
+        "description": "Mid-rise apartments with failing infrastructure. Flickering lights in stairwells. Neighbors argue through thin walls. Management never responds to complaints. Rent collection enforced by thugs. (structural cracks spreading)",
+        "security": {
+          "level": "low",
+          "guards": 1,
+          "cameras": true
+        },
+        "notableItems": [
+          "Maintenance access keys",
+          "Unpaid utility notices",
+          "Tenant complaint files"
+        ],
+        "activeEvents": [
+          "Building inspector bribed to pass inspection",
+          "Resident organizing rent strike",
+          "Dealer using vacant unit for operations"
         ]
       }
     },
@@ -548,6 +998,114 @@
           "Drone malfunction",
           "Cyberattack detected"
         ]
+      },
+      "Cold Sink": {
+        "description": "Refrigerated warehouse storing biotech shipments that missed customs (coolant failing fast).",
+        "security": {
+          "level": "high",
+          "guards": 3,
+          "cameras": true
+        },
+        "notableItems": [
+          "Cryo crates",
+          "Temperature override node",
+          "Corp seal tags"
+        ],
+        "activeEvents": [
+          "Cooling alarm triggered",
+          "Inspection rerouted",
+          "Cargo auction arranged"
+        ]
+      },
+      "Ashfall Storage": {
+        "description": "Burn-scarred warehouse repurposed by scav crews and smugglers (fire wasn’t accident).",
+        "security": {
+          "level": "low",
+          "guards": 1,
+          "cameras": false
+        },
+        "notableItems": [
+          "Charred manifests",
+          "Salvage drones",
+          "Hidden sublevel door"
+        ],
+        "activeEvents": [
+          "New squatters arrived",
+          "Old sensors reactivated",
+          "Unknown signal pinging"
+        ]
+      },
+      "Sector_9_Storage": {
+        "description": "Massive concrete structure with rusted loading docks. Automated forklifts move pallets through darkness. Surveillance blind spots everywhere. Night shift works skeleton crew. (inventory discrepancy flagged)",
+        "security": {
+          "level": "medium",
+          "guards": 3,
+          "cameras": true
+        },
+        "notableItems": [
+          "Shipping manifest terminal",
+          "Employee access cards",
+          "Misrouted corporate shipment"
+        ],
+        "activeEvents": [
+          "Workers striking over unpaid overtime",
+          "Thieves loading unmarked truck in blind spot",
+          "Inspector discovering safety violations"
+        ]
+      },
+      "Redline_Depot": {
+        "description": "Converted train station stores black-market goods. Rusted tracks run through center. Stacked crates reach ceiling. Armed guards patrol catwalks. Owner sells to highest bidder. (corpo tracer activated)",
+        "security": {
+          "level": "high",
+          "guards": 6,
+          "cameras": true
+        },
+        "notableItems": [
+          "Military weapons cache",
+          "Stolen pharmaceutical containers",
+          "Encrypted buyer contact list"
+        ],
+        "activeEvents": [
+          "Buyer demanding full refund for defective merchandise",
+          "Competing fence attempting hostile takeover",
+          "Authorities received anonymous tip about location"
+        ]
+      },
+      "Coldstore_Delta": {
+        "description": "Refrigerated facility storing perishable cargo. Constant mechanical hum. Frost coats metal walls. Workers wear thermal suits. Management cuts power to save costs. (temperature rising fast)",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Refrigeration system controls",
+          "Expired medical supplies",
+          "Smuggled frozen organic material"
+        ],
+        "activeEvents": [
+          "Entire shipment thawing and spoiling",
+          "Worker trapped in malfunctioning freezer unit",
+          "Client threatening lawsuit over ruined cargo"
+        ]
+      },
+      "Portside_Container_Yard": {
+        "description": "Open lot filled with shipping containers. Crane operators work rotating shifts. Homeless camp hidden between units. Security patrol in predictable patterns. (contraband container identified)",
+        "security": {
+          "level": "low",
+          "guards": 2,
+          "cameras": false
+        },
+        "notableItems": [
+          "Bolt cutters and breaching tools",
+          "Container manifest logs",
+          "GPS jammer device"
+        ],
+        "activeEvents": [
+          "Customs enforcement conducting random inspection",
+          "Crane accident dropped container spilling contents",
+          "Gang fighting over storage territory"
+        ]
       }
     },
     "temple": {
@@ -657,6 +1215,114 @@
           "Virtual sermon",
           "Server maintenance",
           "Hacker disruption"
+        ]
+      },
+      "Church of the Patch": {
+        "description": "A techno-faith temple preaching salvation through constant self-updates (firmware schism brewing).",
+        "security": {
+          "level": "medium",
+          "guards": 1,
+          "cameras": false
+        },
+        "notableItems": [
+          "Ritual update chips",
+          "Patch notes scripture",
+          "Donor implant rack"
+        ],
+        "activeEvents": [
+          "Unapproved patch released",
+          "Follower protest",
+          "Corp interest rising"
+        ]
+      },
+      "Neon Ash Shrine": {
+        "description": "Street shrine honoring victims of data erasure and memory loss (name appeared today).",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Memory shards",
+          "Holographic candles",
+          "Anonymous offerings"
+        ],
+        "activeEvents": [
+          "New name projected",
+          "Crowd gathering",
+          "Corp cleanup scheduled"
+        ]
+      },
+      "Church_of_Digital_Ascension": {
+        "description": "Converted office building with neon crosses. Congregation uploads prayers to AI deity. Server banks line walls. Priest preaches singularity salvation. Donation terminals accept cryptocurrency. (prophet's prediction failed)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Neural interface prayer stations",
+          "Donation wallet private keys",
+          "Heretic member list"
+        ],
+        "activeEvents": [
+          "Follower demanding refund after unanswered prayers",
+          "Rival sect accusing leadership of fraud",
+          "Authorities investigating for cult activity"
+        ]
+      },
+      "Temple_of_Eternal_Code": {
+        "description": "Underground chamber accessed through maintenance tunnels. Walls covered in circuit board murals. Members conduct rituals in VR headsets. Air thick with incense and ozone. (member died during ritual)",
+        "security": {
+          "level": "low",
+          "guards": 1,
+          "cameras": false
+        },
+        "notableItems": [
+          "Illegal neural stimulation devices",
+          "Sacred server containing member consciousness uploads",
+          "Banned religious texts on data drives"
+        ],
+        "activeEvents": [
+          "Member experiencing psychotic break from VR overuse",
+          "Splinter group forming over doctrinal dispute",
+          "Zone Authority investigating suspicious death"
+        ]
+      },
+      "Sanctuary_of_the_Fallen": {
+        "description": "Abandoned church serving displaced refugees. Pews replaced with sleeping mats. Volunteers distribute food and medicine. Stained glass windows shattered. Local gangs leave it untouched. (supplies running out)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Donated medical supplies",
+          "Hidden weapons for self-defense",
+          "List of missing persons"
+        ],
+        "activeEvents": [
+          "Developer offering buyout to relocate operation",
+          "Disease outbreak among refugee population",
+          "Volunteer accused of stealing donations"
+        ]
+      },
+      "Neon_Monastery": {
+        "description": "Rooftop compound with meditation gardens. Monks maintain server farms to fund operations. Solar panels power everything. Walls decorated with digital mandalas. Open to seekers. (abbot went missing)",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Cryptocurrency mining operation",
+          "Ancient texts digitized on encrypted drives",
+          "Neural meditation enhancement devices"
+        ],
+        "activeEvents": [
+          "Senior monk accused of embezzling funds",
+          "Power company demanding payment for illegal grid tap",
+          "Student discovered using temple resources for hacking"
         ]
       }
     },
@@ -768,9 +1434,225 @@
           "Hacker meetup",
           "Wi-Fi outage"
         ]
+      },
+      "Last Calorie": {
+        "description": "A ration-only diner serving one real meal per customer, per life (coupon stolen).",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Biometric ration scanner",
+          "Vacuum-sealed meals",
+          "Blacklist terminal"
+        ],
+        "activeEvents": [
+          "Scanner glitching",
+          "Line turning hostile",
+          "Health agents tipped"
+        ]
+      },
+      "Blue Oil Kitchen": {
+        "description": "Grease-heavy street kitchen rumored to reuse industrial lubricants (supplier exposed).",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Unlabeled barrels",
+          "Flavor masking kit",
+          "Payoff envelope"
+        ],
+        "activeEvents": [
+          "Inspector bribed",
+          "Customer collapse",
+          "Recipe data leaked"
+        ]
+      },
+      "Noodle_Dragon": {
+        "description": "Cramped kitchen with steam-filled air. Chef works single wok over open flame. Plastic stools crowd narrow space. Grease coats every surface. Line out door despite health code violations. (inspector taking bribes)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Unlicensed food vendor permits",
+          "Cash register with false bottom",
+          "Illegal food additive stock"
+        ],
+        "activeEvents": [
+          "Gang member demanding protection payment",
+          "Customer hospitalized from food poisoning",
+          "Supplier cutting deliveries over unpaid debt"
+        ]
+      },
+      "The_Chrome_Plate": {
+        "description": "Upscale establishment serving cultured protein. Holographic menus hover at each table. Servers wear designer uniforms. Kitchen sealed behind glass. Reservations required months ahead. (critic arriving unannounced)",
+        "security": {
+          "level": "high",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Rare ingredient vault",
+          "Celebrity client blackmail files",
+          "Prototype food synthesizer"
+        ],
+        "activeEvents": [
+          "Kitchen staff organizing union representation",
+          "Rival restaurant owner hiring saboteur",
+          "Health department investigating ingredient sourcing"
+        ]
+      },
+      "Meat_Market_Grill": {
+        "description": "Open-pit cooking in repurposed warehouse. Mystery meat on skewers over fire barrels. Vendor claims vat-grown but no certification. Cash only. Popular with street workers. (meat source questioned)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Unlabeled meat shipment",
+          "Vendor's cash stash",
+          "Stolen cooking equipment"
+        ],
+        "activeEvents": [
+          "Customer violently ill after eating",
+          "Activist investigating illegal animal slaughter",
+          "Competitor spreading disease rumors"
+        ]
+      },
+      "Synth_Cafe_Express": {
+        "description": "Automated kiosk serving printed food paste. No human staff. Digital menu glitches constantly. Seats bolted to floor. Cleaning drones work overnight. (system hacked recently)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Food printer maintenance codes",
+          "Customer payment database",
+          "Ingredient refill schedule"
+        ],
+        "activeEvents": [
+          "Printer malfunction creating toxic batches",
+          "Hacker demanding ransom to restore service",
+          "Franchise owner abandoning failing location"
+        ]
+      },
+      "Garden_Tower_Bistro": {
+        "description": "Rooftop greenhouse restaurant with vertical gardens. Fresh vegetables served at premium prices. Waitstaff caters to corpo clientele. Reservation list carefully curated. Security screens all guests. (crop contamination detected)",
+        "security": {
+          "level": "high",
+          "guards": 3,
+          "cameras": true
+        },
+        "notableItems": [
+          "Hydroponics system controls",
+          "VIP client contact list",
+          "Pesticide stock"
+        ],
+        "activeEvents": [
+          "Batch of produce testing positive for toxins",
+          "Rival business owner attempting industrial espionage",
+          "Worker threatening to expose wage violations"
+        ]
       }
     },
     "tech-shop": {
+      "Binary_Bazaar": {
+        "description": "Cluttered shop selling refurbished implants. Display cases packed with used cyberware. Owner tests mods on willing customers. No warranty or refunds. Back alley entrance for discrete clients. (faulty product lawsuit)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Illegal military-grade neural implants",
+          "Diagnostic tools for proprietary systems",
+          "Customer medical records"
+        ],
+        "activeEvents": [
+          "Customer's implant malfunctioned causing permanent damage",
+          "Supplier demanding payment for stolen inventory",
+          "License inspector arrived without warning"
+        ]
+      },
+      "Phantom_Protocols": {
+        "description": "Hacker collective operating from basement server room. Members write custom exploits for hire. Screens display network intrusion attempts. Paranoid security measures. Cash only transactions. (client traced connection)",
+        "security": {
+          "level": "medium",
+          "guards": 1,
+          "cameras": true
+        },
+        "notableItems": [
+          "Zero-day exploit library",
+          "Client anonymity protocols",
+          "Hardware key collection for secure facilities"
+        ],
+        "activeEvents": [
+          "Rival hacker group launching DDoS attack",
+          "Client demanding free work after failed job",
+          "Authorities triangulating physical location"
+        ]
+      },
+      "Circuit_Dreams": {
+        "description": "Boutique shop selling custom-built rigs. Clean displays showcase bleeding-edge components. Technician assembles orders in glass workshop. Premium prices for verified authentic parts. (counterfeit parts discovered)",
+        "security": {
+          "level": "medium",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Manufacturer authentication scanner",
+          "High-end component inventory",
+          "Client build specifications database"
+        ],
+        "activeEvents": [
+          "Customer threatening lawsuit over fake components",
+          "Supplier caught substituting counterfeit parts",
+          "Competitor starting price war"
+        ]
+      },
+      "Glitch_&_Fix": {
+        "description": "Street-level repair kiosk in crowded market. Technician works on folding table under tarp. Repairs anything for flat fee. No guarantees. Popular with desperate customers. (supplier stopped delivering)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Salvaged component bins",
+          "Universal diagnostic tool",
+          "Hot merchandise cooling off"
+        ],
+        "activeEvents": [
+          "Customer demanding refund for botched repair",
+          "Market security demanding vendor permit",
+          "Technician's tools stolen overnight"
+        ]
+      },
+      "Neural_Link_Emporium": {
+        "description": "Sterile showroom displays latest interface hardware. Sales reps push expensive upgrades. Installation bay offers same-day service. Financing available through predatory loans. (data breach exposed)",
+        "security": {
+          "level": "high",
+          "guards": 3,
+          "cameras": true
+        },
+        "notableItems": [
+          "Customer neural scan database",
+          "Proprietary interface calibration software",
+          "Unregistered prototype hardware"
+        ],
+        "activeEvents": [
+          "Hacker leaked customer brain patterns online",
+          "Customer suing over unauthorized data collection",
+          "Corporate auditor investigating financial irregularities"
+        ]
+      },
       "Cyber Parts": {
         "description": "Cluttered shop selling used cybernetics and refurbished tech.",
         "security": {
@@ -878,44 +1760,552 @@
           "Informant protection",
           "Counter-intelligence operation"
         ]
+      },
+      "Dead Pixel Repairs": {
+        "description": "Repair shop resurrecting devices written off by manufacturers (kill-switch triggered).",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Bypass firmware",
+          "Corp teardown guides",
+          "Signal isolator"
+        ],
+        "activeEvents": [
+          "Remote shutdown attempt",
+          "Client panicking",
+          "Legal notice delivered"
+        ]
+      },
+      "Spare Mind Outlet": {
+        "description": "Grey-market shop selling memory backups and personality forks (wrong mind sold).",
+        "security": {
+          "level": "medium",
+          "guards": 1,
+          "cameras": false
+        },
+        "notableItems": [
+          "Consciousness cartridges",
+          "Consent waivers",
+          "Wiped identity shells"
+        ],
+        "activeEvents": [
+          "Customer identity conflict",
+          "Supplier missing",
+          "Data corruption spreading"
+        ]
+      }
+    },
+    "stairs": {
+      "Tower_A_Stairwell": {
+        "description": "Concrete stairs echo with footsteps. Emergency lighting casts harsh shadows. Graffiti marks gang territory by floor. Door locks broken on several levels. Homeless sleep on landings. (body discovered level)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Discarded drug paraphernalia",
+          "Emergency exit map",
+          "Makeshift weapon cache"
+        ],
+        "activeEvents": [
+          "Gang members posted as lookouts",
+          "Building management ignoring maintenance",
+          "Assault reported but police delayed response"
+        ]
+      },
+      "Corporate_Plaza_Fire_Exit": {
+        "description": "Pristine stairwell with motion-sensor lighting. Biometric scanners control floor access. Security cameras cover every angle. Fire doors sealed except during emergencies. (bypass codes leaked)",
+        "security": {
+          "level": "high",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Emergency override panel",
+          "Executive floor access logs",
+          "Fire suppression controls"
+        ],
+        "activeEvents": [
+          "Unauthorized access detected on secure floor",
+          "Employee trapped between floors during drill",
+          "Maintenance contractor installing surveillance backdoor"
+        ]
+      },
+      "Market_District_Service_Stairs": {
+        "description": "Narrow metal stairs connect street vendors to storage levels. Rusted handrails. Water drips from corroded pipes. Boxes stacked blocking passage. Flickering bulb barely illuminates steps. (collapse warning issued)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Vendor storage crates",
+          "Smuggler's hidden stash",
+          "Structural damage assessment notice"
+        ],
+        "activeEvents": [
+          "Inspector condemning stairway as unsafe",
+          "Vendor refusing to relocate merchandise",
+          "Step collapsed injuring pedestrian"
+        ]
+      }
+    },
+    "lift": {
+      "Express_Lift_7": {
+        "description": "High-speed elevator serves luxury tower. Mirrored walls and soft lighting. Facial recognition required for upper floors. Muzak plays during ascent. Maintenance overdue. (cable fraying detected)",
+        "security": {
+          "level": "high",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Emergency override keypad",
+          "Floor access restriction system",
+          "Maintenance schedule logs"
+        ],
+        "activeEvents": [
+          "Engineer warning of imminent failure",
+          "Resident trapped between floors during malfunction",
+          "Building management postponing expensive repairs"
+        ]
+      },
+      "Cargo_Lift_3": {
+        "description": "Industrial freight elevator moves massive loads. Exposed hydraulics leak oil. No weight limit enforced. Gate barely closes. Operators take bribes for after-hours access. (overload incident today)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Overweight cargo manifest",
+          "Operator's bribe ledger",
+          "Emergency brake release tool"
+        ],
+        "activeEvents": [
+          "Cable snapped dropping load three floors",
+          "Unauthorized cargo being moved at night",
+          "Safety inspector bribed to ignore violations"
+        ]
+      },
+      "Public_Access_Elevator_12": {
+        "description": "Worn elevator serves housing block. Button panel half-functional. Walls scarred with graffiti. Urine smell permanent. Stops randomly between floors. Residents avoid using after dark. (stuck between floors)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Emergency call button (non-functional)",
+          "Makeshift weapons hidden in panels",
+          "Drug dealer's stash behind ceiling tile"
+        ],
+        "activeEvents": [
+          "Passengers trapped for hours awaiting rescue",
+          "Gang using elevator for ambushes",
+          "Building manager refusing to fund repairs"
+        ]
+      },
+      "Service_Lift_B": {
+        "description": "Maintenance elevator accesses restricted areas. Keycard required. Cramped interior smells of machine oil. Warning signs cover walls. Irregular inspection schedule. (unauthorized access logged)",
+        "security": {
+          "level": "medium",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Master keycard reader",
+          "Maintenance toolkit",
+          "Access log terminal"
+        ],
+        "activeEvents": [
+          "Security investigating unauthorized floor visits",
+          "Technician discovered selling access to thieves",
+          "System glitch allowing unrestricted movement"
+        ]
       }
     }
   },
   "connections": {
-    "stairs": {
-      "description": "Narrow maintenance stairwells with flickering neon guides and battered handrails.",
-      "security": {
-        "level": "low",
-        "guards": 0,
-        "cameras": false
-      },
-      "notableItems": [
-        "Graffiti-coded route markers",
-        "Emergency power conduit",
-        "Hidden cache alcove"
-      ],
-      "activeEvents": [
-        "Footsteps echoing above",
-        "Power surge in the stairwell",
-        "Door panel jammed"
-      ]
-    },
     "lift": {
-      "description": "Industrial lift cages with unreliable motors and corporate override locks.",
+      "executive_express": {
+        "description": "Polished chrome elevator with holographic floor display. Requires biometric scan and security clearance. Ascends to penthouse suites. Classical music masks surveillance microphones. (executive missing mid-transit)",
+        "security": {
+          "level": "high",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Biometric bypass device",
+          "Emergency communication panel",
+          "Executive schedule display"
+        ],
+        "activeEvents": [
+          "Technician discovered hidden recording devices",
+          "Passenger disappeared between floors without trace",
+          "Security protocols failed during VIP transport"
+        ]
+      },
+      "freight_lift": {
+        "description": "Freight lifts controlled by outdated corp AI that still enforces old rules (override denied).",
+        "security": {
+          "level": "medium",
+          "guards": 1,
+          "cameras": true
+        },
+        "notableItems": [
+          "Legacy access port",
+          "Manual brake lever",
+          "Corp compliance placard"
+        ],
+        "activeEvents": [
+          "AI integrity check",
+          "Lift skipping floors",
+          "Emergency stop engaged"
+        ]
+      },
+      "Express_Lift_7": {
+        "description": "High-speed elevator serves luxury tower. Mirrored walls and soft lighting. Facial recognition required for upper floors. Muzak plays during ascent. Maintenance overdue. (cable fraying detected)",
+        "security": {
+          "level": "high",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Emergency override keypad",
+          "Floor access restriction system",
+          "Maintenance schedule logs"
+        ],
+        "activeEvents": [
+          "Engineer warning of imminent failure",
+          "Resident trapped between floors during malfunction",
+          "Building management postponing expensive repairs"
+        ]
+      },
+      "Cargo_Lift_3": {
+        "description": "Industrial freight elevator moves massive loads. Exposed hydraulics leak oil. No weight limit enforced. Gate barely closes. Operators take bribes for after-hours access. (overload incident today)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Overweight cargo manifest",
+          "Operator's bribe ledger",
+          "Emergency brake release tool"
+        ],
+        "activeEvents": [
+          "Cable snapped dropping load three floors",
+          "Unauthorized cargo being moved at night",
+          "Safety inspector bribed to ignore violations"
+        ]
+      },
+      "Public_Access_Elevator_12": {
+        "description": "Worn elevator serves housing block. Button panel half-functional. Walls scarred with graffiti. Urine smell permanent. Stops randomly between floors. Residents avoid using after dark. (stuck between floors)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Emergency call button (non-functional)",
+          "Makeshift weapons hidden in panels",
+          "Drug dealer's stash behind ceiling tile"
+        ],
+        "activeEvents": [
+          "Passengers trapped for hours awaiting rescue",
+          "Gang using elevator for ambushes",
+          "Building manager refusing to fund repairs"
+        ]
+      },
+      "Service_Lift_B": {
+        "description": "Maintenance elevator accesses restricted areas. Keycard required. Cramped interior smells of machine oil. Warning signs cover walls. Irregular inspection schedule. (unauthorized access logged)",
+        "security": {
+          "level": "medium",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Master keycard reader",
+          "Maintenance toolkit",
+          "Access log terminal"
+        ],
+        "activeEvents": [
+          "Security investigating unauthorized floor visits",
+          "Technician discovered selling access to thieves",
+          "System glitch allowing unrestricted movement"
+        ]
+      },
+      "description": "Freight lifts controlled by outdated corp AI that still enforces old rules (override denied).",
       "security": {
         "level": "medium",
         "guards": 1,
         "cameras": true
       },
       "notableItems": [
-        "Override key slot",
-        "Broken floor display",
-        "Hidden maintenance hatch"
+        "Legacy access port",
+        "Manual brake lever",
+        "Corp compliance placard"
       ],
       "activeEvents": [
-        "Lift stalled between floors",
-        "Security scan in progress",
-        "Emergency alarm triggered"
+        "AI integrity check",
+        "Lift skipping floors",
+        "Emergency stop engaged"
+      ]
+    },
+    "stairs": {
+      "Tower_A_Stairwell": {
+        "description": "Concrete stairs echo with footsteps. Emergency lighting casts harsh shadows. Graffiti marks gang territory by floor. Door locks broken on several levels. Homeless sleep on landings. (body discovered level)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Discarded drug paraphernalia",
+          "Emergency exit map",
+          "Makeshift weapon cache"
+        ],
+        "activeEvents": [
+          "Gang members posted as lookouts",
+          "Building management ignoring maintenance",
+          "Assault reported but police delayed response"
+        ]
+      },
+      "Corporate_Plaza_Fire_Exit": {
+        "description": "Pristine stairwell with motion-sensor lighting. Biometric scanners control floor access. Security cameras cover every angle. Fire doors sealed except during emergencies. (bypass codes leaked)",
+        "security": {
+          "level": "high",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Emergency override panel",
+          "Executive floor access logs",
+          "Fire suppression controls"
+        ],
+        "activeEvents": [
+          "Unauthorized access detected on secure floor",
+          "Employee trapped between floors during drill",
+          "Maintenance contractor installing surveillance backdoor"
+        ]
+      },
+      "Market_District_Service_Stairs": {
+        "description": "Narrow metal stairs connect street vendors to storage levels. Rusted handrails. Water drips from corroded pipes. Boxes stacked blocking passage. Flickering bulb barely illuminates steps. (collapse warning issued)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Vendor storage crates",
+          "Smuggler's hidden stash",
+          "Structural damage assessment notice"
+        ],
+        "activeEvents": [
+          "Inspector condemning stairway as unsafe",
+          "Vendor refusing to relocate merchandise",
+          "Step collapsed injuring pedestrian"
+        ]
+      },
+      "concrete_stairs": {
+        "description": "Concrete stairwells reeking of ozone and piss, patched with illegal power lines (ambush likely above).",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Spliced power cable",
+          "Faction graffiti tags",
+          "Loose floor panel"
+        ],
+        "activeEvents": [
+          "Lights flickering",
+          "Voices echoing downward",
+          "Structural alarm chirping"
+        ]
+      },
+      "emergency_descent_route": {
+        "description": "Unmarked door leads to spiral staircase. Steel grating allows view of machinery below. No cameras. Echoes carry for floors. Used by those avoiding detection. (pursuit in progress)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Abandoned equipment from previous chase",
+          "Spray-painted escape route markers",
+          "Discarded security keycard"
+        ],
+        "activeEvents": [
+          "Fugitive using route to evade authorities",
+          "Door alarm disabled by unknown party",
+          "Blood trail indicates recent injury"
+        ]
+      },
+      "service_stairwell": {
+        "description": "Narrow metal stairs with perforated treads. Steam pipes hiss overhead. Maintenance crews use it to move between mechanical floors without disturbing corporate zones. (valve rupture imminent)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Pressure gauge reading red",
+          "Unlocked tool locker",
+          "Maintenance schedule showing missed inspections"
+        ],
+        "activeEvents": [
+          "Temperature rising beyond safe levels",
+          "Worker radio chatter about shortcuts",
+          "Condensation forming ice patches"
+        ]
+      },
+      "executive_access": {
+        "description": "Polished marble steps with brass railings. Biometric scanners at each landing. Connects penthouse suites to secure parking. Cameras blanket every angle. (exec just collapsed upstairs)",
+        "security": {
+          "level": "high",
+          "guards": 2,
+          "cameras": true
+        },
+        "notableItems": [
+          "Emergency defibrillator",
+          "Corporate art worth six figures",
+          "Dropped executive keycard"
+        ],
+        "activeEvents": [
+          "Medical emergency in progress",
+          "Guards responding to distress call",
+          "Automated lockdown protocol active"
+        ]
+      },
+      "collapsed_section": {
+        "description": "Half the stairwell caved in three years ago. Jury-rigged scaffolding bridges the gap. No official repairs scheduled. Squatters nest in accessible landings. (someone's trapped below)",
+        "security": {
+          "level": "none",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Makeshift rope ladder",
+          "Squatter's stash box",
+          "Structural warning signs"
+        ],
+        "activeEvents": [
+          "Muffled cries from debris",
+          "Scaffolding creaking under weight",
+          "Dust cloud from fresh collapse"
+        ]
+      },
+      "freight_well": {
+        "description": "Wide industrial stairs built for hauling cargo. Reinforced treads scarred by pallet jacks. Loading crews use it when elevators jam. Access doors propped open with crowbars. (contraband shipment tonight)",
+        "security": {
+          "level": "low",
+          "guards": 1,
+          "cameras": false
+        },
+        "notableItems": [
+          "Broken pallet jack",
+          "Shipping manifest (falsified)",
+          "Discarded packaging foam"
+        ],
+        "activeEvents": [
+          "Off-book delivery scheduled",
+          "Guard accepting payment to look away",
+          "Unauthorized forklift operation"
+        ]
+      },
+      "hidden_shaft_stairs": {
+        "description": "Forgotten architect's staircase behind maintenance panel. Leads to sub-basements not on official maps. Dust-thick but structurally sound. No power, no records. (corp hiding something)",
+        "security": {
+          "level": "none",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Original building blueprints",
+          "Chemical residue on walls",
+          "Sealed blast door below"
+        ],
+        "activeEvents": [
+          "Fresh footprints in dust",
+          "Distant machinery humming",
+          "Air pressure differential indicates active space"
+        ]
+      },
+      "fire_escape_conversion": {
+        "description": "External fire stairs enclosed with corrugated panels. Now serves as unofficial smoking lounge. Cigarette butts pile at each landing. Door alarms disabled years ago. (dealer operates here)",
+        "security": {
+          "level": "low",
+          "guards": 0,
+          "cameras": false
+        },
+        "notableItems": [
+          "Dead alarm control box",
+          "Burner phones taped under railing",
+          "Marked cigarette pack (signal)"
+        ],
+        "activeEvents": [
+          "Transaction in progress",
+          "Buyer waiting nervously",
+          "Lookout monitoring building entrance"
+        ]
+      },
+      "data_center_stairs": {
+        "description": "Hermetically sealed stairwell with positive air pressure. Connects cooling infrastructure floors. Temperature controlled. Biometric access. Fiber optic runs visible through walls. (cooling system failing)",
+        "security": {
+          "level": "high",
+          "guards": 1,
+          "cameras": true
+        },
+        "notableItems": [
+          "Server room access badge",
+          "Thermal monitoring tablet",
+          "Emergency shutdown manual"
+        ],
+        "activeEvents": [
+          "Temperature alarm triggering",
+          "Technician sprinting with equipment",
+          "Automated voice announcing shutdown countdown"
+        ]
+      },
+      "maintenance_ladder": {
+        "description": "Vertical ladder in narrow shaft. Leads to rooftop maintenance access. Used by HVAC techs and roof runners. No safety cage. Rusted rungs. (roof access restricted)",
+        "security": {
+          "level": "medium",
+          "guards": 0,
+          "cameras": true
+        },
+        "notableItems": [
+          "Rusted wrench left on rung",
+          "Access log showing recent climbs",
+          "Warning sign about roof hazards"
+        ],
+        "activeEvents": [
+          "Security drone patrolling rooftop",
+          "Technician repairing HVAC unit above",
+          "Wind gusts making climbing dangerous"
+        ]
+      },
+      "description": "Concrete stairwells reeking of ozone and piss, patched with illegal power lines (ambush likely above).",
+      "security": {
+        "level": "low",
+        "guards": 0,
+        "cameras": false
+      },
+      "notableItems": [
+        "Spliced power cable",
+        "Faction graffiti tags",
+        "Loose floor panel"
+      ],
+      "activeEvents": [
+        "Lights flickering",
+        "Voices echoing downward",
+        "Structural alarm chirping"
       ]
     }
   }
