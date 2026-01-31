@@ -3,7 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const PORT = process.env.PORT || 3501;
+// Default to 3500 (matches README + my usual dev convention)
+const PORT = process.env.PORT || 3500;
 const HOST = process.env.HOST || '0.0.0.0';
 
 // MIME types mapping
@@ -111,7 +112,7 @@ server.listen(PORT, HOST, () => {
 server.on('error', (err) => {
   if (err.code === 'EADDRINUSE') {
     console.error(`\n❌ Error: Port ${PORT} is already in use.`);
-    console.error(`   Try setting a different port: PORT=3501 node server.js\n`);
+    console.error(`   Try setting a different port: PORT=3502 node server.js\n`);
   } else {
     console.error(`\n❌ Server error: ${err.message}\n`);
   }
