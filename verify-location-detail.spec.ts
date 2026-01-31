@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Location Detail Population', () => {
   test('should show DIFFERENT data for different clicked blocks', async ({ page }) => {
-    await page.goto('http://localhost:8080');
+    await page.goto('/');
 
     // Wait for blocks to be generated
     await page.waitForTimeout(500);
@@ -59,7 +59,7 @@ test.describe('Location Detail Population', () => {
   });
 
   test('modal should show block-specific name as title', async ({ page }) => {
-    await page.goto('http://localhost:8080');
+    await page.goto('/');
     await page.waitForTimeout(500);
 
     // Get first block and its name
@@ -78,7 +78,7 @@ test.describe('Location Detail Population', () => {
   });
 
   test('should close modal when close button is clicked', async ({ page }) => {
-    await page.goto('http://localhost:8080');
+    await page.goto('/');
     await page.waitForTimeout(500);
 
     const firstBlock = page.locator('.block').first();
