@@ -61,19 +61,40 @@
                 <button id="settingsHelpClose" class="settings-help-close" type="button" aria-label="Close settings help">&times;</button>
               </div>
               <div class="settings-help-body">
-                <p class="settings-help-text">Click an item to jump to that setting.</p>
+                <p class="settings-help-text">Tap a setting to jump to it:</p>
                 <div class="settings-help-links">
-                  <button class="settings-help-link" type="button" data-target="floorCount">Floor Count</button>
-                  <button class="settings-help-link" type="button" data-target="rngSeed">RNG Seed</button>
-                  <button class="settings-help-link" type="button" data-target="densityPreset">Density Preset</button>
-                  <button class="settings-help-link" type="button" data-target="connectionMode">Connection Mode</button>
-                  <button class="settings-help-link" type="button" data-target="showConnections">Show Connection Matrix</button>
-                  <button class="settings-help-link" type="button" data-target="neonTheme">Neon Theme</button>
-                  <button class="settings-help-link" type="button" data-target="layoutLock">Lock Layout</button>
+                  <button class="settings-help-link" type="button" data-target="floorCount">
+                    <span class="settings-help-link-title">Floor Count</span>
+                    <span class="settings-help-link-desc">How many floors to generate.</span>
+                  </button>
+                  <button class="settings-help-link" type="button" data-target="rngSeed">
+                    <span class="settings-help-link-title">RNG Seed</span>
+                    <span class="settings-help-link-desc">Same seed = same results.</span>
+                  </button>
+                  <button class="settings-help-link" type="button" data-target="densityPreset">
+                    <span class="settings-help-link-title">Density Preset</span>
+                    <span class="settings-help-link-desc">Controls variety/spacing of blocks.</span>
+                  </button>
+                  <button class="settings-help-link" type="button" data-target="connectionMode">
+                    <span class="settings-help-link-title">Connection Mode</span>
+                    <span class="settings-help-link-desc">How floors connect (linear vs maze).</span>
+                  </button>
+                  <button class="settings-help-link" type="button" data-target="showConnections">
+                    <span class="settings-help-link-title">Show Connection Matrix</span>
+                    <span class="settings-help-link-desc">Debug view of floor links.</span>
+                  </button>
+                  <button class="settings-help-link" type="button" data-target="neonTheme">
+                    <span class="settings-help-link-title">Neon Theme</span>
+                    <span class="settings-help-link-desc">Toggle the neon look.</span>
+                  </button>
+                  <button class="settings-help-link" type="button" data-target="layoutLock">
+                    <span class="settings-help-link-title">Lock Layout</span>
+                    <span class="settings-help-link-desc">Prevents the stack from rerolling.</span>
+                  </button>
                 </div>
                 <div class="settings-help-notes">
-                  <div class="settings-help-note"><strong>Tip:</strong> "Regenerate Building" applies the current settings and rerolls the stack.</div>
-                  <div class="settings-help-note"><strong>Tip:</strong> "Lock Layout" keeps the current building structure when you change other options.</div>
+                  <div class="settings-help-note"><strong>Regenerate Building:</strong> apply settings + reroll.</div>
+                  <div class="settings-help-note"><strong>Next Beat:</strong> placeholder for future event rerolls.</div>
                 </div>
               </div>
             </div>
